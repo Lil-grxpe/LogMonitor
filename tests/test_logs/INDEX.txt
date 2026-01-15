@@ -1,0 +1,272 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║   ✅ FICHIERS DE LOGS DE TEST - LOGMONITOR                       ║
+║   Projet Tuteuré 2025-2026                                       ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+📦 6 FICHIERS DE LOGS DE TEST CRÉÉS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ 01_bruteforce_ssh.log (3.0K, 30 lignes)
+  → Règle: BruteForce SSH | Sévérité: High
+  → 30 tentatives depuis 2 IPs (192.168.1.100, 45.76.123.45)
+
+✓ 02_multiple_accounts_attack.log (3.0K, 30 lignes)
+  → Règle: Multiple Accounts Attack | Sévérité: Medium
+  → 15+ comptes ciblés depuis 203.0.113.50
+
+✓ 03_suspicious_root_login.log (3.0K, 30 lignes)
+  → Règle: Suspicious Root Login | Sévérité: High
+  → 15 connexions root depuis IPs externes non autorisées
+
+✓ 04_sensitive_file_modification.log (4.2K, 29 lignes)
+  → Règle: Sensitive File Modification | Sévérité: Critical
+  → Modifications: /etc/passwd, /etc/shadow, /etc/sudoers, /etc/ssh/sshd_config
+
+✓ 05_activity_spike.log (5.8K, 60 lignes)
+  → Règle: Activity Spike | Sévérité: Medium
+  → Pic: 40 événements en 1 minute (vs 2 normalement)
+
+✓ 06_normal_activity.log (4.0K, 41 lignes)
+  → Test: Faux positifs | Alertes attendues: AUCUNE
+  → Activité légitime (SSH, sudo, cron, services)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TOTAL: 220 lignes de logs | ~23K de données de test
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+📚 DOCUMENTATION (5 fichiers)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. README.md (6.3K)
+   → Documentation détaillée de chaque fichier
+   → Scénarios d'attaque simulés
+   → Alertes attendues par règle
+   → Tableau récapitulatif des règles
+
+2. USAGE.md (7.0K)
+   → Guide d'utilisation complet
+   → Démarrage rapide
+   → Tests manuels et automatiques
+   → Génération de rapports
+   → Checklist de validation
+   → Dépannage
+
+3. SUMMARY.md (6.8K)
+   → Récapitulatif final du projet
+   → Vue d'ensemble des fichiers
+   → Objectifs atteints
+   → Prochaines étapes
+
+4. docs/kali_linux_guide.md
+   → Guide spécifique pour Kali Linux
+   → Export des logs systemd (journalctl)
+   → Adaptation pour journal systemd
+   → Scripts d'export automatique
+   → Workflow recommandé
+
+5. INDEX.txt (ce fichier)
+   → Index général de tous les fichiers
+
+
+🛠️ SCRIPTS (2 fichiers exécutables)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. test_all_logs.sh (4.0K)
+   → Test automatique des 6 fichiers
+   → Rapport coloré avec statistiques
+   → Vérification de l'environnement
+   → Compteur réussites/échecs
+
+2. scripts/export_systemd_logs.sh
+   → Export automatique des logs systemd
+   → Support: SSH, sudo, auth, apache2, nginx, mysql
+   → Paramétrable (répertoire, période)
+   → Rapport détaillé avec statistiques
+
+
+🚀 DÉMARRAGE RAPIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Activer l'environnement
+cd /home/lil_grxpe/Bureau/Projet_tuteuré
+source venv/bin/activate
+
+# Test automatique (RECOMMANDÉ)
+./tests/test_logs/test_all_logs.sh
+
+# Test manuel d'un fichier
+logmonitor scan tests/test_logs/01_bruteforce_ssh.log
+
+# Voir les alertes générées
+logmonitor alerts list
+logmonitor alerts list --severity critical
+
+# Dashboard web
+logmonitor web --port 5000
+# Ouvrir: http://localhost:5000
+
+# Générer un rapport PDF
+logmonitor report generate --format pdf
+
+# Générer un rapport CSV
+logmonitor report generate --format csv
+
+
+🎯 UTILISATION SUR KALI LINUX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Sur Kali, les logs sont dans systemd journal, pas dans /var/log/auth.log
+
+# Export des logs SSH
+journalctl -u ssh --since "7 days ago" --no-pager > /tmp/ssh.log
+logmonitor scan /tmp/ssh.log
+
+# Ou utiliser le script automatique
+./scripts/export_systemd_logs.sh /tmp/kali_logs "24 hours ago"
+logmonitor scan /tmp/kali_logs/ssh.log
+
+# Voir le guide complet
+cat docs/kali_linux_guide.md
+
+
+📊 RÈGLES DE DÉTECTION TESTÉES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Règle 1: BruteForce SSH
+  Seuil: 5 échecs / 300s | Sévérité: High
+  Fichier: 01_bruteforce_ssh.log
+
+Règle 2: Multiple Accounts Attack
+  Seuil: 3 comptes / 600s | Sévérité: Medium
+  Fichier: 02_multiple_accounts_attack.log
+
+Règle 3: Suspicious Root Login
+  Seuil: IP non autorisée | Sévérité: High
+  Fichier: 03_suspicious_root_login.log
+
+Règle 4: Sensitive File Modification
+  Seuil: Modification détectée | Sévérité: Critical
+  Fichier: 04_sensitive_file_modification.log
+  Fichiers surveillés: /etc/passwd, /etc/shadow, /etc/sudoers, /etc/ssh/sshd_config
+
+Règle 5: Activity Spike
+  Seuil: 3x baseline | Sévérité: Medium
+  Fichier: 05_activity_spike.log
+
+Test 6: Activité Normale (Faux Positifs)
+  Objectif: Aucune alerte
+  Fichier: 06_normal_activity.log
+
+
+✅ CHECKLIST DE VALIDATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+□ Environnement virtuel activé (source venv/bin/activate)
+□ LogMonitor installé (logmonitor --version)
+□ Script test_all_logs.sh exécuté avec succès
+□ Règle 1 (BruteForce SSH) détecte correctement
+□ Règle 2 (Multiple Accounts) détecte correctement
+□ Règle 3 (Suspicious Root) détecte correctement
+□ Règle 4 (Sensitive Files) détecte correctement
+□ Règle 5 (Activity Spike) détecte correctement
+□ Fichier 06 (normal) ne génère AUCUNE alerte
+□ Dashboard web fonctionne (http://localhost:5000)
+□ Rapport PDF se génère correctement
+□ Rapport CSV se génère correctement
+□ Sur Kali: export systemd fonctionne
+
+
+📁 STRUCTURE DES FICHIERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Projet_tuteuré/
+├── tests/
+│   └── test_logs/
+│       ├── 01_bruteforce_ssh.log              ← Fichier de test 1
+│       ├── 02_multiple_accounts_attack.log    ← Fichier de test 2
+│       ├── 03_suspicious_root_login.log       ← Fichier de test 3
+│       ├── 04_sensitive_file_modification.log ← Fichier de test 4
+│       ├── 05_activity_spike.log              ← Fichier de test 5
+│       ├── 06_normal_activity.log             ← Fichier de test 6
+│       ├── README.md                          ← Documentation détaillée
+│       ├── USAGE.md                           ← Guide d'utilisation
+│       ├── SUMMARY.md                         ← Récapitulatif
+│       ├── INDEX.txt                          ← Ce fichier
+│       └── test_all_logs.sh                   ← Script de test auto
+├── docs/
+│   └── kali_linux_guide.md                    ← Guide Kali Linux
+└── scripts/
+    └── export_systemd_logs.sh                 ← Export systemd
+
+
+🎓 SCÉNARIOS PÉDAGOGIQUES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Démonstration rapide (5 minutes):
+  1. ./tests/test_logs/test_all_logs.sh
+  2. logmonitor alerts list
+  3. logmonitor web --port 5000
+
+Présentation complète (15 minutes):
+  1. Montrer chaque fichier de test individuellement
+  2. Expliquer chaque règle de détection
+  3. Dashboard web avec visualisations
+  4. Générer un rapport PDF
+
+Test de performance:
+  time for i in {1..10}; do
+    for log in tests/test_logs/0*.log; do
+      logmonitor scan "$log" > /dev/null
+    done
+  done
+
+
+💡 CONSEILS D'UTILISATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Commencez par le test automatique (test_all_logs.sh)
+2. Testez ensuite chaque fichier individuellement
+3. Vérifiez le fichier 06 en dernier (pas d'alertes)
+4. Utilisez le dashboard web pour visualisation
+5. Générez des rapports pour documentation
+6. Sur Kali: utilisez le script d'export systemd
+
+
+📞 SUPPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Documentation:
+  - tests/test_logs/README.md (détails techniques)
+  - tests/test_logs/USAGE.md (guide utilisateur)
+  - docs/kali_linux_guide.md (spécifique Kali)
+
+Commandes d'aide:
+  logmonitor --help
+  logmonitor scan --help
+  logmonitor alerts --help
+  logmonitor report --help
+
+
+🎯 OBJECTIFS ATTEINTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ 6 fichiers de logs de test couvrant tous les cas malveillants
+✅ 5 règles de détection testées exhaustivement
+✅ Test de faux positifs (activité normale)
+✅ Documentation complète (README, USAGE, SUMMARY)
+✅ Script de test automatique
+✅ Support Kali Linux (systemd journal)
+✅ Scripts d'export automatique
+✅ Exemples réalistes basés sur vraies attaques
+✅ Total: 220 lignes de logs de test
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Créé le: 2026-01-02
+Auteur: Équipe LogMonitor
+Version: 1.0
+Statut: ✅ COMPLET ET PRÊT À L'EMPLOI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

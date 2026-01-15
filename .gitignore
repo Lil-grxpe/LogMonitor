@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+
+# LogMonitor specific
+data/
+*.db
+*.db-journal
+reports/
+/tmp/
+*.log
+*.pid
+
+# Evidence & logs
+evidence/
+*.evidence
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Config sensible
+config/credentials.yaml
+cookies*.txt
+/tmp/cookies*.txt
+
+# Test files
+tests/authlog_test.log
+tests/test_*.log
+
+# System
+.cache/
+
+# Runtime artifacts
+.coverage
+scan_results.json
+.pytest_cache/
+htmlcov/

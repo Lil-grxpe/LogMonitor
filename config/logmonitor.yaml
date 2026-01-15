@@ -1,0 +1,93 @@
+# Configuration par défaut de LogMonitor
+# Conforme au cahier des charges
+
+# Chemins des fichiers de logs à surveiller
+logs:
+  paths:
+    # Note: Sur Kali Linux, utilisez journalctl pour exporter les logs
+    # Exemple: journalctl -u ssh > /tmp/auth.log
+    # - /var/log/auth.log  # N'existe pas sur Kali par défaut
+    # - /var/log/syslog    # N'existe pas sur Kali par défaut
+    # Utilisez le fichier de test pour la démo:
+    - tests/authlog_test.log
+  # Mode de surveillance : batch (analyse complète) ou streaming (temps réel)
+  mode: streaming
+
+# Configuration du moteur de détection (F2)
+detection:
+  # Règle 1 : Détection de bruteforce SSH
+  bruteforce_ssh:
+    enabled: true
+    threshold: 5  # Nombre d'échecs de connexion
+    time_window: 300  # Fenêtre de temps en secondes (5 minutes)
+    severity: high
+  
+  # Règle 2 : Tentatives multiples sur plusieurs comptes
+  multiple_accounts:
+    enabled: true
+    threshold: 3  # Nombre de comptes différents
+    time_window: 600  # 10 minutes
+    severity: medium
+  
+  # Règle 3 : Connexions root interactives suspectes
+  suspicious_root_login:
+    enabled: true
+    allowed_sources: []  # IPs autorisées (vide = aucune autorisée)
+    severity: high
+  
+  # Règle 4 : Modification de fichiers sensibles
+  sensitive_file_modification:
+    enabled: true
+    watched_files:
+      - /etc/passwd
+      - /etc/shadow
+      - /etc/sudoers
+      - /etc/ssh/sshd_config
+    severity: critical
+  
+  # Règle 5 : Pics d'activité inhabituels
+  activity_spike:
+    enabled: true
+    threshold_multiplier: 3.0  # 3x la moyenne
+    baseline_window: 3600  # Fenêtre de référence (1 heure)
+    severity: medium
+
+# Configuration du stockage (F3)
+storage:
+  # Base de données SQLite
+  database: data/logmonitor.db
+  # Répertoire pour les preuves
+  evidence_dir: data/evidence/
+  # Rotation des logs internes
+  log_rotation:
+    max_size_mb: 100
+    backup_count: 5
+
+# Configuration des rapports (F4)
+reporting:
+  # Répertoire de sortie
+  output_dir: reports/
+  # Formats disponibles : pdf, csv
+  default_format: pdf
+  # Génération automatique
+  auto_generate:
+    enabled: true
+    schedule: daily  # daily, weekly
+    time: "00:00"
+
+# Configuration du dashboard web (F5.2)
+web:
+  host: 127.0.0.1
+  port: 5000
+  debug: false
+  # Interval de mise à jour (secondes)
+  refresh_interval: 5
+
+# Configuration générale
+general:
+  # Niveau de log interne : DEBUG, INFO, WARNING, ERROR
+  log_level: INFO
+  # Fichier de log de l'application (utilisé en mode daemon)
+  app_log: /tmp/logmonitor/app.log
+  # Fichier PID pour le daemon
+  pid_file: /tmp/logmonitor/logmonitor.pid

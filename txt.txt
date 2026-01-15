@@ -1,0 +1,409 @@
+Ecole Supérieure de Gestion d’Informatique et de Sciences
+****
+Cahier de Charges dans le cadre du Projet
+Tuteuré
+****
+Année Académique : 2025 – 2026
+1
+Sommaire :
+1. Informations générales........................................................................................3
+2. Contexte, justification et problématique.................................................... 3
+3. Objectifs du projet...................................................................................................4
+4. Cible du projet...........................................................................................................5
+5. Description fonctionnelle de la solution souhaitée................................6
+6. Ordonnancement / Planification.....................................................................8
+7. Moyens et ressources nécessaires.................................................................12
+8. Livrables attendus…………………………………………………………………………..13
+9. Conclusion................................................................................................................13
+2
+1. Informations générales
+Titre du projet : LogMonitor : Outil de surveillance et d'analyse de
+logs pour systèmes Linux .
+Équipe projet :
+❖ AGUESSI Melkior
+❖ AIHOU Consylia
+❖ BATONON Darwin
+❖ DADAVI Camel
+❖ HOUNTONDJI Sophie
+(Les rôles spécifiques seront définis lors de la phase de planification
+détaillée.)
+Date de soumission : Jeudi 04 décembre 2025
+2. Contexte, justification et Problématique
+❖ Origine du projet: Le projet part du constat que les petites et
+moyennes équipes ne disposent pas toujours d'outils adaptés,
+légers et accessibles pour surveiller efficacement les logs de leurs
+systèmes Linux (auth.log, syslog, etc.). Les opérations
+quotidiennes comme les tentatives de connexion, les élévations
+de privilèges ou les modifications de fichiers sensibles sont
+souvent difficiles à détecter et à tracer sans un outil dédié.
+❖ Pertinence : Ce projet a un intérêt professionnel direct en
+proposant une solution de sécurité opérationnelle. Il
+présente également un intérêt académique fort en couvrant
+3
+des domaines comme le développement logiciel, la sécurité
+des systèmes et l'analyse de données.
+❖ Impact attendu: Le projet vise à livrer un prototype technique
+fonctionnel, LogMonitor, qui permettra d'améliorer la visibilité
+sur l'activité des systèmes Linux et de renforcer la sécurité par
+la détection d'anomalies.
+❖ Formulation claire du problème à résoudre : Comment fournir
+aux administrateurs de petites et moyennes infrastructures une
+solution simple, locale et efficace pour centraliser, analyser les
+logs Linux, détecter automatiquement les comportements
+anormaux basiques et générer des rapports exploitables sans
+recourir à des solutions complexes et coûteuses de type SIEM ?
+❖ Enjeux associés :
+➢ Techniques : Développer une application performante
+(traitement de logs en temps réel et en batch), fiable et
+sécurisée.
+➢ Organisationnels : Permettre une meilleure réactivité face
+aux incidents de sécurité.
+➢ Économiques : Proposer une solution open-source et
+gratuite, alternative aux produits commerciaux onéreux.
+3. Objectifs du projet
+Objectif général : Développer et livrer un outil de surveillance de logs
+Linux, nommé LogMonitor, capable de collecter, analyser, détecter des
+anomalies et générer des rapports pour améliorer la sécurité des
+systèmes d'information.
+Objectifs spécifiques :
+❖ OS1 : Collecter et normaliser les logs provenant de différentes
+sources (fichiers locaux, fichiers importés) dans un format
+structuré (JSON).
+❖ OS2 : Détecter des anomalies prédéfinies basées sur des règles
+4
+(ex: tentatives de bruteforce SSH, modifications de fichiers
+sensibles, activités root suspectes).
+❖ OS3 : Journaliser les événements et alertes détectés dans un
+stockage local et persistant.
+❖ OS4 : Générer des rapports périodiques (PDF ou CSV) et
+permettre l'export de preuves.
+❖ OS5 : Fournir une double interface utilisateur : une CLI pour la
+configuration et l'exécution, et un Dashboard Web simple pour la
+visualisation en temps réel.
+❖ OS6 : Permettre une configuration flexible des règles, des seuils et
+des chemins de logs via un fichier de configuration.
+4. Cible du projet
+Public visé : Administrateurs système, ingénieurs DevOps, et
+équipes techniques responsables de la sécurité au sein de petites et
+moyennes entreprises (PME) ou d'organisations disposant de
+ressources limitées.
+Caractéristiques : Professionnels avec des compétences
+techniques en administration de systèmes Linux, mais ne
+disposant pas forcément d'expertise pointue en sécurité ou de
+budget pour des solutions SIEM complètes.
+Besoins et attentes : La cible attend une solution :
+❖ Légère, portable et simple à déployer.
+❖ Consultable localement, sans envoi de données à l'extérieur.
+❖ Efficace pour la détection des menaces courantes.
+❖ Fournissant des alertes claires et des rapports synthétiques.
+5
+5. Description fonctionnelle de la solution souhaitée
+Présentation générale : La solution, LogMonitor, est une
+application logicielle (prototype fonctionnel) fonctionnant comme
+un service (daemon) sur un système Linux. Elle analyse les fichiers
+de logs en continu ou en batch pour fournir des informations de
+sécurité.
+Fonctions principales :
+❖ F1 - Collecte et Normalisation :
+➢ Lecture des fichiers logs (auth.log, syslog, etc.)
+➢ Analyse (parsing) des lignes et conversion en un format
+JSON structuré.
+❖ F2 - Moteur de Détection d'Anomalies : Application de règles
+pour identifier des événements suspects :
+➢ Bruteforce SSH (basé sur le nombre d'échecs depuis une
+même IP).
+➢ Tentatives de connexion multiples sur plusieurs comptes.
+Connexions `root` interactives suspectes.
+➢ Modification de fichiers système sensibles (ex:
+`/etc/passwd`).
+➢ Pics d'activité inhabituels dans les logs.
+❖ F3 - Journalisation et Stockage : Enregistrement structuré de
+chaque alerte générée, avec le niveau de sévérité, l'événement
+déclencheur et les preuves associées.
+❖ F4 - Rapports et Exports : Génération de rapports
+quotidiens/hebdomadaires (PDF ou CSV) synthétisant les
+alertes, et possibilité d'exporter les preuves (logs bruts, hashs).
+❖ F5 - Interfaces Utilisateur :
+➢ Interface en Ligne de Commande (CLI) : Pour la
+configuration, le lancement des analyses et la gestion du
+service.
+➢ Tableau de Bord Web : Interface simple pour visualiser les
+alertes et les statistiques clés en temps réel.
+6
+Fonctions secondaires :
+❖ Gestion de la configuration centralisée via un fichier
+(YAML/JSON).
+❖ Rotation des logs internes de l'application.
+Contraintes et exigences :
+❖ Techniques : Développé en Python 3.10+, exécutable en tant
+que service Linux, dépendances limitées (Pandas, Pytest).
+❖ Performance : Capacité à traiter au moins 10 000 lignes/minute
+en batch. Latence de détection inférieure à 10 secondes en mode
+service.
+❖ Sécurité : Pas d'envoi d'informations en dehors du réseau local
+par défaut. Protection des fichiers sensibles (configuration,
+preuves).
+❖ Fiabilité : Gestion des logs malformés sans interruption, reprise
+après un crash.
+❖ Qualité : Code modulaire, documenté, et couvert par des tests
+unitaires à 80% minimum.
+7
+6. Ordonnancement
+Phase Jalons Clés Semaines Livrables
+Étude &
+Conception
+Finalisation du
+cahier des
+charges,
+conception de
+l'architecture,
+mise en place de
+l'environnement
+de
+développement
+Semaine 1 Document
+d'architecture,
+environnement
+configuré.
+Réalisation
+(Cœur du
+système)
+Développement
+du module de
+collecte et
+normalisation
+(F1), et du moteur
+de
+détection (F2).
+Implémentation
+des 5 règles de
+base.
+Semaines
+2- 3
+Modules F1 et F2
+fonctionnels et
+testés.
+Réalisation
+(Interfaces et
+persistance)
+Développement
+du module de
+stockage (F3), de
+l'interface CLI
+(F5.1) et du
+module de
+rapports (F4).
+Semaines
+4- 5
+Fonctionnalités de
+journalisation, de
+reporting et CLI
+opérationnelles.
+Réalisation
+(Finalisation)
+& Évaluation
+Développement du
+Dashboard Web
+(F5.2), tests
+d'intégration
+Semaine 6 Version 1.0 de
+LogMonitor prête
+pour production,
+validation du CdC.
+8
+complets, recette
+interne.
+Finalisation
+& Soutenance
+Corrections des
+derniers bugs,
+rédaction du
+rapport final,
+préparation de la
+soutenance.
+Semaine 7 Rapport final,
+support de
+soutenance.
+Plannification
+Membres Rôles
+Spécifiques
+Tâches
+Assignées par
+Phase
+(Semaine)
+Objectifs
+Spécifiqu
+es (OS)
+Couverts
+AGUESSI
+Melkior
+Architecte
+Principal &
+Développeme
+nt F1
+(Collecte/Pars
+ing)
+S1 : Finalisation de
+l'architecture
+logicielle, choix du
+format JSON
+interne,
+environnement de
+test.
+S2 : Développement
+du module F1
+(lecture, parsing et
+normalisation des
+logs bruts en JSON).
+S6 : Mise en place
+de l'exécution en
+tant que service
+Linux (daemon).
+S7 : Finalisation,
+OS1, OS6
+9
+intégration
+générale.
+HOUNTONDJI
+Sophie
+Moteur de
+Détection &
+Développeme
+nt F2
+S1 : Conception
+détaillée du
+moteur de règles
+(structure de
+données, format de
+configuration des
+règles)
+S3 :
+Implémentation du
+moteur de
+détection F2 et des
+5 règles de base
+(Bruteforce SSH,
+connexion root,
+etc.).
+S4 : Intégration de
+la détection au flux
+de
+normalisation.
+OS2, OS6
+BATONON
+Darwin
+Persistance &
+Développeme
+nt F3
+(Journalisatio
+n)
+S1 : Choix de la
+solution de
+stockage locale (ex:
+SQLite, base de
+données NoSQL
+embarquée, ou
+simple fichier
+structuré).
+S4 :
+Développement du
+module F3
+OS3
+10
+(journalisation
+structurée des
+alertes, gestion des
+preuves).
+S5 : Gestion de la
+rotation des logs
+internes de
+l'application,
+sécurisation des
+fichiers sensibles.
+AIHOU
+Consylia
+Interface en
+Ligne de
+Commande
+(CLI) &
+Configuration
+(F5.1)
+S1 : Conception de la
+structure du fichier
+de configuration
+(YAML/JSON).
+S4 : Développement
+de l'interface CLI
+(F5.1) pour la
+configuration, le
+lancement et l'arrêt
+du service.
+S5 : Mise en place de la
+lecture et validation
+du fichier de
+configuration par le
+cœur du système.
+OS5, OS6
+DADAVI
+Camel
+Dashboard Web
+(F5.2) &
+Reporting (F4)
+S5 : Développement
+de l'architecture du
+Dashboard Web (F5.2)
+: choix du framework
+(ex: Flask, Dash),
+conception de la
+maquette simple.
+S6 : Implémentation
+du Dashboard
+(visualisation en
+OS4, OS5
+11
+temps réel des
+alertes de F3,
+statistiques clés).
+S4/S5 : Développement
+du module de rapports
+F4 (génération
+PDF/CSV à partir des
+données journalisées).
+7. Moyens et ressources nécessaires
+Ressources humaines:
+❖ Équipe de 5 étudiants en informatique.
+❖ Compétences mobilisées : Développement Python, connaissance
+des systèmes Linux, analyse de données (Pandas),
+développement web (pour le dashboard), tests logiciels (Pytest).
+Ressources matérielles et techniques:
+❖ Matériel : VM Linux (1vCPU / 2GB RAM minimum pour le test
+et déploiement).
+❖ Logiciels et outils: Git pour le versioning, un IDE Python
+(VSCode, PyCharm...), Python 3.10+, Pandas, FPDF/ReportLab,
+Pytest, venv/poetry pour la gestion de l'environnement.
+Ressources financières : Aucune ressource financière n'est requise. Le
+projet s'appuie exclusivement sur des technologies et outils
+open-source.
+12
+8. Livrables attendus
+❖ Application LogMonitor : Le logiciel fonctionnel, prêt à être
+déployé, incluant le code source complet.
+❖ Documentation technique : Comprenant un guide d'installation,
+un guide utilisateur et une documentation du code.
+❖ Rapport final: Document détaillant la démarche, les choix
+techniques, les résultats obtenus et une analyse critique du
+projet.
+❖ Soutenance orale : Présentation du projet, démonstration de la
+solution et défense des travaux réalisés.
+9. Conclusion :
+LogMonitor ambitionne de fournir un outil de sécurité essentiel et
+pragmatique, spécifiquement conçu pour les structures qui ont besoin
+d'améliorer leur surveillance sans investir dans des solutions lourdes.
+Il apporte une réponse concrète à un besoin de visibilité et de sécurité
+de base. L'équipe projet s'engage à respecter ce cahier des charges, à
+mener ce projet avec rigueur et professionnalisme pour livrer une
+solution de qualité dans les délais impartis. Si le temps le permet, des
+améliorations sont envisageables, comme l'agrégation centralisée des
+logs de plusieurs serveurs, l'enrichissement des interfaces web ou
+l'ajout d'actions de remédiation automatisées.
+13
