@@ -42,8 +42,11 @@ cookies*.txt
 /tmp/cookies*.txt
 
 # Test files
-tests/authlog_test.log
-tests/test_*.log
+# Test files
+# tests/authlog_test.log
+# tests/test_*.log
+
+!tests/test_logs/*.log
 
 # System
 .cache/

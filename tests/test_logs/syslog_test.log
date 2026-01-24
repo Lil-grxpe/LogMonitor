@@ -1,0 +1,6 @@
+Dec 30 08:00:01 server systemd: Starting System Scheduler...
+Dec 30 08:00:01 server systemd: Started System Scheduler.
+Dec 30 08:17:01 server CRON[1234]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Dec 30 09:00:00 server kernel: [    0.000000] Linux version 5.4.0-42-generic (buildd@lgw01-amd64-038) (gcc version 9.3.0 (Ubuntu 9.3.0-10ubuntu2)) #46-Ubuntu SMP Fri Jul 10 00:24:02 UTC 2020
+Dec 30 10:00:00 server kernel: [ 1234.567890] USB disk attached
+Dec 30 10:00:00 server kernel: [ 1234.567890] USB disk detached

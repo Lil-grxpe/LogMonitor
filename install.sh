@@ -66,6 +66,14 @@ mkdir -p reports
 mkdir -p /tmp/logmonitor
 echo "[+] Répertoires créés"
 
+# Configuration des credentials
+if [ ! -f "config/credentials.yaml" ] && [ -f "config/credentials.yaml.template" ]; then
+    echo "[*] Initialisation de config/credentials.yaml..."
+    cp config/credentials.yaml.template config/credentials.yaml
+    echo "[+] Fichier credentials.yaml créé à partir du modèle"
+fi
+
+
 # Configuration du fichier de log
 echo ""
 echo "[*] Configuration du fichier de logs a surveiller"
