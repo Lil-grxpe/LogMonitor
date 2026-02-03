@@ -271,7 +271,8 @@ def web(port, host, config, daemon):
         stderr_log = os.path.join(log_dir, "web_stderr.log")
         pid_file = os.path.join(log_dir, "web.pid")
         
-        cmd = [sys.argv[0], "web", "--port", str(port), "--host", host]
+        # Use sys.executable to ensure we run with the same python interpreter
+        cmd = [sys.executable, sys.argv[0], "web", "--port", str(port), "--host", host]
         if config:
             cmd.extend(["--config", config])
         

@@ -24,7 +24,13 @@ def create_app(config=None):
         creds_path = config.config_path.parent / 'credentials.yaml'
         if creds_path.exists():
             with open(creds_path, 'r') as f:
-                return yaml.safe_load(f)
+                creds = yaml.safe_load(f) or {}
+                # Normalize users if they are simple strings
+                if 'users' in creds:
+                    for user, data in creds['users'].items():
+                        if isinstance(data, str):
+                            creds['users'][user] = {'password': data, 'role': 'admin' if user == 'admin' else 'user'}
+                return creds
         return {'users': {'admin': {'password': 'admin', 'role': 'admin'}}}
     
     def login_required(f):
