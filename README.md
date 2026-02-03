@@ -28,7 +28,7 @@ logmonitor alerts list
 # Launch web dashboard
 logmonitor web
 # Access: http://localhost:5000
-# Default login: admin / admin
+# Default login: admin / logmonitor123
 ```
 
 ## Usage
