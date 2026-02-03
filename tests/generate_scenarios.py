@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Script de génération de scénarios de logs volumineux pour LogMonitor.
-Génère 6 fichiers de logs simulant différents types de trafic et d'attaques,
-mélangés à du bruit de fond (trafic légitime).
+Large log scenario generation script for LogMonitor.
+Generates log files simulating different types of traffic and attacks,
+mixed with background noise (legitimate traffic).
 """
 
 import random
@@ -12,12 +12,186 @@ import os
 
 # Configuration
 OUTPUT_DIR = Path("tests/test_logs")
-LOGS_PER_FILE = 800  # Nombre total de lignes par fichier
-ATTACK_INTENSITY = 0.1  # 10% des logs sont des attaques
+LOGS_PER_FILE = 800  # Total lines per file
+ATTACK_INTENSITY = 0.1  # 10% of logs are attacks
 START_TIME = datetime.now() - timedelta(hours=2)
 
-# Templates de logs légitimes (Bruit de fond)
+# Normal log templates (Background noise)
 NORMAL_LOGS = [
+    "Accepted publickey for admin from 192.168.1.{ip} port {port} ssh2",
+    "Accepted password for user{u} from 10.0.0.{ip} port {port} ssh2",
+    "Disconnected from user{u} 10.0.0.{ip} port {port}",
+    "pam_unix(sshd:session): session opened for user admin by (uid=0)",
+    "pam_unix(sshd:session): session closed for user admin",
+    "CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "CRON[1234]: pam_unix(cron:session): session closed for user root",
+    "systemd: Started Session {s} of user user{u}.",
+    "systemd: Reached target Graphical Interface.",
+    "kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database",
+    "dhclient[123]: DHCPREQUEST for 192.168.1.{ip} on eth0 to 192.168.1.1 port 67",
+    "dhclient[123]: DHCPACK of 192.168.1.{ip} from 192.168.1.1",
+    "named[987]: client @0x7f... 192.168.1.{ip}#54321 (google.com): query: google.com IN A + (192.168.1.1)"
+]
+
+def generate_timestamp(base_time, offset_seconds):
+    dt = base_time + timedelta(seconds=offset_seconds)
+    # Standard syslog format: Jan 01 12:34:56
+    return dt.strftime("%b %d %H:%M:%S")
+
+def get_random_ip():
+    return f"{random.randint(1,254)}"
+
+def get_random_port():
+    return f"{random.randint(1024, 65535)}"
+
+def write_log(f, timestamp, hostname, process, message):
+    f.write(f"{timestamp} {hostname} {process}: {message}\n")
+
+def generate_scenario(filename, scenario_type):
+    output_path = OUTPUT_DIR / filename
+    print(f"[*] Generating {filename} ({scenario_type})...")
+    
+    logs = []
+    current_time = START_TIME
+    
+    # Generate background noise
+    for i in range(int(LOGS_PER_FILE * (1 - ATTACK_INTENSITY))):
+        template = random.choice(NORMAL_LOGS)
+        msg = template.format(
+            ip=get_random_ip(),
+            port=get_random_port(),
+            u=random.randint(1, 5),
+            s=random.randint(100, 999)
+        )
+        logs.append({
+            'time': current_time + timedelta(seconds=random.randint(1, 3600)),
+            'host': 'server01',
+            'proc': f"sshd[{random.randint(1000,9999)}]" if "ssh" in msg else f"systemd[{random.randint(1,999)}]",
+            'msg': msg
+        })
+
+    # Inject attacks
+    attack_time = current_time + timedelta(minutes=30)
+    
+    if scenario_type == "bruteforce_ssh":
+        attacker_ip = "192.168.56.101"
+        target_user = "admin"
+        # 20 failed attempts in 2 minutes
+        for i in range(20):
+            logs.append({
+                'time': attack_time + timedelta(seconds=i*5),
+                'host': 'server01',
+                'proc': f"sshd[{random.randint(20000, 29999)}]",
+                'msg': f"Failed password for {target_user} from {attacker_ip} port {random.randint(40000,50000)} ssh2"
+            })
+            
+    elif scenario_type == "multiple_accounts":
+        attacker_ip = "203.0.113.66"
+        users = ["alice", "bob", "charlie", "david", "eve"]
+        # Attempts on 5 different accounts
+        for i, user in enumerate(users):
+            logs.append({
+                'time': attack_time + timedelta(seconds=i*10),
+                'host': 'db-prod',
+                'proc': f"sshd[{random.randint(20000, 29999)}]",
+                'msg': f"Failed password for {user} from {attacker_ip} port {random.randint(40000,50000)} ssh2"
+            })
+
+    elif scenario_type == "suspicious_root":
+        attacker_ip = "45.12.34.56" # Suspicious external IP
+        logs.append({
+            'time': attack_time,
+            'host': 'server01',
+            'proc': f"sshd[{random.randint(20000, 29999)}]",
+            'msg': f"Accepted password for root from {attacker_ip} port 54322 ssh2"
+        })
+
+    elif scenario_type == "sensitive_file":
+        user = "www-data"
+        target = "root"
+        logs.append({
+            'time': attack_time,
+            'host': 'web01',
+            'proc': "sudo",
+            'msg': f"{user} : TTY=pts/0 ; PWD=/var/www ; USER={target} ; COMMAND=/usr/bin/vim /etc/shadow"
+        })
+        
+    elif scenario_type == "activity_spike":
+        # Generate 500 additional logs in a short period
+        burst_time = attack_time + timedelta(hours=1)
+        for i in range(500):
+            template = random.choice(NORMAL_LOGS)
+            msg = template.format(ip=get_random_ip(), port=get_random_port(), u=random.randint(1,5), s=random.randint(100,999))
+            logs.append({
+                'time': burst_time + timedelta(milliseconds=i*100), # Very fast
+                'host': 'server01',
+                'proc': f"sshd[{random.randint(1000,9999)}]",
+                'msg': msg
+            })
+
+    elif scenario_type == "unusual_time":
+        # Generate logs at 3 AM
+        unusual_time = current_time.replace(hour=3, minute=0, second=0)
+        user = "admin"
+        logs.append({
+            'time': unusual_time,
+            'host': 'server01',
+            'proc': f"sshd[{random.randint(1000,9999)}]",
+            'msg': f"Accepted password for {user} from 192.168.1.50 port {random.randint(40000,50000)} ssh2"
+        })
+
+    elif scenario_type == "sudo_failure":
+        user = "bob"
+        # 5 consecutive sudo failures
+        for i in range(5):
+            logs.append({
+                'time': attack_time + timedelta(seconds=i*2),
+                'host': 'workstation',
+                'proc': "sudo",
+                'msg': f"{user} : 3 incorrect password attempts ; TTY=pts/0 ; PWD=/home/{user} ; USER=root ; COMMAND=/bin/bash"
+            })
+
+    elif scenario_type == "unknown_user":
+        attacker_ip = "10.0.0.66"
+        for i in range(5):
+            user = f"user{i}"
+            logs.append({
+                'time': attack_time + timedelta(seconds=i*5),
+                'host': 'server01',
+                'proc': f"sshd[{random.randint(20000, 29999)}]",
+                'msg': f"Failed password for invalid user {user} from {attacker_ip} port {random.randint(40000,50000)} ssh2"
+            })
+            
+    # Sort by time
+    logs.sort(key=lambda x: x['time'])
+    
+    # Write file
+    with open(output_path, 'w') as f:
+        for log in logs:
+            ts = log['time'].strftime("%b %d %H:%M:%S")
+            write_log(f, ts, log['host'], log['proc'], log['msg'])
+
+def main():
+    if not OUTPUT_DIR.exists():
+        OUTPUT_DIR.mkdir(parents=True)
+    
+    scenarios = [
+        ("01_bruteforce_ssh.log", "bruteforce_ssh"),
+        ("02_multiple_accounts_attack.log", "multiple_accounts"),
+        ("03_suspicious_root_login.log", "suspicious_root"),
+        ("04_sensitive_file_modification.log", "sensitive_file"),
+        ("05_activity_spike.log", "activity_spike"),
+        ("05_activity_spike.log", "activity_spike"),
+        ("06_unusual_time.log", "unusual_time"),
+        ("07_sudo_failure.log", "sudo_failure"),
+        ("08_unknown_user.log", "unknown_user"),
+        ("09_normal_activity.log", "normal") # Just background noise
+    ]
+    
+    for filename, type in scenarios:
+        generate_scenario(filename, type)
+    
+    print(f"\n[+] {len(scenarios)} log files generated in {OUTPUT_DIR}")
     "Accepted publickey for admin from 192.168.1.{ip} port {port} ssh2",
     "Accepted password for user{u} from 10.0.0.{ip} port {port} ssh2",
     "Disconnected from user{u} 10.0.0.{ip} port {port}",
