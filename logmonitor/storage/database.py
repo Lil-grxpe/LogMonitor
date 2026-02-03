@@ -224,6 +224,43 @@ class LogDatabase:
             'top_suspicious_ips': top_suspicious_ips
         }
     
+    def get_alerts_by_hour(self, hours: int = 24) -> Dict[str, Any]:
+        cursor = self.conn.cursor()
+        
+        # SQLite specific date manipulation
+        cursor.execute('''
+            SELECT strftime('%Y-%m-%d %H:00:00', timestamp) as hour, COUNT(*) as count
+            FROM alerts
+            WHERE timestamp >= datetime('now', ?)
+            GROUP BY hour
+            ORDER BY hour ASC
+        ''', (f'-{hours} hours',))
+        
+        rows = cursor.fetchall()
+        
+        # Fill missing hours
+        data = {row['hour']: row['count'] for row in rows}
+        result_labels = []
+        result_data = []
+        
+        current_hour = datetime.now()
+        # Generate last 24h labels
+        from datetime import timedelta
+        for i in range(hours, -1, -1):
+            t = current_hour - timedelta(hours=i)
+            key = t.strftime('%Y-%m-%d %H:00:00')
+            label = t.strftime('%H:00')
+            
+            # Find the closest matching key in data (SQLite might vary slightly)
+            # Actually for simplicity let's just use the key if it matches exactly
+            result_labels.append(label)
+            result_data.append(data.get(key, 0))
+            
+        return {
+            'labels': result_labels,
+            'data': result_data
+        }
+    
     def acknowledge_alert(self, alert_id: int):
         cursor = self.conn.cursor()
         cursor.execute('''

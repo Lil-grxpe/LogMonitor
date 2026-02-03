@@ -269,7 +269,7 @@ function generateReport(format) {
         .then(data => {
             if (data.success) {
                 // Créer un lien temporaire pour le téléchargement
-                window.location.href = `/api/reports/download/${data.filename}`;
+                window.location.href = data.download_url;
 
                 // Afficher une notification de succès (optionnel)
                 alert(`Rapport ${format.toUpperCase()} généré avec succès !`);

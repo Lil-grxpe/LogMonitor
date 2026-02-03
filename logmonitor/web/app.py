@@ -150,6 +150,65 @@ def create_app(config=None):
         message_type = request.args.get('type', 'info')
         return render_template('settings.html', config=config.config, message=message, message_type=message_type)
 
+    # Dashboard Data APIs
+    @app.route('/api/stats')
+    @login_required
+    def api_stats_wrapper():
+        try:
+            db = get_db()
+            stats = db.get_statistics()
+            db.close()
+            return jsonify({'success': True, 'data': stats})
+        except Exception as e:
+            return jsonify({'success': False, 'error': str(e)}), 500
+
+    @app.route('/api/alerts/by-hour')
+    @login_required
+    def api_alerts_by_hour():
+        try:
+            db = get_db()
+            data = db.get_alerts_by_hour()
+            db.close()
+            return jsonify({'success': True, 'labels': data['labels'], 'data': data['data']})
+        except Exception as e:
+            return jsonify({'success': False, 'error': str(e)}), 500
+
+    @app.route('/api/alerts/by-severity')
+    @login_required
+    def api_alerts_by_severity():
+        try:
+            db = get_db()
+            stats = db.get_statistics()
+            db.close()
+            
+            # Format for dashboard.js (it expects data array and labels array matching indices?)
+            # Wait, dashboard.js logic:
+            # result.data is expected to be an array of counts?
+            # JS: const apiData = result.data.reduce(...) 
+            # JS expects result.data and result.labels passed as arrays in the JSON response?
+            # Let's check dashboard.js again.
+            # js: const apiData = result.data.reduce((acc, val, idx) => { const label = result.labels[idx]; ... }, {});
+            # So yes, it expects labels and data arrays.
+            
+            counts = stats['alerts_by_severity']
+            labels = list(counts.keys())
+            data = list(counts.values())
+            
+            return jsonify({'success': True, 'labels': labels, 'data': data})
+        except Exception as e:
+            return jsonify({'success': False, 'error': str(e)}), 500
+
+    @app.route('/api/top-ips')
+    @login_required
+    def api_top_ips():
+        try:
+            db = get_db()
+            stats = db.get_statistics()
+            db.close()
+            return jsonify({'success': True, 'data': stats['top_suspicious_ips']})
+        except Exception as e:
+            return jsonify({'success': False, 'error': str(e)}), 500
+
     @app.route('/settings/password', methods=['POST'])
     @login_required
     def change_password():
