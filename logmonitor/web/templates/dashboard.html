@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogMonitor - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">🔒 LogMonitor</a>
+            <div class="d-flex align-items-center">
+                <span class="navbar-text text-white me-3">
+                    Bienvenue, {{ username }}
+                </span>
+                <a href="/settings" class="btn btn-sm btn-outline-light me-2">Paramètres</a>
+                <a href="/logout" class="btn btn-sm btn-outline-light">Déconnexion</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- KPI Row - Tous les éléments alignés sur une seule ligne -->
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card text-white h-100 shadow-sm"
+                    style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Logs</h5>
+                        <h2 id="total-logs" class="mb-0">-</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card text-white h-100 shadow-sm"
+                    style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Alertes</h5>
+                        <h2 id="total-alerts" class="mb-0">-</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card text-white h-100 shadow-sm"
+                    style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                    <div class="card-body">
+                        <h5 class="card-title">Alertes Critiques</h5>
+                        <h2 id="critical-alerts" class="mb-0">-</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card text-white h-100 shadow-sm"
+                    style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+                    <div class="card-body">
+                        <h5 class="card-title">État Système</h5>
+                        <h2 class="mb-0">OK</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Génération de Rapports -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Génération de Rapports</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="text-muted small mb-3">Générer et télécharger des rapports d'analyse</p>
+                        <div class="btn-group" role="group">
+                            <button id="btn-report-pdf" class="btn btn-primary btn-lg"
+                                onclick="generateReport('pdf')">Rapport PDF</button>
+                            <button id="btn-report-csv" class="btn btn-outline-primary btn-lg"
+                                onclick="generateReport('csv')">Rapport CSV</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Graphique des alertes par heure -->
+            <div class="col-md-8">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5>Alertes par Heure (24h)</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="alertsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Répartition par sévérité -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5>Alertes par Severite</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="severityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dernières Alertes Table -->
+        <div class="row mt-4 mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Dernières Alertes</h5>
+                        <button class="btn btn-sm btn-outline-primary" onclick="loadAlerts()">Actualiser</button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0" id="alerts-table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Heure</th>
+                                        <th>Sévérité</th>
+                                        <th>Règle</th>
+                                        <th>Description</th>
+                                        <th>Source</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="text-center py-3">Chargement...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import des scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script>
+        // Fonction simple pour charger les alertes dans la table
+        function updateAlertsTable() {
+            fetch('/api/alerts?limit=10')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector('#alerts-table tbody');
+                    tbody.innerHTML = '';
+
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="5" class="text-center py-3">Aucune alerte récente</td></tr>';
+                        return;
+                    }
+
+                    data.forEach(alert => {
+                        const tr = document.createElement('tr');
+
+                        let severityClass = 'bg-secondary';
+                        if (alert.severity === 'high' || alert.severity === 'critical') severityClass = 'bg-danger';
+                        else if (alert.severity === 'medium') severityClass = 'bg-warning text-dark';
+                        else if (alert.severity === 'low') severityClass = 'bg-success';
+
+                        const date = new Date(alert.timestamp).toLocaleString('fr-FR');
+
+                        tr.innerHTML = `
+                            <td>${date}</td>
+                            <td><span class="badge ${severityClass}">${alert.severity.toUpperCase()}</span></td>
+                            <td class="fw-bold">${alert.rule_name}</td>
+                            <td>${alert.description}</td>
+                            <td><code>${alert.source_ip || '-'}</code></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(err => console.error('Erreur chargement alertes:', err));
+        }
+
+        // Charger au démarrage et rafraîchir toutes les 30s
+        document.addEventListener('DOMContentLoaded', updateAlertsTable);
+        setInterval(updateAlertsTable, 30000);
+    </script>
+</body>
+
+</html>

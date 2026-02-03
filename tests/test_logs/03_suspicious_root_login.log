@@ -1,721 +1,721 @@
-Jan 15 19:02:40 server01 systemd[201]: systemd: Started Session 275 of user user5.
-Jan 15 19:02:44 server01 systemd[912]: named[987]: client @0x7f... 192.168.1.61#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:02:52 server01 systemd[825]: dhclient[123]: DHCPREQUEST for 192.168.1.118 on eth0 to 192.168.1.1 port 67
-Jan 15 19:02:56 server01 sshd[5879]: Accepted publickey for admin from 192.168.1.176 port 59374 ssh2
-Jan 15 19:03:06 server01 systemd[17]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:03:08 server01 systemd[293]: systemd: Reached target Graphical Interface.
-Jan 15 19:03:19 server01 systemd[903]: Disconnected from user5 10.0.0.7 port 33609
-Jan 15 19:03:46 server01 systemd[387]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:03:47 server01 sshd[8406]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:03:49 server01 systemd[888]: named[987]: client @0x7f... 192.168.1.135#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:03:51 server01 systemd[941]: dhclient[123]: DHCPREQUEST for 192.168.1.141 on eth0 to 192.168.1.1 port 67
-Jan 15 19:04:00 server01 systemd[733]: Disconnected from user4 10.0.0.59 port 56982
-Jan 15 19:04:04 server01 systemd[832]: systemd: Reached target Graphical Interface.
-Jan 15 19:04:06 server01 systemd[312]: Disconnected from user1 10.0.0.128 port 53537
-Jan 15 19:04:08 server01 systemd[907]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:04:13 server01 sshd[4800]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:04:14 server01 systemd[103]: systemd: Started Session 430 of user user1.
-Jan 15 19:04:15 server01 systemd[129]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:04:29 server01 sshd[2813]: Accepted password for user4 from 10.0.0.103 port 36634 ssh2
-Jan 15 19:04:31 server01 systemd[719]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:04:33 server01 systemd[922]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:04:34 server01 systemd[216]: systemd: Reached target Graphical Interface.
-Jan 15 19:04:38 server01 systemd[621]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:04:44 server01 systemd[60]: named[987]: client @0x7f... 192.168.1.139#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:04:48 server01 systemd[841]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:04:52 server01 systemd[511]: systemd: Reached target Graphical Interface.
-Jan 15 19:05:00 server01 sshd[2644]: Accepted publickey for admin from 192.168.1.238 port 23648 ssh2
-Jan 15 19:05:11 server01 systemd[33]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:05:22 server01 systemd[350]: named[987]: client @0x7f... 192.168.1.236#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:05:26 server01 systemd[944]: named[987]: client @0x7f... 192.168.1.157#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:05:28 server01 sshd[7235]: Accepted password for user2 from 10.0.0.13 port 5659 ssh2
-Jan 15 19:05:45 server01 sshd[8203]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:05:53 server01 systemd[531]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:06:14 server01 systemd[278]: dhclient[123]: DHCPREQUEST for 192.168.1.97 on eth0 to 192.168.1.1 port 67
-Jan 15 19:06:17 server01 sshd[2070]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:06:21 server01 systemd[847]: Disconnected from user4 10.0.0.1 port 22569
-Jan 15 19:06:21 server01 systemd[743]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:06:22 server01 sshd[7602]: Accepted password for user5 from 10.0.0.35 port 32313 ssh2
-Jan 15 19:06:23 server01 systemd[979]: dhclient[123]: DHCPACK of 192.168.1.97 from 192.168.1.1
-Jan 15 19:06:24 server01 systemd[787]: systemd: Reached target Graphical Interface.
-Jan 15 19:06:34 server01 sshd[9058]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:06:37 server01 sshd[2883]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:06:37 server01 systemd[402]: dhclient[123]: DHCPACK of 192.168.1.60 from 192.168.1.1
-Jan 15 19:06:37 server01 sshd[5887]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:06:48 server01 sshd[2609]: Accepted password for user5 from 10.0.0.223 port 22491 ssh2
-Jan 15 19:06:51 server01 systemd[855]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:06:57 server01 systemd[925]: systemd: Reached target Graphical Interface.
-Jan 15 19:06:58 server01 systemd[779]: dhclient[123]: DHCPACK of 192.168.1.236 from 192.168.1.1
-Jan 15 19:07:04 server01 sshd[8035]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:07:07 server01 systemd[156]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:07:14 server01 systemd[258]: named[987]: client @0x7f... 192.168.1.243#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:07:17 server01 systemd[122]: dhclient[123]: DHCPACK of 192.168.1.121 from 192.168.1.1
-Jan 15 19:07:35 server01 systemd[630]: systemd: Reached target Graphical Interface.
-Jan 15 19:07:37 server01 sshd[1982]: Accepted password for user1 from 10.0.0.26 port 29499 ssh2
-Jan 15 19:07:43 server01 systemd[757]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:07:52 server01 systemd[532]: dhclient[123]: DHCPREQUEST for 192.168.1.18 on eth0 to 192.168.1.1 port 67
-Jan 15 19:07:55 server01 systemd[443]: systemd: Started Session 471 of user user2.
-Jan 15 19:07:58 server01 sshd[5720]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:08:00 server01 systemd[711]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:08:02 server01 systemd[75]: systemd: Started Session 954 of user user5.
-Jan 15 19:08:04 server01 sshd[3060]: Accepted password for user1 from 10.0.0.46 port 40379 ssh2
-Jan 15 19:08:04 server01 sshd[2583]: Accepted password for user2 from 10.0.0.151 port 5608 ssh2
-Jan 15 19:08:07 server01 sshd[3279]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:08:12 server01 systemd[759]: dhclient[123]: DHCPACK of 192.168.1.198 from 192.168.1.1
-Jan 15 19:08:12 server01 systemd[617]: dhclient[123]: DHCPACK of 192.168.1.48 from 192.168.1.1
-Jan 15 19:08:21 server01 sshd[5713]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:08:21 server01 sshd[5493]: Accepted publickey for admin from 192.168.1.152 port 51358 ssh2
-Jan 15 19:08:28 server01 systemd[358]: dhclient[123]: DHCPACK of 192.168.1.4 from 192.168.1.1
-Jan 15 19:08:32 server01 sshd[7337]: Accepted password for user3 from 10.0.0.234 port 6780 ssh2
-Jan 15 19:09:01 server01 sshd[3603]: Accepted password for user5 from 10.0.0.68 port 24603 ssh2
-Jan 15 19:09:03 server01 sshd[8002]: Accepted password for user3 from 10.0.0.193 port 7271 ssh2
-Jan 15 19:09:19 server01 systemd[920]: dhclient[123]: DHCPACK of 192.168.1.224 from 192.168.1.1
-Jan 15 19:09:22 server01 sshd[5713]: Accepted password for user1 from 10.0.0.240 port 38724 ssh2
-Jan 15 19:09:30 server01 systemd[974]: dhclient[123]: DHCPACK of 192.168.1.237 from 192.168.1.1
-Jan 15 19:09:33 server01 systemd[260]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:09:47 server01 sshd[6032]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:09:57 server01 systemd[890]: named[987]: client @0x7f... 192.168.1.51#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:10:09 server01 sshd[2400]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:10:15 server01 sshd[9052]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:10:19 server01 systemd[44]: dhclient[123]: DHCPREQUEST for 192.168.1.87 on eth0 to 192.168.1.1 port 67
-Jan 15 19:10:30 server01 systemd[736]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:10:37 server01 systemd[224]: systemd: Reached target Graphical Interface.
-Jan 15 19:10:40 server01 systemd[784]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:10:41 server01 sshd[2716]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:10:45 server01 systemd[843]: dhclient[123]: DHCPREQUEST for 192.168.1.32 on eth0 to 192.168.1.1 port 67
-Jan 15 19:10:52 server01 systemd[154]: named[987]: client @0x7f... 192.168.1.176#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:10:52 server01 systemd[20]: systemd: Started Session 411 of user user3.
-Jan 15 19:10:55 server01 systemd[588]: named[987]: client @0x7f... 192.168.1.207#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:11:02 server01 sshd[9672]: Accepted password for user3 from 10.0.0.109 port 10270 ssh2
-Jan 15 19:11:05 server01 systemd[598]: systemd: Started Session 326 of user user2.
-Jan 15 19:11:07 server01 systemd[533]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:11:10 server01 systemd[53]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:11:12 server01 sshd[5018]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:11:15 server01 sshd[8610]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:11:17 server01 systemd[978]: dhclient[123]: DHCPACK of 192.168.1.104 from 192.168.1.1
-Jan 15 19:11:18 server01 sshd[3361]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:11:23 server01 sshd[6170]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:11:25 server01 systemd[646]: systemd: Reached target Graphical Interface.
-Jan 15 19:11:31 server01 sshd[1269]: Accepted publickey for admin from 192.168.1.15 port 34386 ssh2
-Jan 15 19:11:31 server01 sshd[6059]: Accepted password for user1 from 10.0.0.81 port 34386 ssh2
-Jan 15 19:11:36 server01 sshd[7748]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:11:37 server01 systemd[900]: named[987]: client @0x7f... 192.168.1.237#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:11:37 server01 sshd[5684]: Accepted publickey for admin from 192.168.1.102 port 63250 ssh2
-Jan 15 19:11:38 server01 systemd[906]: dhclient[123]: DHCPACK of 192.168.1.156 from 192.168.1.1
-Jan 15 19:11:40 server01 systemd[550]: systemd: Started Session 832 of user user1.
-Jan 15 19:11:45 server01 systemd[221]: Disconnected from user5 10.0.0.251 port 61878
-Jan 15 19:11:50 server01 systemd[987]: dhclient[123]: DHCPREQUEST for 192.168.1.139 on eth0 to 192.168.1.1 port 67
-Jan 15 19:11:51 server01 systemd[692]: dhclient[123]: DHCPACK of 192.168.1.155 from 192.168.1.1
-Jan 15 19:11:52 server01 sshd[3313]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:11:54 server01 systemd[905]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:11:55 server01 systemd[739]: systemd: Started Session 282 of user user2.
-Jan 15 19:12:19 server01 systemd[147]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:12:20 server01 systemd[453]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:12:25 server01 systemd[773]: named[987]: client @0x7f... 192.168.1.108#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:12:26 server01 systemd[465]: dhclient[123]: DHCPREQUEST for 192.168.1.84 on eth0 to 192.168.1.1 port 67
-Jan 15 19:12:28 server01 systemd[391]: Disconnected from user4 10.0.0.229 port 53390
-Jan 15 19:12:29 server01 sshd[8490]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:12:35 server01 systemd[892]: systemd: Reached target Graphical Interface.
-Jan 15 19:12:43 server01 systemd[254]: dhclient[123]: DHCPACK of 192.168.1.129 from 192.168.1.1
-Jan 15 19:12:46 server01 systemd[220]: systemd: Started Session 209 of user user5.
-Jan 15 19:12:47 server01 sshd[7183]: Accepted publickey for admin from 192.168.1.194 port 20543 ssh2
-Jan 15 19:12:50 server01 systemd[22]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:13:01 server01 systemd[698]: named[987]: client @0x7f... 192.168.1.189#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:13:06 server01 sshd[4489]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:13:08 server01 systemd[205]: dhclient[123]: DHCPACK of 192.168.1.145 from 192.168.1.1
-Jan 15 19:13:17 server01 sshd[6979]: Accepted password for user3 from 10.0.0.122 port 30032 ssh2
-Jan 15 19:13:18 server01 systemd[914]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:13:18 server01 systemd[252]: dhclient[123]: DHCPACK of 192.168.1.102 from 192.168.1.1
-Jan 15 19:13:18 server01 sshd[3770]: Accepted password for user5 from 10.0.0.22 port 41865 ssh2
-Jan 15 19:13:25 server01 systemd[919]: Disconnected from user3 10.0.0.188 port 34220
-Jan 15 19:13:32 server01 systemd[926]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:13:36 server01 sshd[6205]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:13:38 server01 systemd[852]: Disconnected from user1 10.0.0.250 port 2877
-Jan 15 19:13:42 server01 sshd[2561]: Accepted publickey for admin from 192.168.1.103 port 15792 ssh2
-Jan 15 19:13:43 server01 systemd[270]: systemd: Reached target Graphical Interface.
-Jan 15 19:13:46 server01 systemd[385]: systemd: Started Session 530 of user user5.
-Jan 15 19:13:46 server01 sshd[9089]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:13:50 server01 sshd[9753]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:13:51 server01 systemd[152]: named[987]: client @0x7f... 192.168.1.193#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:13:52 server01 systemd[258]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:13:53 server01 systemd[703]: Disconnected from user4 10.0.0.232 port 41663
-Jan 15 19:14:00 server01 systemd[738]: dhclient[123]: DHCPACK of 192.168.1.223 from 192.168.1.1
-Jan 15 19:14:03 server01 sshd[1441]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:14:08 server01 systemd[839]: systemd: Reached target Graphical Interface.
-Jan 15 19:14:10 server01 systemd[259]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:14:20 server01 systemd[613]: systemd: Reached target Graphical Interface.
-Jan 15 19:14:20 server01 systemd[836]: dhclient[123]: DHCPREQUEST for 192.168.1.196 on eth0 to 192.168.1.1 port 67
-Jan 15 19:14:26 server01 systemd[628]: systemd: Reached target Graphical Interface.
-Jan 15 19:14:29 server01 sshd[6746]: Accepted publickey for admin from 192.168.1.14 port 32412 ssh2
-Jan 15 19:14:33 server01 systemd[321]: dhclient[123]: DHCPACK of 192.168.1.239 from 192.168.1.1
-Jan 15 19:14:47 server01 sshd[8769]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:14:53 server01 sshd[7443]: Accepted password for user5 from 10.0.0.82 port 50093 ssh2
-Jan 15 19:15:03 server01 systemd[57]: systemd: Reached target Graphical Interface.
-Jan 15 19:15:04 server01 systemd[13]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:15:16 server01 systemd[332]: Disconnected from user5 10.0.0.76 port 30068
-Jan 15 19:15:17 server01 systemd[89]: dhclient[123]: DHCPACK of 192.168.1.83 from 192.168.1.1
-Jan 15 19:15:23 server01 systemd[921]: Disconnected from user3 10.0.0.124 port 20873
-Jan 15 19:15:25 server01 sshd[4515]: Accepted password for user1 from 10.0.0.164 port 21377 ssh2
-Jan 15 19:15:33 server01 sshd[5670]: Accepted publickey for admin from 192.168.1.54 port 2197 ssh2
-Jan 15 19:15:39 server01 systemd[65]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:15:51 server01 systemd[745]: named[987]: client @0x7f... 192.168.1.45#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:15:51 server01 systemd[891]: dhclient[123]: DHCPREQUEST for 192.168.1.208 on eth0 to 192.168.1.1 port 67
-Jan 15 19:15:53 server01 systemd[291]: dhclient[123]: DHCPACK of 192.168.1.102 from 192.168.1.1
-Jan 15 19:15:55 server01 systemd[489]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:15:56 server01 systemd[790]: dhclient[123]: DHCPREQUEST for 192.168.1.7 on eth0 to 192.168.1.1 port 67
-Jan 15 19:16:01 server01 systemd[682]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:16:11 server01 systemd[100]: dhclient[123]: DHCPREQUEST for 192.168.1.141 on eth0 to 192.168.1.1 port 67
-Jan 15 19:16:11 server01 systemd[457]: Disconnected from user2 10.0.0.3 port 5675
-Jan 15 19:16:13 server01 sshd[7170]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:16:18 server01 systemd[403]: systemd: Started Session 485 of user user5.
-Jan 15 19:16:23 server01 sshd[3225]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:16:33 server01 sshd[2679]: Accepted password for user4 from 10.0.0.158 port 48209 ssh2
-Jan 15 19:16:39 server01 systemd[463]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:16:45 server01 systemd[813]: systemd: Reached target Graphical Interface.
-Jan 15 19:17:00 server01 systemd[819]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:17:01 server01 systemd[7]: named[987]: client @0x7f... 192.168.1.250#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:17:10 server01 systemd[102]: Disconnected from user3 10.0.0.8 port 30830
-Jan 15 19:17:15 server01 systemd[528]: Disconnected from user4 10.0.0.38 port 42842
-Jan 15 19:17:15 server01 systemd[376]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:17:15 server01 systemd[183]: systemd: Started Session 731 of user user5.
-Jan 15 19:17:21 server01 systemd[958]: systemd: Reached target Graphical Interface.
-Jan 15 19:17:27 server01 systemd[468]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:17:40 server01 sshd[9751]: Accepted password for user2 from 10.0.0.84 port 9170 ssh2
-Jan 15 19:18:04 server01 systemd[811]: dhclient[123]: DHCPREQUEST for 192.168.1.179 on eth0 to 192.168.1.1 port 67
-Jan 15 19:18:05 server01 systemd[496]: systemd: Started Session 622 of user user3.
-Jan 15 19:18:08 server01 systemd[620]: Disconnected from user3 10.0.0.147 port 4848
-Jan 15 19:18:08 server01 systemd[871]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:18:18 server01 systemd[26]: Disconnected from user5 10.0.0.45 port 45795
-Jan 15 19:18:20 server01 sshd[7537]: Accepted password for user2 from 10.0.0.230 port 22313 ssh2
-Jan 15 19:18:22 server01 sshd[6545]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:18:22 server01 systemd[883]: dhclient[123]: DHCPACK of 192.168.1.96 from 192.168.1.1
-Jan 15 19:18:28 server01 systemd[681]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:18:33 server01 systemd[595]: dhclient[123]: DHCPREQUEST for 192.168.1.106 on eth0 to 192.168.1.1 port 67
-Jan 15 19:18:38 server01 systemd[459]: dhclient[123]: DHCPREQUEST for 192.168.1.29 on eth0 to 192.168.1.1 port 67
-Jan 15 19:18:41 server01 sshd[4840]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:18:45 server01 sshd[5226]: Accepted password for user2 from 10.0.0.180 port 59631 ssh2
-Jan 15 19:18:51 server01 systemd[542]: named[987]: client @0x7f... 192.168.1.13#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:18:58 server01 systemd[969]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:18:58 server01 sshd[7714]: Accepted publickey for admin from 192.168.1.205 port 46135 ssh2
-Jan 15 19:18:59 server01 systemd[152]: dhclient[123]: DHCPREQUEST for 192.168.1.237 on eth0 to 192.168.1.1 port 67
-Jan 15 19:19:03 server01 sshd[4407]: Accepted publickey for admin from 192.168.1.172 port 51470 ssh2
-Jan 15 19:19:10 server01 sshd[7358]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:19:14 server01 sshd[7401]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:19:30 server01 sshd[5498]: Accepted publickey for admin from 192.168.1.184 port 57978 ssh2
-Jan 15 19:19:39 server01 sshd[5055]: Accepted password for user3 from 10.0.0.166 port 38932 ssh2
-Jan 15 19:19:41 server01 systemd[832]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:19:42 server01 sshd[4240]: Accepted password for user5 from 10.0.0.98 port 46222 ssh2
-Jan 15 19:19:43 server01 systemd[863]: Disconnected from user2 10.0.0.145 port 62377
-Jan 15 19:19:45 server01 systemd[540]: systemd: Started Session 127 of user user4.
-Jan 15 19:19:46 server01 sshd[3434]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:19:57 server01 sshd[2301]: Accepted password for user4 from 10.0.0.202 port 6354 ssh2
-Jan 15 19:20:14 server01 systemd[127]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:20:17 server01 sshd[2026]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:20:26 server01 sshd[1471]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:20:40 server01 systemd[669]: systemd: Reached target Graphical Interface.
-Jan 15 19:21:05 server01 systemd[418]: Disconnected from user3 10.0.0.155 port 30695
-Jan 15 19:21:07 server01 systemd[379]: Disconnected from user3 10.0.0.48 port 3399
-Jan 15 19:21:10 server01 systemd[419]: Disconnected from user3 10.0.0.165 port 11987
-Jan 15 19:21:22 server01 systemd[770]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:21:24 server01 systemd[958]: Disconnected from user5 10.0.0.102 port 19945
-Jan 15 19:21:30 server01 sshd[4480]: Accepted password for user5 from 10.0.0.169 port 61395 ssh2
-Jan 15 19:21:33 server01 systemd[668]: dhclient[123]: DHCPACK of 192.168.1.253 from 192.168.1.1
-Jan 15 19:21:36 server01 systemd[169]: systemd: Reached target Graphical Interface.
-Jan 15 19:21:49 server01 systemd[248]: dhclient[123]: DHCPREQUEST for 192.168.1.63 on eth0 to 192.168.1.1 port 67
-Jan 15 19:21:57 server01 systemd[380]: dhclient[123]: DHCPACK of 192.168.1.213 from 192.168.1.1
-Jan 15 19:22:04 server01 systemd[149]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:22:12 server01 sshd[7934]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:22:15 server01 sshd[4325]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:22:17 server01 systemd[746]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:22:21 server01 systemd[699]: dhclient[123]: DHCPREQUEST for 192.168.1.230 on eth0 to 192.168.1.1 port 67
-Jan 15 19:22:22 server01 systemd[336]: dhclient[123]: DHCPREQUEST for 192.168.1.219 on eth0 to 192.168.1.1 port 67
-Jan 15 19:22:25 server01 systemd[696]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:22:28 server01 systemd[870]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:22:28 server01 systemd[790]: named[987]: client @0x7f... 192.168.1.102#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:22:33 server01 sshd[8050]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:22:34 server01 systemd[274]: Disconnected from user2 10.0.0.107 port 18490
-Jan 15 19:22:47 server01 systemd[271]: systemd: Started Session 622 of user user1.
-Jan 15 19:22:52 server01 sshd[1647]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:23:03 server01 systemd[923]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:23:05 server01 systemd[705]: named[987]: client @0x7f... 192.168.1.201#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:23:07 server01 sshd[9462]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:23:08 server01 systemd[3]: systemd: Started Session 824 of user user5.
-Jan 15 19:23:15 server01 systemd[601]: Disconnected from user2 10.0.0.127 port 34879
-Jan 15 19:23:17 server01 sshd[5475]: Accepted publickey for admin from 192.168.1.25 port 53177 ssh2
-Jan 15 19:23:18 server01 systemd[610]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:23:37 server01 systemd[63]: dhclient[123]: DHCPACK of 192.168.1.53 from 192.168.1.1
-Jan 15 19:23:38 server01 systemd[949]: systemd: Reached target Graphical Interface.
-Jan 15 19:23:40 server01 systemd[310]: systemd: Reached target Graphical Interface.
-Jan 15 19:23:41 server01 sshd[3445]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:23:45 server01 systemd[887]: systemd: Reached target Graphical Interface.
-Jan 15 19:23:47 server01 systemd[344]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:23:48 server01 sshd[6214]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:24:04 server01 systemd[480]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:24:05 server01 systemd[592]: Disconnected from user2 10.0.0.238 port 11408
-Jan 15 19:24:07 server01 sshd[2864]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:24:08 server01 systemd[840]: systemd: Started Session 368 of user user1.
-Jan 15 19:24:13 server01 systemd[763]: named[987]: client @0x7f... 192.168.1.220#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:24:16 server01 systemd[803]: systemd: Started Session 797 of user user4.
-Jan 15 19:24:32 server01 sshd[8322]: Accepted publickey for admin from 192.168.1.171 port 30598 ssh2
-Jan 15 19:24:49 server01 systemd[94]: systemd: Started Session 125 of user user2.
-Jan 15 19:24:50 server01 systemd[392]: systemd: Started Session 151 of user user3.
-Jan 15 19:25:00 server01 sshd[1992]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:25:01 server01 systemd[202]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:25:02 server01 systemd[46]: named[987]: client @0x7f... 192.168.1.173#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:25:04 server01 systemd[417]: systemd: Started Session 286 of user user3.
-Jan 15 19:25:08 server01 systemd[325]: systemd: Reached target Graphical Interface.
-Jan 15 19:25:31 server01 sshd[3431]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:25:36 server01 systemd[88]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:25:47 server01 systemd[82]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:25:57 server01 systemd[238]: dhclient[123]: DHCPACK of 192.168.1.38 from 192.168.1.1
-Jan 15 19:26:11 server01 systemd[701]: Disconnected from user3 10.0.0.174 port 29003
-Jan 15 19:26:14 server01 systemd[208]: dhclient[123]: DHCPREQUEST for 192.168.1.7 on eth0 to 192.168.1.1 port 67
-Jan 15 19:26:31 server01 systemd[134]: systemd: Started Session 710 of user user2.
-Jan 15 19:26:41 server01 systemd[31]: systemd: Started Session 353 of user user1.
-Jan 15 19:26:42 server01 sshd[4200]: Accepted publickey for admin from 192.168.1.55 port 39623 ssh2
-Jan 15 19:26:48 server01 systemd[972]: Disconnected from user4 10.0.0.200 port 11713
-Jan 15 19:27:02 server01 systemd[461]: dhclient[123]: DHCPREQUEST for 192.168.1.3 on eth0 to 192.168.1.1 port 67
-Jan 15 19:27:06 server01 sshd[5789]: Accepted publickey for admin from 192.168.1.19 port 3143 ssh2
-Jan 15 19:27:12 server01 systemd[813]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:27:17 server01 systemd[596]: dhclient[123]: DHCPACK of 192.168.1.143 from 192.168.1.1
-Jan 15 19:27:20 server01 systemd[916]: named[987]: client @0x7f... 192.168.1.243#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:27:27 server01 sshd[6312]: Accepted password for user2 from 10.0.0.34 port 24140 ssh2
-Jan 15 19:27:28 server01 systemd[707]: dhclient[123]: DHCPREQUEST for 192.168.1.132 on eth0 to 192.168.1.1 port 67
-Jan 15 19:27:29 server01 sshd[4313]: Accepted password for user2 from 10.0.0.160 port 9237 ssh2
-Jan 15 19:27:30 server01 systemd[895]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:27:31 server01 systemd[155]: systemd: Started Session 990 of user user3.
-Jan 15 19:27:35 server01 sshd[3667]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:27:39 server01 systemd[125]: dhclient[123]: DHCPREQUEST for 192.168.1.85 on eth0 to 192.168.1.1 port 67
-Jan 15 19:27:41 server01 systemd[459]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:27:43 server01 sshd[8692]: Accepted password for user4 from 10.0.0.198 port 40605 ssh2
-Jan 15 19:27:47 server01 systemd[753]: dhclient[123]: DHCPREQUEST for 192.168.1.66 on eth0 to 192.168.1.1 port 67
-Jan 15 19:27:50 server01 sshd[9023]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:27:56 server01 systemd[944]: systemd: Started Session 956 of user user2.
-Jan 15 19:28:04 server01 systemd[424]: systemd: Reached target Graphical Interface.
-Jan 15 19:28:12 server01 systemd[913]: dhclient[123]: DHCPACK of 192.168.1.28 from 192.168.1.1
-Jan 15 19:28:13 server01 systemd[25]: dhclient[123]: DHCPREQUEST for 192.168.1.108 on eth0 to 192.168.1.1 port 67
-Jan 15 19:28:15 server01 sshd[5869]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:28:20 server01 systemd[26]: dhclient[123]: DHCPREQUEST for 192.168.1.192 on eth0 to 192.168.1.1 port 67
-Jan 15 19:28:22 server01 systemd[64]: Disconnected from user4 10.0.0.166 port 31951
-Jan 15 19:28:26 server01 sshd[7757]: Accepted password for user4 from 10.0.0.219 port 42091 ssh2
-Jan 15 19:28:34 server01 sshd[4843]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:28:36 server01 systemd[836]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:28:39 server01 systemd[41]: dhclient[123]: DHCPREQUEST for 192.168.1.72 on eth0 to 192.168.1.1 port 67
-Jan 15 19:28:40 server01 systemd[361]: systemd: Reached target Graphical Interface.
-Jan 15 19:28:43 server01 systemd[35]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:28:47 server01 systemd[801]: Disconnected from user1 10.0.0.5 port 23366
-Jan 15 19:28:47 server01 systemd[442]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:28:49 server01 systemd[186]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:28:55 server01 systemd[402]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:28:59 server01 sshd[2161]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:29:00 server01 systemd[533]: named[987]: client @0x7f... 192.168.1.192#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:29:02 server01 systemd[694]: dhclient[123]: DHCPREQUEST for 192.168.1.88 on eth0 to 192.168.1.1 port 67
-Jan 15 19:29:09 server01 systemd[618]: dhclient[123]: DHCPACK of 192.168.1.76 from 192.168.1.1
-Jan 15 19:29:10 server01 systemd[389]: dhclient[123]: DHCPACK of 192.168.1.126 from 192.168.1.1
-Jan 15 19:29:37 server01 systemd[761]: systemd: Started Session 385 of user user3.
-Jan 15 19:29:40 server01 systemd[500]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:29:48 server01 sshd[6140]: Accepted password for user1 from 10.0.0.86 port 9422 ssh2
-Jan 15 19:29:59 server01 systemd[96]: systemd: Started Session 466 of user user5.
-Jan 15 19:30:06 server01 systemd[615]: Disconnected from user4 10.0.0.25 port 17328
-Jan 15 19:30:07 server01 sshd[2157]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:30:09 server01 systemd[861]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:30:11 server01 systemd[416]: Disconnected from user3 10.0.0.24 port 32269
-Jan 15 19:30:17 server01 sshd[1368]: Accepted publickey for admin from 192.168.1.65 port 38346 ssh2
-Jan 15 19:30:19 server01 systemd[267]: dhclient[123]: DHCPREQUEST for 192.168.1.188 on eth0 to 192.168.1.1 port 67
-Jan 15 19:30:20 server01 systemd[807]: named[987]: client @0x7f... 192.168.1.219#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:30:25 server01 systemd[861]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:30:25 server01 systemd[861]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:30:26 server01 sshd[9090]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:30:27 server01 systemd[657]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:30:33 server01 systemd[570]: Disconnected from user4 10.0.0.249 port 53054
-Jan 15 19:30:51 server01 systemd[849]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:31:00 server01 systemd[913]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:31:10 server01 sshd[5910]: Accepted password for user4 from 10.0.0.105 port 47778 ssh2
-Jan 15 19:31:10 server01 systemd[32]: named[987]: client @0x7f... 192.168.1.53#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:31:12 server01 sshd[9992]: Accepted publickey for admin from 192.168.1.129 port 51777 ssh2
-Jan 15 19:31:14 server01 sshd[8442]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:31:24 server01 sshd[6815]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:31:28 server01 systemd[75]: Disconnected from user4 10.0.0.165 port 38362
-Jan 15 19:31:45 server01 systemd[545]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:31:49 server01 systemd[772]: dhclient[123]: DHCPACK of 192.168.1.99 from 192.168.1.1
-Jan 15 19:31:57 server01 systemd[273]: named[987]: client @0x7f... 192.168.1.223#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:32:00 server01 sshd[2498]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:32:04 server01 systemd[466]: named[987]: client @0x7f... 192.168.1.224#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:32:10 server01 systemd[141]: dhclient[123]: DHCPREQUEST for 192.168.1.113 on eth0 to 192.168.1.1 port 67
-Jan 15 19:32:15 server01 systemd[791]: named[987]: client @0x7f... 192.168.1.181#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:32:17 server01 sshd[4460]: Accepted publickey for admin from 192.168.1.40 port 61927 ssh2
-Jan 15 19:32:18 server01 systemd[93]: named[987]: client @0x7f... 192.168.1.133#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:32:20 server01 systemd[643]: systemd: Reached target Graphical Interface.
-Jan 15 19:32:26 server01 sshd[8650]: Accepted password for user5 from 10.0.0.31 port 40547 ssh2
-Jan 15 19:32:35 server01 sshd[20601]: Accepted password for root from 45.12.34.56 port 54322 ssh2
-Jan 15 19:32:45 server01 systemd[673]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:32:47 server01 systemd[441]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:32:48 server01 systemd[495]: dhclient[123]: DHCPREQUEST for 192.168.1.155 on eth0 to 192.168.1.1 port 67
-Jan 15 19:32:49 server01 systemd[210]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:32:57 server01 systemd[146]: dhclient[123]: DHCPACK of 192.168.1.94 from 192.168.1.1
-Jan 15 19:33:04 server01 sshd[8437]: Accepted password for user4 from 10.0.0.254 port 46268 ssh2
-Jan 15 19:33:05 server01 sshd[2697]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:33:10 server01 sshd[5681]: Accepted password for user5 from 10.0.0.195 port 18864 ssh2
-Jan 15 19:33:15 server01 systemd[466]: dhclient[123]: DHCPREQUEST for 192.168.1.112 on eth0 to 192.168.1.1 port 67
-Jan 15 19:33:15 server01 sshd[6501]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:33:17 server01 sshd[3549]: Accepted publickey for admin from 192.168.1.184 port 64119 ssh2
-Jan 15 19:33:29 server01 systemd[346]: systemd: Started Session 411 of user user3.
-Jan 15 19:33:33 server01 sshd[1092]: Accepted publickey for admin from 192.168.1.110 port 24716 ssh2
-Jan 15 19:33:35 server01 systemd[31]: dhclient[123]: DHCPACK of 192.168.1.19 from 192.168.1.1
-Jan 15 19:33:36 server01 sshd[3052]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:33:36 server01 systemd[12]: named[987]: client @0x7f... 192.168.1.118#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:33:42 server01 systemd[692]: Disconnected from user2 10.0.0.1 port 58397
-Jan 15 19:33:45 server01 systemd[812]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:33:50 server01 sshd[1692]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:33:53 server01 systemd[101]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:34:05 server01 systemd[465]: dhclient[123]: DHCPREQUEST for 192.168.1.197 on eth0 to 192.168.1.1 port 67
-Jan 15 19:34:08 server01 systemd[868]: Disconnected from user5 10.0.0.121 port 16695
-Jan 15 19:34:15 server01 sshd[8590]: Accepted publickey for admin from 192.168.1.147 port 52498 ssh2
-Jan 15 19:34:21 server01 sshd[2379]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:34:23 server01 systemd[337]: systemd: Started Session 952 of user user1.
-Jan 15 19:34:24 server01 sshd[9062]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:34:39 server01 sshd[7988]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:34:48 server01 systemd[926]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:35:04 server01 sshd[3714]: Accepted publickey for admin from 192.168.1.199 port 13193 ssh2
-Jan 15 19:35:15 server01 systemd[504]: Disconnected from user4 10.0.0.188 port 45420
-Jan 15 19:35:17 server01 sshd[9177]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:35:21 server01 sshd[6854]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:35:27 server01 systemd[711]: named[987]: client @0x7f... 192.168.1.165#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:35:31 server01 sshd[6827]: Accepted publickey for admin from 192.168.1.101 port 43654 ssh2
-Jan 15 19:35:45 server01 sshd[7381]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:35:45 server01 systemd[625]: dhclient[123]: DHCPREQUEST for 192.168.1.221 on eth0 to 192.168.1.1 port 67
-Jan 15 19:35:52 server01 sshd[8599]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:35:55 server01 sshd[7324]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:35:57 server01 systemd[273]: dhclient[123]: DHCPREQUEST for 192.168.1.59 on eth0 to 192.168.1.1 port 67
-Jan 15 19:35:57 server01 sshd[4127]: Accepted publickey for admin from 192.168.1.22 port 62805 ssh2
-Jan 15 19:36:18 server01 systemd[195]: systemd: Started Session 262 of user user5.
-Jan 15 19:36:22 server01 sshd[8638]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:36:22 server01 sshd[7842]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:36:39 server01 sshd[6100]: Accepted publickey for admin from 192.168.1.72 port 26778 ssh2
-Jan 15 19:36:58 server01 systemd[918]: Disconnected from user2 10.0.0.170 port 4578
-Jan 15 19:37:02 server01 sshd[8100]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:37:08 server01 systemd[656]: dhclient[123]: DHCPACK of 192.168.1.221 from 192.168.1.1
-Jan 15 19:37:10 server01 systemd[262]: systemd: Started Session 538 of user user1.
-Jan 15 19:37:14 server01 sshd[6836]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:37:17 server01 systemd[32]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:37:22 server01 systemd[920]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:37:35 server01 sshd[1598]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:37:46 server01 systemd[890]: Disconnected from user4 10.0.0.202 port 45854
-Jan 15 19:37:46 server01 systemd[723]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:38:04 server01 systemd[683]: named[987]: client @0x7f... 192.168.1.215#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:38:07 server01 systemd[254]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:38:23 server01 sshd[9736]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:38:28 server01 systemd[113]: systemd: Reached target Graphical Interface.
-Jan 15 19:38:38 server01 systemd[259]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:38:42 server01 systemd[473]: named[987]: client @0x7f... 192.168.1.209#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:38:43 server01 sshd[6966]: Accepted password for user3 from 10.0.0.41 port 29868 ssh2
-Jan 15 19:38:43 server01 systemd[281]: dhclient[123]: DHCPREQUEST for 192.168.1.231 on eth0 to 192.168.1.1 port 67
-Jan 15 19:38:46 server01 sshd[4058]: Accepted password for user4 from 10.0.0.100 port 60499 ssh2
-Jan 15 19:38:51 server01 systemd[727]: Disconnected from user3 10.0.0.218 port 9868
-Jan 15 19:38:52 server01 systemd[293]: dhclient[123]: DHCPACK of 192.168.1.49 from 192.168.1.1
-Jan 15 19:38:53 server01 systemd[768]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:38:56 server01 sshd[5963]: Accepted password for user1 from 10.0.0.149 port 64006 ssh2
-Jan 15 19:38:56 server01 sshd[3503]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:39:01 server01 systemd[178]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:39:01 server01 systemd[223]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:39:02 server01 systemd[428]: dhclient[123]: DHCPACK of 192.168.1.200 from 192.168.1.1
-Jan 15 19:39:03 server01 systemd[347]: systemd: Reached target Graphical Interface.
-Jan 15 19:39:05 server01 sshd[2040]: Accepted password for user5 from 10.0.0.225 port 47304 ssh2
-Jan 15 19:39:09 server01 systemd[652]: Disconnected from user2 10.0.0.103 port 58798
-Jan 15 19:39:13 server01 systemd[104]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:39:32 server01 sshd[8249]: Accepted publickey for admin from 192.168.1.236 port 10294 ssh2
-Jan 15 19:39:41 server01 systemd[704]: dhclient[123]: DHCPREQUEST for 192.168.1.204 on eth0 to 192.168.1.1 port 67
-Jan 15 19:39:42 server01 systemd[969]: systemd: Reached target Graphical Interface.
-Jan 15 19:39:46 server01 systemd[560]: dhclient[123]: DHCPACK of 192.168.1.213 from 192.168.1.1
-Jan 15 19:39:57 server01 systemd[29]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:40:00 server01 systemd[331]: dhclient[123]: DHCPREQUEST for 192.168.1.109 on eth0 to 192.168.1.1 port 67
-Jan 15 19:40:04 server01 systemd[410]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:40:12 server01 sshd[6621]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:40:16 server01 systemd[366]: systemd: Started Session 135 of user user1.
-Jan 15 19:40:27 server01 systemd[210]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:40:33 server01 systemd[828]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:40:44 server01 sshd[5950]: Accepted publickey for admin from 192.168.1.242 port 21315 ssh2
-Jan 15 19:40:48 server01 sshd[8359]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:40:50 server01 systemd[659]: named[987]: client @0x7f... 192.168.1.180#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:40:53 server01 systemd[417]: named[987]: client @0x7f... 192.168.1.86#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:41:10 server01 systemd[578]: Disconnected from user5 10.0.0.207 port 41699
-Jan 15 19:41:11 server01 sshd[2355]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:41:19 server01 systemd[66]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:41:21 server01 sshd[2241]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:41:23 server01 systemd[753]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:41:23 server01 sshd[7818]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:41:24 server01 systemd[239]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:41:24 server01 systemd[754]: Disconnected from user1 10.0.0.218 port 37171
-Jan 15 19:41:26 server01 systemd[158]: systemd: Reached target Graphical Interface.
-Jan 15 19:41:31 server01 systemd[56]: systemd: Reached target Graphical Interface.
-Jan 15 19:41:38 server01 systemd[7]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:41:51 server01 systemd[433]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:41:51 server01 systemd[760]: systemd: Reached target Graphical Interface.
-Jan 15 19:42:02 server01 systemd[400]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:42:03 server01 systemd[266]: dhclient[123]: DHCPREQUEST for 192.168.1.200 on eth0 to 192.168.1.1 port 67
-Jan 15 19:42:03 server01 systemd[278]: dhclient[123]: DHCPACK of 192.168.1.182 from 192.168.1.1
-Jan 15 19:42:03 server01 systemd[568]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:42:06 server01 sshd[2937]: Accepted publickey for admin from 192.168.1.128 port 26225 ssh2
-Jan 15 19:42:11 server01 systemd[289]: named[987]: client @0x7f... 192.168.1.73#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:42:12 server01 sshd[7217]: Accepted publickey for admin from 192.168.1.57 port 46511 ssh2
-Jan 15 19:42:20 server01 sshd[9491]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:42:32 server01 systemd[969]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:42:35 server01 systemd[783]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:42:37 server01 sshd[4258]: Accepted publickey for admin from 192.168.1.90 port 4598 ssh2
-Jan 15 19:42:41 server01 systemd[626]: systemd: Started Session 895 of user user3.
-Jan 15 19:42:43 server01 systemd[59]: Disconnected from user1 10.0.0.40 port 55647
-Jan 15 19:43:02 server01 sshd[6318]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:43:07 server01 sshd[7212]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:43:09 server01 sshd[5742]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:43:15 server01 systemd[402]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:43:17 server01 systemd[562]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:43:19 server01 systemd[153]: dhclient[123]: DHCPREQUEST for 192.168.1.35 on eth0 to 192.168.1.1 port 67
-Jan 15 19:43:22 server01 systemd[622]: dhclient[123]: DHCPACK of 192.168.1.186 from 192.168.1.1
-Jan 15 19:43:22 server01 systemd[113]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:43:26 server01 systemd[750]: named[987]: client @0x7f... 192.168.1.164#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:43:29 server01 systemd[930]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:43:30 server01 systemd[237]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:43:30 server01 systemd[325]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:43:33 server01 sshd[5269]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:43:34 server01 systemd[493]: dhclient[123]: DHCPACK of 192.168.1.218 from 192.168.1.1
-Jan 15 19:43:52 server01 systemd[46]: systemd: Started Session 477 of user user5.
-Jan 15 19:43:53 server01 sshd[8197]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:43:55 server01 systemd[112]: systemd: Started Session 247 of user user1.
-Jan 15 19:43:57 server01 sshd[7468]: Accepted password for user4 from 10.0.0.233 port 5721 ssh2
-Jan 15 19:44:06 server01 sshd[9328]: Accepted publickey for admin from 192.168.1.196 port 20221 ssh2
-Jan 15 19:44:13 server01 systemd[690]: Disconnected from user1 10.0.0.161 port 26035
-Jan 15 19:44:20 server01 sshd[7003]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:44:22 server01 sshd[4040]: Accepted password for user3 from 10.0.0.192 port 42129 ssh2
-Jan 15 19:44:43 server01 systemd[924]: Disconnected from user4 10.0.0.32 port 1363
-Jan 15 19:44:56 server01 sshd[8828]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:44:58 server01 sshd[8642]: Accepted password for user5 from 10.0.0.158 port 7099 ssh2
-Jan 15 19:45:11 server01 systemd[62]: named[987]: client @0x7f... 192.168.1.161#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:45:14 server01 sshd[6532]: Accepted publickey for admin from 192.168.1.84 port 25466 ssh2
-Jan 15 19:45:14 server01 systemd[71]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:45:14 server01 systemd[348]: systemd: Started Session 801 of user user1.
-Jan 15 19:45:30 server01 systemd[763]: named[987]: client @0x7f... 192.168.1.183#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:45:38 server01 systemd[417]: systemd: Started Session 771 of user user5.
-Jan 15 19:45:40 server01 sshd[4093]: Accepted password for user3 from 10.0.0.162 port 26276 ssh2
-Jan 15 19:46:03 server01 systemd[476]: named[987]: client @0x7f... 192.168.1.90#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:46:04 server01 systemd[68]: systemd: Reached target Graphical Interface.
-Jan 15 19:46:06 server01 systemd[641]: Disconnected from user2 10.0.0.44 port 32039
-Jan 15 19:46:07 server01 sshd[2388]: Accepted publickey for admin from 192.168.1.50 port 18272 ssh2
-Jan 15 19:46:10 server01 systemd[740]: systemd: Started Session 600 of user user5.
-Jan 15 19:46:10 server01 sshd[2059]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:46:12 server01 sshd[6160]: Accepted publickey for admin from 192.168.1.187 port 63632 ssh2
-Jan 15 19:46:16 server01 sshd[9803]: Accepted publickey for admin from 192.168.1.201 port 35663 ssh2
-Jan 15 19:46:23 server01 systemd[60]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:46:34 server01 sshd[5337]: Accepted password for user1 from 10.0.0.34 port 63017 ssh2
-Jan 15 19:46:36 server01 systemd[40]: named[987]: client @0x7f... 192.168.1.154#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:46:55 server01 systemd[553]: systemd: Started Session 490 of user user5.
-Jan 15 19:47:00 server01 systemd[682]: dhclient[123]: DHCPACK of 192.168.1.116 from 192.168.1.1
-Jan 15 19:47:13 server01 sshd[9420]: Accepted publickey for admin from 192.168.1.46 port 62394 ssh2
-Jan 15 19:47:15 server01 systemd[683]: Disconnected from user2 10.0.0.248 port 3965
-Jan 15 19:47:16 server01 systemd[226]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:47:19 server01 systemd[676]: dhclient[123]: DHCPACK of 192.168.1.137 from 192.168.1.1
-Jan 15 19:47:20 server01 systemd[641]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:47:21 server01 systemd[544]: named[987]: client @0x7f... 192.168.1.45#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:47:30 server01 sshd[6483]: Accepted password for user5 from 10.0.0.143 port 64120 ssh2
-Jan 15 19:47:31 server01 sshd[9000]: Accepted password for user5 from 10.0.0.251 port 22587 ssh2
-Jan 15 19:47:32 server01 systemd[264]: Disconnected from user3 10.0.0.2 port 45288
-Jan 15 19:47:37 server01 sshd[6370]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:47:48 server01 sshd[5551]: Accepted password for user2 from 10.0.0.127 port 1846 ssh2
-Jan 15 19:47:49 server01 systemd[702]: Disconnected from user3 10.0.0.231 port 24793
-Jan 15 19:47:50 server01 systemd[808]: systemd: Reached target Graphical Interface.
-Jan 15 19:47:52 server01 systemd[363]: Disconnected from user4 10.0.0.26 port 59724
-Jan 15 19:47:54 server01 systemd[791]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:47:58 server01 systemd[437]: dhclient[123]: DHCPREQUEST for 192.168.1.5 on eth0 to 192.168.1.1 port 67
-Jan 15 19:47:58 server01 systemd[807]: Disconnected from user5 10.0.0.180 port 9282
-Jan 15 19:47:59 server01 systemd[502]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:48:05 server01 systemd[907]: Disconnected from user3 10.0.0.230 port 5383
-Jan 15 19:48:08 server01 systemd[650]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:48:10 server01 systemd[799]: named[987]: client @0x7f... 192.168.1.144#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:48:28 server01 systemd[280]: dhclient[123]: DHCPACK of 192.168.1.185 from 192.168.1.1
-Jan 15 19:48:37 server01 sshd[8585]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:48:45 server01 systemd[924]: named[987]: client @0x7f... 192.168.1.28#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:48:50 server01 sshd[3666]: Accepted password for user5 from 10.0.0.244 port 8255 ssh2
-Jan 15 19:49:04 server01 sshd[6217]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:49:05 server01 sshd[5571]: Accepted publickey for admin from 192.168.1.2 port 18209 ssh2
-Jan 15 19:49:07 server01 systemd[313]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:49:07 server01 systemd[277]: dhclient[123]: DHCPREQUEST for 192.168.1.171 on eth0 to 192.168.1.1 port 67
-Jan 15 19:49:11 server01 systemd[253]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:49:19 server01 sshd[2191]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:49:22 server01 systemd[713]: systemd: Reached target Graphical Interface.
-Jan 15 19:49:23 server01 systemd[483]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:49:24 server01 systemd[702]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:49:26 server01 systemd[202]: named[987]: client @0x7f... 192.168.1.222#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:49:33 server01 systemd[429]: systemd: Started Session 684 of user user2.
-Jan 15 19:49:33 server01 sshd[2983]: Accepted publickey for admin from 192.168.1.240 port 30211 ssh2
-Jan 15 19:49:37 server01 systemd[125]: named[987]: client @0x7f... 192.168.1.142#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:49:51 server01 systemd[64]: Disconnected from user4 10.0.0.124 port 40300
-Jan 15 19:49:53 server01 sshd[1279]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:49:54 server01 systemd[393]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:50:02 server01 systemd[360]: Disconnected from user2 10.0.0.184 port 3324
-Jan 15 19:50:03 server01 systemd[267]: systemd: Reached target Graphical Interface.
-Jan 15 19:50:09 server01 systemd[585]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:50:10 server01 systemd[120]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:50:13 server01 systemd[509]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:50:13 server01 systemd[923]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:50:17 server01 systemd[727]: systemd: Reached target Graphical Interface.
-Jan 15 19:50:32 server01 systemd[161]: Disconnected from user3 10.0.0.23 port 9847
-Jan 15 19:50:32 server01 sshd[2077]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:50:33 server01 systemd[790]: systemd: Reached target Graphical Interface.
-Jan 15 19:50:36 server01 sshd[9179]: Accepted password for user3 from 10.0.0.14 port 58885 ssh2
-Jan 15 19:50:37 server01 systemd[378]: Disconnected from user1 10.0.0.21 port 11721
-Jan 15 19:50:41 server01 systemd[115]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:50:46 server01 sshd[6397]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:50:49 server01 sshd[9857]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:50:49 server01 systemd[661]: systemd: Started Session 813 of user user1.
-Jan 15 19:50:50 server01 sshd[8950]: Accepted publickey for admin from 192.168.1.96 port 53714 ssh2
-Jan 15 19:51:01 server01 systemd[555]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:51:02 server01 systemd[951]: dhclient[123]: DHCPREQUEST for 192.168.1.103 on eth0 to 192.168.1.1 port 67
-Jan 15 19:51:12 server01 sshd[9271]: Accepted password for user5 from 10.0.0.189 port 56123 ssh2
-Jan 15 19:51:15 server01 sshd[5525]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:51:17 server01 systemd[6]: systemd: Reached target Graphical Interface.
-Jan 15 19:51:21 server01 systemd[820]: systemd: Reached target Graphical Interface.
-Jan 15 19:51:25 server01 systemd[546]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:51:26 server01 sshd[1311]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:51:26 server01 systemd[494]: named[987]: client @0x7f... 192.168.1.254#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:51:48 server01 systemd[249]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:51:55 server01 systemd[203]: systemd: Started Session 999 of user user5.
-Jan 15 19:52:01 server01 sshd[4768]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:52:04 server01 sshd[3669]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:52:07 server01 systemd[954]: dhclient[123]: DHCPACK of 192.168.1.80 from 192.168.1.1
-Jan 15 19:52:19 server01 systemd[317]: dhclient[123]: DHCPACK of 192.168.1.215 from 192.168.1.1
-Jan 15 19:52:19 server01 systemd[702]: dhclient[123]: DHCPACK of 192.168.1.29 from 192.168.1.1
-Jan 15 19:52:21 server01 systemd[194]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:52:22 server01 sshd[9334]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:52:24 server01 systemd[396]: systemd: Reached target Graphical Interface.
-Jan 15 19:52:26 server01 sshd[8073]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:52:27 server01 systemd[48]: dhclient[123]: DHCPREQUEST for 192.168.1.239 on eth0 to 192.168.1.1 port 67
-Jan 15 19:52:31 server01 systemd[491]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:52:39 server01 sshd[7716]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:52:44 server01 systemd[177]: Disconnected from user3 10.0.0.236 port 33139
-Jan 15 19:52:45 server01 systemd[491]: systemd: Started Session 374 of user user5.
-Jan 15 19:52:47 server01 systemd[584]: Disconnected from user1 10.0.0.140 port 23971
-Jan 15 19:52:48 server01 systemd[587]: Disconnected from user3 10.0.0.165 port 32139
-Jan 15 19:52:49 server01 systemd[972]: dhclient[123]: DHCPREQUEST for 192.168.1.1 on eth0 to 192.168.1.1 port 67
-Jan 15 19:52:51 server01 sshd[5687]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:52:52 server01 systemd[662]: systemd: Started Session 455 of user user5.
-Jan 15 19:52:53 server01 systemd[116]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:52:56 server01 sshd[1459]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:52:59 server01 systemd[444]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:53:08 server01 systemd[336]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:53:09 server01 systemd[267]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:53:11 server01 systemd[670]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:53:12 server01 sshd[2671]: Accepted password for user4 from 10.0.0.193 port 50559 ssh2
-Jan 15 19:53:15 server01 sshd[1614]: Accepted password for user5 from 10.0.0.156 port 13164 ssh2
-Jan 15 19:53:17 server01 systemd[306]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:53:30 server01 systemd[650]: systemd: Reached target Graphical Interface.
-Jan 15 19:53:35 server01 systemd[456]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:53:36 server01 sshd[6531]: Accepted publickey for admin from 192.168.1.174 port 15570 ssh2
-Jan 15 19:53:39 server01 sshd[2311]: Accepted publickey for admin from 192.168.1.30 port 57557 ssh2
-Jan 15 19:53:44 server01 sshd[4970]: Accepted publickey for admin from 192.168.1.15 port 49042 ssh2
-Jan 15 19:53:45 server01 systemd[438]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:53:46 server01 systemd[212]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:53:46 server01 systemd[151]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:53:48 server01 systemd[714]: dhclient[123]: DHCPACK of 192.168.1.251 from 192.168.1.1
-Jan 15 19:53:50 server01 sshd[4760]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:53:54 server01 sshd[4706]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:53:55 server01 sshd[2023]: Accepted publickey for admin from 192.168.1.134 port 17348 ssh2
-Jan 15 19:53:58 server01 sshd[4122]: Accepted publickey for admin from 192.168.1.237 port 30449 ssh2
-Jan 15 19:54:01 server01 systemd[650]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:54:21 server01 sshd[3507]: Accepted password for user1 from 10.0.0.192 port 15066 ssh2
-Jan 15 19:54:22 server01 sshd[2964]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:54:28 server01 systemd[952]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:54:29 server01 sshd[5646]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:54:32 server01 systemd[606]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:54:36 server01 systemd[516]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:54:44 server01 systemd[256]: systemd: Started Session 516 of user user2.
-Jan 15 19:54:49 server01 systemd[417]: dhclient[123]: DHCPREQUEST for 192.168.1.148 on eth0 to 192.168.1.1 port 67
-Jan 15 19:54:55 server01 sshd[4891]: Accepted password for user2 from 10.0.0.183 port 5128 ssh2
-Jan 15 19:54:56 server01 systemd[463]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:55:03 server01 systemd[179]: named[987]: client @0x7f... 192.168.1.66#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:55:11 server01 systemd[800]: named[987]: client @0x7f... 192.168.1.133#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:55:15 server01 systemd[417]: systemd: Started Session 660 of user user1.
-Jan 15 19:55:17 server01 systemd[614]: dhclient[123]: DHCPACK of 192.168.1.162 from 192.168.1.1
-Jan 15 19:55:17 server01 systemd[826]: systemd: Started Session 942 of user user3.
-Jan 15 19:55:17 server01 sshd[2263]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:55:19 server01 systemd[919]: Disconnected from user3 10.0.0.183 port 41392
-Jan 15 19:55:41 server01 systemd[862]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:55:43 server01 systemd[60]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:55:44 server01 sshd[2392]: Accepted password for user1 from 10.0.0.37 port 36145 ssh2
-Jan 15 19:55:52 server01 systemd[182]: dhclient[123]: DHCPACK of 192.168.1.207 from 192.168.1.1
-Jan 15 19:55:54 server01 sshd[1691]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:55:55 server01 systemd[312]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:55:56 server01 sshd[3759]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:55:57 server01 systemd[252]: dhclient[123]: DHCPACK of 192.168.1.210 from 192.168.1.1
-Jan 15 19:56:03 server01 systemd[823]: Disconnected from user2 10.0.0.93 port 3307
-Jan 15 19:56:18 server01 systemd[183]: named[987]: client @0x7f... 192.168.1.51#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 19:56:18 server01 sshd[5040]: Accepted publickey for admin from 192.168.1.87 port 29689 ssh2
-Jan 15 19:56:29 server01 sshd[2970]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:56:41 server01 systemd[632]: systemd: Reached target Graphical Interface.
-Jan 15 19:56:43 server01 sshd[7927]: Accepted password for user3 from 10.0.0.172 port 27053 ssh2
-Jan 15 19:56:48 server01 systemd[64]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:56:58 server01 sshd[4156]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:57:00 server01 systemd[908]: systemd: Started Session 832 of user user1.
-Jan 15 19:57:02 server01 systemd[207]: Disconnected from user3 10.0.0.83 port 17293
-Jan 15 19:57:05 server01 sshd[3411]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:57:06 server01 systemd[678]: dhclient[123]: DHCPREQUEST for 192.168.1.246 on eth0 to 192.168.1.1 port 67
-Jan 15 19:57:08 server01 systemd[404]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:57:10 server01 systemd[970]: dhclient[123]: DHCPACK of 192.168.1.87 from 192.168.1.1
-Jan 15 19:57:11 server01 sshd[7663]: Accepted password for user3 from 10.0.0.7 port 62348 ssh2
-Jan 15 19:57:11 server01 systemd[952]: systemd: Reached target Graphical Interface.
-Jan 15 19:57:40 server01 systemd[822]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:57:44 server01 systemd[26]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 19:57:51 server01 systemd[559]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:57:55 server01 systemd[23]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:57:58 server01 sshd[7812]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:58:02 server01 systemd[809]: dhclient[123]: DHCPREQUEST for 192.168.1.219 on eth0 to 192.168.1.1 port 67
-Jan 15 19:58:09 server01 systemd[137]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:58:12 server01 systemd[919]: systemd: Reached target Graphical Interface.
-Jan 15 19:58:13 server01 systemd[193]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:58:18 server01 sshd[9679]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:58:22 server01 systemd[661]: dhclient[123]: DHCPACK of 192.168.1.31 from 192.168.1.1
-Jan 15 19:58:25 server01 systemd[698]: Disconnected from user5 10.0.0.154 port 23383
-Jan 15 19:58:26 server01 sshd[3208]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:58:30 server01 sshd[3136]: pam_unix(sshd:session): session opened for user admin by (uid=0)
-Jan 15 19:58:46 server01 sshd[4599]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:58:50 server01 systemd[223]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 19:59:12 server01 sshd[9398]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:59:17 server01 systemd[505]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 19:59:26 server01 sshd[6026]: pam_unix(sshd:session): session closed for user admin
-Jan 15 19:59:33 server01 sshd[4509]: Accepted password for user1 from 10.0.0.193 port 35882 ssh2
-Jan 15 19:59:35 server01 systemd[603]: dhclient[123]: DHCPREQUEST for 192.168.1.46 on eth0 to 192.168.1.1 port 67
-Jan 15 19:59:48 server01 sshd[4869]: pam_unix(sshd:session): session closed for user admin
-Jan 15 20:00:03 server01 sshd[1473]: Accepted password for user3 from 10.0.0.103 port 51106 ssh2
-Jan 15 20:00:06 server01 systemd[286]: systemd: Reached target Graphical Interface.
-Jan 15 20:00:07 server01 systemd[67]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 20:00:15 server01 systemd[842]: dhclient[123]: DHCPREQUEST for 192.168.1.60 on eth0 to 192.168.1.1 port 67
-Jan 15 20:00:18 server01 systemd[845]: Disconnected from user1 10.0.0.157 port 31388
-Jan 15 20:00:19 server01 systemd[80]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 20:00:20 server01 systemd[82]: named[987]: client @0x7f... 192.168.1.137#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 20:00:22 server01 sshd[2986]: Accepted password for user2 from 10.0.0.152 port 24462 ssh2
-Jan 15 20:00:23 server01 systemd[490]: systemd: Started Session 344 of user user1.
-Jan 15 20:00:23 server01 sshd[8077]: Accepted publickey for admin from 192.168.1.113 port 20682 ssh2
-Jan 15 20:00:33 server01 sshd[8297]: Accepted password for user3 from 10.0.0.141 port 12456 ssh2
-Jan 15 20:00:35 server01 sshd[1824]: Accepted publickey for admin from 192.168.1.241 port 39562 ssh2
-Jan 15 20:00:48 server01 sshd[5752]: Accepted password for user4 from 10.0.0.206 port 16358 ssh2
-Jan 15 20:00:55 server01 sshd[6279]: Accepted publickey for admin from 192.168.1.177 port 20506 ssh2
-Jan 15 20:00:55 server01 systemd[526]: named[987]: client @0x7f... 192.168.1.153#54321 (google.com): query: google.com IN A + (192.168.1.1)
-Jan 15 20:01:02 server01 systemd[3]: Disconnected from user2 10.0.0.219 port 6578
-Jan 15 20:01:15 server01 sshd[7452]: pam_unix(sshd:session): session closed for user admin
-Jan 15 20:01:15 server01 systemd[110]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 20:01:24 server01 systemd[491]: dhclient[123]: DHCPACK of 192.168.1.217 from 192.168.1.1
-Jan 15 20:01:30 server01 systemd[743]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 20:01:33 server01 sshd[9856]: Accepted publickey for admin from 192.168.1.137 port 32518 ssh2
-Jan 15 20:01:33 server01 sshd[6142]: Accepted password for user1 from 10.0.0.96 port 40501 ssh2
-Jan 15 20:01:39 server01 systemd[78]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 20:01:45 server01 systemd[202]: Disconnected from user2 10.0.0.65 port 14927
-Jan 15 20:01:50 server01 sshd[6482]: pam_unix(sshd:session): session closed for user admin
-Jan 15 20:01:50 server01 sshd[2701]: pam_unix(sshd:session): session closed for user admin
-Jan 15 20:01:56 server01 systemd[530]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
-Jan 15 20:01:56 server01 systemd[415]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 20:02:01 server01 systemd[814]: CRON[1234]: pam_unix(cron:session): session closed for user root
-Jan 15 20:02:02 server01 sshd[1440]: Accepted publickey for admin from 192.168.1.80 port 64725 ssh2
-Jan 15 20:02:06 server01 systemd[369]: Disconnected from user4 10.0.0.238 port 56705
-Jan 15 20:02:07 server01 systemd[944]: dhclient[123]: DHCPREQUEST for 192.168.1.4 on eth0 to 192.168.1.1 port 67
-Jan 15 20:02:07 server01 sshd[5876]: Accepted password for user5 from 10.0.0.210 port 14469 ssh2
-Jan 15 20:02:15 server01 systemd[770]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
-Jan 15 20:02:17 server01 systemd[459]: dhclient[123]: DHCPREQUEST for 192.168.1.150 on eth0 to 192.168.1.1 port 67
-Jan 15 20:02:29 server01 systemd[207]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:49:25 server01 sshd[8922]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:49:27 server01 systemd[794]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:49:44 server01 systemd[465]: systemd: Reached target Graphical Interface.
+Feb 03 20:49:45 server01 systemd[922]: systemd: Reached target Graphical Interface.
+Feb 03 20:49:51 server01 sshd[7137]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:50:19 server01 systemd[730]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:50:32 server01 systemd[604]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:50:34 server01 systemd[773]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:50:34 server01 systemd[645]: systemd: Reached target Graphical Interface.
+Feb 03 20:51:08 server01 systemd[874]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:51:11 server01 sshd[3937]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:51:11 server01 systemd[441]: named[987]: client @0x7f... 192.168.1.177#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 20:51:12 server01 systemd[650]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:51:12 server01 sshd[4218]: Accepted publickey for admin from 192.168.1.63 port 61309 ssh2
+Feb 03 20:51:13 server01 sshd[6257]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:51:17 server01 systemd[509]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:51:20 server01 systemd[343]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:51:21 server01 sshd[1190]: Accepted publickey for admin from 192.168.1.190 port 42106 ssh2
+Feb 03 20:51:25 server01 systemd[61]: named[987]: client @0x7f... 192.168.1.26#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 20:51:30 server01 sshd[6902]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:51:37 server01 systemd[27]: dhclient[123]: DHCPREQUEST for 192.168.1.69 on eth0 to 192.168.1.1 port 67
+Feb 03 20:51:47 server01 sshd[4418]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:51:56 server01 systemd[249]: systemd: Reached target Graphical Interface.
+Feb 03 20:51:59 server01 systemd[151]: systemd: Started Session 446 of user user4.
+Feb 03 20:52:02 server01 sshd[3973]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:52:04 server01 sshd[5604]: Accepted publickey for admin from 192.168.1.20 port 64724 ssh2
+Feb 03 20:52:05 server01 systemd[501]: systemd: Started Session 839 of user user4.
+Feb 03 20:52:07 server01 sshd[9168]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:52:20 server01 systemd[518]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:52:25 server01 sshd[6749]: Accepted publickey for admin from 192.168.1.73 port 24156 ssh2
+Feb 03 20:52:26 server01 systemd[806]: named[987]: client @0x7f... 192.168.1.104#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 20:52:28 server01 systemd[319]: dhclient[123]: DHCPACK of 192.168.1.212 from 192.168.1.1
+Feb 03 20:52:34 server01 sshd[7696]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:52:36 server01 sshd[1012]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:52:39 server01 sshd[6515]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:52:40 server01 sshd[2576]: Accepted publickey for admin from 192.168.1.117 port 57958 ssh2
+Feb 03 20:52:47 server01 sshd[3655]: Accepted publickey for admin from 192.168.1.229 port 60983 ssh2
+Feb 03 20:52:48 server01 systemd[398]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:53:09 server01 sshd[7259]: Accepted publickey for admin from 192.168.1.93 port 21469 ssh2
+Feb 03 20:53:10 server01 systemd[602]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 20:53:10 server01 systemd[208]: named[987]: client @0x7f... 192.168.1.44#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 20:53:11 server01 sshd[4976]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:53:12 server01 sshd[7589]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:53:14 server01 systemd[521]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:53:17 server01 sshd[6904]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:53:43 server01 systemd[929]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 20:53:46 server01 sshd[1076]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:53:47 server01 systemd[450]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:53:50 server01 systemd[550]: dhclient[123]: DHCPREQUEST for 192.168.1.189 on eth0 to 192.168.1.1 port 67
+Feb 03 20:53:55 server01 systemd[272]: named[987]: client @0x7f... 192.168.1.45#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 20:53:58 server01 systemd[518]: Disconnected from user2 10.0.0.119 port 34582
+Feb 03 20:53:59 server01 systemd[738]: dhclient[123]: DHCPACK of 192.168.1.162 from 192.168.1.1
+Feb 03 20:54:00 server01 systemd[811]: Disconnected from user1 10.0.0.118 port 32506
+Feb 03 20:54:00 server01 systemd[177]: systemd: Started Session 707 of user user1.
+Feb 03 20:54:03 server01 systemd[871]: named[987]: client @0x7f... 192.168.1.41#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 20:54:07 server01 systemd[354]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:54:07 server01 sshd[6567]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:54:07 server01 systemd[523]: Disconnected from user2 10.0.0.53 port 63443
+Feb 03 20:54:10 server01 systemd[950]: systemd: Started Session 259 of user user1.
+Feb 03 20:54:11 server01 systemd[87]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:54:26 server01 systemd[992]: Disconnected from user2 10.0.0.130 port 31112
+Feb 03 20:54:27 server01 sshd[5694]: Accepted password for user2 from 10.0.0.137 port 38176 ssh2
+Feb 03 20:54:33 server01 sshd[7196]: Accepted password for user3 from 10.0.0.92 port 62115 ssh2
+Feb 03 20:54:34 server01 systemd[458]: systemd: Reached target Graphical Interface.
+Feb 03 20:54:35 server01 systemd[834]: systemd: Started Session 280 of user user2.
+Feb 03 20:54:41 server01 sshd[9211]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:54:44 server01 sshd[8537]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:54:45 server01 sshd[7716]: Accepted password for user3 from 10.0.0.77 port 45810 ssh2
+Feb 03 20:54:46 server01 systemd[583]: dhclient[123]: DHCPREQUEST for 192.168.1.125 on eth0 to 192.168.1.1 port 67
+Feb 03 20:55:00 server01 sshd[6459]: Accepted password for user2 from 10.0.0.78 port 57688 ssh2
+Feb 03 20:55:02 server01 systemd[835]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:55:03 server01 sshd[4647]: Accepted password for user3 from 10.0.0.141 port 7896 ssh2
+Feb 03 20:55:08 server01 systemd[43]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:55:09 server01 sshd[5366]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:55:09 server01 systemd[552]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 20:55:16 server01 sshd[4692]: Accepted password for user1 from 10.0.0.183 port 7267 ssh2
+Feb 03 20:55:17 server01 systemd[485]: dhclient[123]: DHCPACK of 192.168.1.192 from 192.168.1.1
+Feb 03 20:55:20 server01 sshd[3007]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:55:23 server01 systemd[398]: dhclient[123]: DHCPACK of 192.168.1.161 from 192.168.1.1
+Feb 03 20:55:30 server01 sshd[2940]: Accepted publickey for admin from 192.168.1.134 port 57252 ssh2
+Feb 03 20:55:31 server01 systemd[2]: systemd: Started Session 176 of user user2.
+Feb 03 20:55:34 server01 systemd[612]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:55:35 server01 systemd[287]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:55:36 server01 systemd[162]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:55:42 server01 systemd[223]: systemd: Reached target Graphical Interface.
+Feb 03 20:55:47 server01 systemd[174]: systemd: Started Session 150 of user user2.
+Feb 03 20:55:48 server01 systemd[484]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:55:49 server01 systemd[472]: systemd: Reached target Graphical Interface.
+Feb 03 20:56:07 server01 systemd[909]: named[987]: client @0x7f... 192.168.1.131#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 20:56:08 server01 systemd[924]: systemd: Reached target Graphical Interface.
+Feb 03 20:56:09 server01 systemd[739]: systemd: Started Session 762 of user user3.
+Feb 03 20:56:11 server01 systemd[3]: dhclient[123]: DHCPACK of 192.168.1.73 from 192.168.1.1
+Feb 03 20:56:13 server01 systemd[625]: dhclient[123]: DHCPACK of 192.168.1.148 from 192.168.1.1
+Feb 03 20:56:13 server01 systemd[762]: dhclient[123]: DHCPREQUEST for 192.168.1.158 on eth0 to 192.168.1.1 port 67
+Feb 03 20:56:33 server01 systemd[125]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:56:33 server01 systemd[654]: Disconnected from user1 10.0.0.67 port 29908
+Feb 03 20:56:39 server01 sshd[4122]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:56:40 server01 sshd[5142]: Accepted password for user2 from 10.0.0.15 port 24296 ssh2
+Feb 03 20:56:41 server01 systemd[252]: systemd: Started Session 560 of user user2.
+Feb 03 20:56:49 server01 sshd[4489]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:56:54 server01 systemd[394]: systemd: Started Session 625 of user user4.
+Feb 03 20:57:00 server01 sshd[8646]: Accepted password for user1 from 10.0.0.52 port 46425 ssh2
+Feb 03 20:57:17 server01 sshd[7926]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:57:22 server01 sshd[5147]: Accepted password for user2 from 10.0.0.99 port 22680 ssh2
+Feb 03 20:57:23 server01 systemd[791]: systemd: Reached target Graphical Interface.
+Feb 03 20:57:24 server01 systemd[423]: systemd: Started Session 104 of user user3.
+Feb 03 20:57:29 server01 systemd[714]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:57:38 server01 systemd[878]: systemd: Reached target Graphical Interface.
+Feb 03 20:57:57 server01 systemd[672]: systemd: Started Session 284 of user user1.
+Feb 03 20:57:59 server01 systemd[82]: systemd: Started Session 909 of user user5.
+Feb 03 20:58:01 server01 sshd[4030]: Accepted password for user2 from 10.0.0.44 port 17945 ssh2
+Feb 03 20:58:02 server01 systemd[457]: Disconnected from user4 10.0.0.72 port 31213
+Feb 03 20:58:03 server01 sshd[7875]: Accepted password for user2 from 10.0.0.143 port 28013 ssh2
+Feb 03 20:58:09 server01 systemd[689]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 20:58:21 server01 systemd[747]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:58:37 server01 systemd[370]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 20:58:42 server01 systemd[719]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:58:48 server01 systemd[140]: systemd: Started Session 475 of user user3.
+Feb 03 20:58:50 server01 systemd[483]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:58:53 server01 systemd[399]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:59:11 server01 systemd[559]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 20:59:17 server01 systemd[752]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 20:59:18 server01 sshd[2815]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:59:31 server01 sshd[3746]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:59:44 server01 systemd[755]: Disconnected from user1 10.0.0.215 port 21536
+Feb 03 20:59:46 server01 sshd[4874]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 20:59:53 server01 systemd[345]: Disconnected from user3 10.0.0.101 port 22209
+Feb 03 20:59:58 server01 sshd[7932]: pam_unix(sshd:session): session closed for user admin
+Feb 03 20:59:59 server01 sshd[6119]: Accepted publickey for admin from 192.168.1.217 port 15343 ssh2
+Feb 03 20:59:59 server01 systemd[143]: Disconnected from user3 10.0.0.231 port 28380
+Feb 03 21:00:07 server01 systemd[898]: systemd: Started Session 979 of user user1.
+Feb 03 21:00:10 server01 systemd[795]: systemd: Started Session 486 of user user3.
+Feb 03 21:00:16 server01 systemd[522]: dhclient[123]: DHCPREQUEST for 192.168.1.216 on eth0 to 192.168.1.1 port 67
+Feb 03 21:00:20 server01 sshd[5156]: Accepted password for user5 from 10.0.0.174 port 34332 ssh2
+Feb 03 21:00:23 server01 sshd[9975]: Accepted password for user3 from 10.0.0.225 port 30748 ssh2
+Feb 03 21:00:24 server01 systemd[802]: named[987]: client @0x7f... 192.168.1.6#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:00:25 server01 systemd[344]: named[987]: client @0x7f... 192.168.1.88#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:00:26 server01 systemd[597]: dhclient[123]: DHCPACK of 192.168.1.13 from 192.168.1.1
+Feb 03 21:00:33 server01 sshd[2837]: Accepted password for user3 from 10.0.0.222 port 4349 ssh2
+Feb 03 21:00:34 server01 systemd[749]: Disconnected from user5 10.0.0.28 port 56847
+Feb 03 21:00:36 server01 sshd[6160]: Accepted password for user4 from 10.0.0.55 port 50997 ssh2
+Feb 03 21:00:39 server01 systemd[138]: systemd: Reached target Graphical Interface.
+Feb 03 21:00:40 server01 sshd[5670]: Accepted publickey for admin from 192.168.1.179 port 17734 ssh2
+Feb 03 21:00:40 server01 systemd[279]: dhclient[123]: DHCPREQUEST for 192.168.1.78 on eth0 to 192.168.1.1 port 67
+Feb 03 21:00:45 server01 systemd[1]: systemd: Reached target Graphical Interface.
+Feb 03 21:00:45 server01 systemd[893]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:00:46 server01 systemd[174]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:00:53 server01 sshd[8297]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:00:56 server01 systemd[70]: dhclient[123]: DHCPACK of 192.168.1.98 from 192.168.1.1
+Feb 03 21:00:57 server01 systemd[236]: systemd: Reached target Graphical Interface.
+Feb 03 21:01:01 server01 sshd[4408]: Accepted publickey for admin from 192.168.1.254 port 51102 ssh2
+Feb 03 21:01:09 server01 systemd[708]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:01:13 server01 systemd[45]: systemd: Started Session 985 of user user1.
+Feb 03 21:01:16 server01 sshd[5011]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:01:20 server01 sshd[6618]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:01:25 server01 systemd[797]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:01:26 server01 sshd[5711]: Accepted password for user3 from 10.0.0.59 port 31925 ssh2
+Feb 03 21:01:36 server01 systemd[602]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:01:37 server01 sshd[2161]: Accepted publickey for admin from 192.168.1.89 port 4069 ssh2
+Feb 03 21:01:38 server01 sshd[5555]: Accepted password for user5 from 10.0.0.167 port 39253 ssh2
+Feb 03 21:01:39 server01 systemd[904]: Disconnected from user2 10.0.0.208 port 8787
+Feb 03 21:01:46 server01 systemd[806]: dhclient[123]: DHCPREQUEST for 192.168.1.97 on eth0 to 192.168.1.1 port 67
+Feb 03 21:01:47 server01 systemd[501]: named[987]: client @0x7f... 192.168.1.156#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:01:57 server01 systemd[767]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:02:02 server01 sshd[9201]: Accepted password for user1 from 10.0.0.123 port 56489 ssh2
+Feb 03 21:02:04 server01 systemd[583]: dhclient[123]: DHCPACK of 192.168.1.99 from 192.168.1.1
+Feb 03 21:02:12 server01 systemd[792]: named[987]: client @0x7f... 192.168.1.101#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:02:20 server01 systemd[43]: systemd: Started Session 689 of user user3.
+Feb 03 21:02:21 server01 systemd[231]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:02:21 server01 systemd[226]: named[987]: client @0x7f... 192.168.1.57#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:02:37 server01 sshd[7958]: Accepted publickey for admin from 192.168.1.247 port 11322 ssh2
+Feb 03 21:02:40 server01 systemd[922]: systemd: Reached target Graphical Interface.
+Feb 03 21:02:46 server01 systemd[742]: Disconnected from user3 10.0.0.60 port 63121
+Feb 03 21:02:47 server01 systemd[734]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:02:50 server01 systemd[63]: dhclient[123]: DHCPACK of 192.168.1.7 from 192.168.1.1
+Feb 03 21:03:02 server01 sshd[7932]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:03:05 server01 systemd[655]: dhclient[123]: DHCPACK of 192.168.1.227 from 192.168.1.1
+Feb 03 21:03:05 server01 systemd[943]: systemd: Reached target Graphical Interface.
+Feb 03 21:03:07 server01 systemd[302]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:03:11 server01 systemd[711]: dhclient[123]: DHCPACK of 192.168.1.247 from 192.168.1.1
+Feb 03 21:03:11 server01 systemd[475]: named[987]: client @0x7f... 192.168.1.133#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:03:21 server01 systemd[371]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:03:23 server01 systemd[662]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:03:24 server01 systemd[607]: dhclient[123]: DHCPREQUEST for 192.168.1.143 on eth0 to 192.168.1.1 port 67
+Feb 03 21:03:33 server01 systemd[557]: named[987]: client @0x7f... 192.168.1.1#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:03:33 server01 sshd[5223]: Accepted publickey for admin from 192.168.1.98 port 36905 ssh2
+Feb 03 21:03:42 server01 systemd[8]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:03:48 server01 sshd[5450]: Accepted password for user1 from 10.0.0.252 port 10950 ssh2
+Feb 03 21:03:50 server01 systemd[141]: systemd: Started Session 359 of user user2.
+Feb 03 21:04:07 server01 systemd[492]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:04:32 server01 sshd[1574]: Accepted password for user2 from 10.0.0.57 port 51378 ssh2
+Feb 03 21:04:46 server01 systemd[383]: Disconnected from user5 10.0.0.29 port 36437
+Feb 03 21:04:47 server01 sshd[7371]: Accepted publickey for admin from 192.168.1.240 port 26785 ssh2
+Feb 03 21:05:02 server01 systemd[827]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:05:19 server01 systemd[794]: systemd: Started Session 852 of user user1.
+Feb 03 21:05:32 server01 sshd[7299]: Accepted publickey for admin from 192.168.1.34 port 22341 ssh2
+Feb 03 21:05:33 server01 sshd[7515]: Accepted publickey for admin from 192.168.1.174 port 11583 ssh2
+Feb 03 21:05:38 server01 systemd[953]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:05:44 server01 systemd[316]: dhclient[123]: DHCPREQUEST for 192.168.1.177 on eth0 to 192.168.1.1 port 67
+Feb 03 21:05:44 server01 systemd[950]: systemd: Reached target Graphical Interface.
+Feb 03 21:05:45 server01 systemd[534]: dhclient[123]: DHCPREQUEST for 192.168.1.134 on eth0 to 192.168.1.1 port 67
+Feb 03 21:05:53 server01 sshd[8376]: Accepted publickey for admin from 192.168.1.157 port 10935 ssh2
+Feb 03 21:05:58 server01 systemd[417]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:05:58 server01 systemd[87]: systemd: Reached target Graphical Interface.
+Feb 03 21:06:04 server01 systemd[412]: systemd: Reached target Graphical Interface.
+Feb 03 21:06:15 server01 sshd[4394]: Accepted password for user3 from 10.0.0.31 port 8704 ssh2
+Feb 03 21:06:32 server01 systemd[604]: named[987]: client @0x7f... 192.168.1.161#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:06:32 server01 systemd[330]: systemd: Reached target Graphical Interface.
+Feb 03 21:06:46 server01 sshd[2040]: Accepted password for user5 from 10.0.0.223 port 49863 ssh2
+Feb 03 21:06:49 server01 systemd[681]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:06:51 server01 systemd[86]: systemd: Started Session 192 of user user1.
+Feb 03 21:07:07 server01 systemd[312]: systemd: Reached target Graphical Interface.
+Feb 03 21:07:12 server01 sshd[4987]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:07:17 server01 systemd[83]: systemd: Reached target Graphical Interface.
+Feb 03 21:07:29 server01 systemd[786]: Disconnected from user3 10.0.0.51 port 25240
+Feb 03 21:07:29 server01 systemd[418]: Disconnected from user5 10.0.0.115 port 50055
+Feb 03 21:07:34 server01 systemd[962]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:07:38 server01 systemd[585]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:07:42 server01 sshd[7948]: Accepted password for user2 from 10.0.0.103 port 59393 ssh2
+Feb 03 21:07:49 server01 systemd[614]: dhclient[123]: DHCPACK of 192.168.1.85 from 192.168.1.1
+Feb 03 21:07:57 server01 sshd[2784]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:08:01 server01 systemd[263]: dhclient[123]: DHCPACK of 192.168.1.11 from 192.168.1.1
+Feb 03 21:08:02 server01 systemd[829]: systemd: Started Session 569 of user user3.
+Feb 03 21:08:05 server01 systemd[576]: systemd: Reached target Graphical Interface.
+Feb 03 21:08:06 server01 systemd[876]: dhclient[123]: DHCPREQUEST for 192.168.1.61 on eth0 to 192.168.1.1 port 67
+Feb 03 21:08:11 server01 sshd[6382]: Accepted publickey for admin from 192.168.1.209 port 19962 ssh2
+Feb 03 21:08:19 server01 systemd[74]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:08:25 server01 systemd[827]: systemd: Reached target Graphical Interface.
+Feb 03 21:08:26 server01 sshd[9343]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:08:28 server01 systemd[13]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:08:33 server01 systemd[822]: dhclient[123]: DHCPACK of 192.168.1.14 from 192.168.1.1
+Feb 03 21:08:36 server01 systemd[139]: dhclient[123]: DHCPACK of 192.168.1.221 from 192.168.1.1
+Feb 03 21:08:37 server01 systemd[211]: dhclient[123]: DHCPACK of 192.168.1.65 from 192.168.1.1
+Feb 03 21:08:38 server01 systemd[551]: systemd: Reached target Graphical Interface.
+Feb 03 21:08:40 server01 systemd[665]: systemd: Reached target Graphical Interface.
+Feb 03 21:08:53 server01 systemd[915]: dhclient[123]: DHCPREQUEST for 192.168.1.33 on eth0 to 192.168.1.1 port 67
+Feb 03 21:08:56 server01 systemd[794]: systemd: Reached target Graphical Interface.
+Feb 03 21:09:03 server01 systemd[631]: systemd: Reached target Graphical Interface.
+Feb 03 21:09:14 server01 systemd[177]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:09:17 server01 systemd[537]: named[987]: client @0x7f... 192.168.1.115#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:09:23 server01 systemd[490]: systemd: Started Session 734 of user user1.
+Feb 03 21:09:24 server01 systemd[674]: dhclient[123]: DHCPACK of 192.168.1.39 from 192.168.1.1
+Feb 03 21:09:27 server01 systemd[567]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:09:32 server01 sshd[6554]: Accepted password for user3 from 10.0.0.135 port 18889 ssh2
+Feb 03 21:09:32 server01 systemd[216]: dhclient[123]: DHCPREQUEST for 192.168.1.212 on eth0 to 192.168.1.1 port 67
+Feb 03 21:09:41 server01 sshd[4953]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:09:43 server01 systemd[613]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:09:45 server01 systemd[709]: dhclient[123]: DHCPREQUEST for 192.168.1.109 on eth0 to 192.168.1.1 port 67
+Feb 03 21:09:46 server01 systemd[312]: dhclient[123]: DHCPACK of 192.168.1.166 from 192.168.1.1
+Feb 03 21:09:52 server01 systemd[488]: Disconnected from user5 10.0.0.13 port 53183
+Feb 03 21:09:53 server01 sshd[3864]: Accepted publickey for admin from 192.168.1.62 port 36651 ssh2
+Feb 03 21:10:06 server01 systemd[612]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:10:10 server01 systemd[552]: dhclient[123]: DHCPACK of 192.168.1.253 from 192.168.1.1
+Feb 03 21:10:14 server01 systemd[299]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:10:15 server01 sshd[9234]: Accepted password for user1 from 10.0.0.199 port 21342 ssh2
+Feb 03 21:10:24 server01 systemd[54]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:10:26 server01 systemd[411]: Disconnected from user4 10.0.0.77 port 10727
+Feb 03 21:10:28 server01 sshd[4927]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:10:29 server01 systemd[301]: named[987]: client @0x7f... 192.168.1.81#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:10:33 server01 systemd[634]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:10:34 server01 systemd[433]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:10:35 server01 systemd[311]: systemd: Reached target Graphical Interface.
+Feb 03 21:10:35 server01 systemd[942]: Disconnected from user1 10.0.0.83 port 57862
+Feb 03 21:10:44 server01 systemd[442]: systemd: Reached target Graphical Interface.
+Feb 03 21:10:46 server01 systemd[587]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:10:48 server01 systemd[95]: systemd: Started Session 943 of user user1.
+Feb 03 21:10:50 server01 systemd[22]: named[987]: client @0x7f... 192.168.1.137#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:10:58 server01 systemd[579]: named[987]: client @0x7f... 192.168.1.194#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:11:00 server01 systemd[843]: systemd: Started Session 357 of user user1.
+Feb 03 21:11:05 server01 systemd[676]: systemd: Started Session 558 of user user5.
+Feb 03 21:11:08 server01 sshd[9946]: Accepted password for user5 from 10.0.0.94 port 56039 ssh2
+Feb 03 21:11:13 server01 systemd[875]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:11:16 server01 systemd[767]: systemd: Started Session 856 of user user1.
+Feb 03 21:11:38 server01 sshd[7213]: Accepted password for user3 from 10.0.0.125 port 18768 ssh2
+Feb 03 21:11:48 server01 systemd[12]: dhclient[123]: DHCPACK of 192.168.1.103 from 192.168.1.1
+Feb 03 21:11:56 server01 systemd[653]: systemd: Reached target Graphical Interface.
+Feb 03 21:11:56 server01 sshd[1684]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:11:56 server01 systemd[892]: systemd: Reached target Graphical Interface.
+Feb 03 21:12:07 server01 systemd[450]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:12:12 server01 systemd[507]: named[987]: client @0x7f... 192.168.1.135#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:12:22 server01 sshd[1426]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:12:40 server01 systemd[977]: Disconnected from user1 10.0.0.226 port 29773
+Feb 03 21:13:15 server01 systemd[778]: systemd: Reached target Graphical Interface.
+Feb 03 21:13:16 server01 sshd[6369]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:13:31 server01 systemd[564]: dhclient[123]: DHCPACK of 192.168.1.12 from 192.168.1.1
+Feb 03 21:13:34 server01 systemd[343]: dhclient[123]: DHCPREQUEST for 192.168.1.74 on eth0 to 192.168.1.1 port 67
+Feb 03 21:13:35 server01 systemd[593]: dhclient[123]: DHCPREQUEST for 192.168.1.198 on eth0 to 192.168.1.1 port 67
+Feb 03 21:13:36 server01 systemd[898]: Disconnected from user4 10.0.0.60 port 14118
+Feb 03 21:13:39 server01 systemd[730]: dhclient[123]: DHCPREQUEST for 192.168.1.147 on eth0 to 192.168.1.1 port 67
+Feb 03 21:13:40 server01 systemd[999]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:13:46 server01 systemd[286]: systemd: Started Session 630 of user user1.
+Feb 03 21:13:52 server01 systemd[289]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:14:03 server01 sshd[1398]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:14:07 server01 sshd[9067]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:14:07 server01 sshd[9497]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:14:08 server01 systemd[574]: dhclient[123]: DHCPREQUEST for 192.168.1.78 on eth0 to 192.168.1.1 port 67
+Feb 03 21:14:13 server01 systemd[314]: systemd: Started Session 158 of user user4.
+Feb 03 21:14:14 server01 systemd[679]: Disconnected from user1 10.0.0.212 port 38000
+Feb 03 21:14:15 server01 sshd[6330]: Accepted publickey for admin from 192.168.1.249 port 6506 ssh2
+Feb 03 21:14:23 server01 systemd[221]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:14:25 server01 systemd[832]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:14:28 server01 systemd[835]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:14:35 server01 systemd[702]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:14:39 server01 systemd[288]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:14:41 server01 systemd[184]: systemd: Started Session 437 of user user3.
+Feb 03 21:14:45 server01 systemd[59]: Disconnected from user1 10.0.0.245 port 38556
+Feb 03 21:14:50 server01 systemd[305]: systemd: Reached target Graphical Interface.
+Feb 03 21:14:50 server01 systemd[674]: named[987]: client @0x7f... 192.168.1.56#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:14:58 server01 systemd[61]: Disconnected from user2 10.0.0.84 port 49080
+Feb 03 21:15:07 server01 sshd[2428]: Accepted publickey for admin from 192.168.1.49 port 3956 ssh2
+Feb 03 21:15:13 server01 systemd[847]: dhclient[123]: DHCPREQUEST for 192.168.1.162 on eth0 to 192.168.1.1 port 67
+Feb 03 21:15:25 server01 systemd[248]: systemd: Reached target Graphical Interface.
+Feb 03 21:15:28 server01 sshd[2253]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:15:29 server01 systemd[819]: Disconnected from user3 10.0.0.247 port 32296
+Feb 03 21:15:29 server01 sshd[7262]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:15:35 server01 sshd[6569]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:15:37 server01 systemd[319]: systemd: Started Session 240 of user user3.
+Feb 03 21:16:04 server01 systemd[277]: systemd: Reached target Graphical Interface.
+Feb 03 21:16:06 server01 systemd[200]: dhclient[123]: DHCPACK of 192.168.1.66 from 192.168.1.1
+Feb 03 21:16:11 server01 sshd[8429]: Accepted password for user5 from 10.0.0.247 port 6668 ssh2
+Feb 03 21:16:11 server01 systemd[746]: named[987]: client @0x7f... 192.168.1.4#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:16:14 server01 systemd[142]: systemd: Started Session 601 of user user3.
+Feb 03 21:16:14 server01 sshd[9688]: Accepted publickey for admin from 192.168.1.205 port 41718 ssh2
+Feb 03 21:16:20 server01 sshd[9813]: Accepted password for user1 from 10.0.0.18 port 63279 ssh2
+Feb 03 21:16:47 server01 sshd[9268]: Accepted password for user5 from 10.0.0.102 port 46367 ssh2
+Feb 03 21:16:53 server01 systemd[318]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:16:55 server01 sshd[6441]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:17:01 server01 sshd[8022]: Accepted publickey for admin from 192.168.1.22 port 17013 ssh2
+Feb 03 21:17:02 server01 systemd[8]: Disconnected from user2 10.0.0.236 port 21226
+Feb 03 21:17:05 server01 sshd[9421]: Accepted password for user2 from 10.0.0.184 port 11426 ssh2
+Feb 03 21:17:08 server01 sshd[8201]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:17:10 server01 systemd[42]: dhclient[123]: DHCPACK of 192.168.1.59 from 192.168.1.1
+Feb 03 21:17:21 server01 sshd[1338]: Accepted publickey for admin from 192.168.1.239 port 14666 ssh2
+Feb 03 21:17:25 server01 systemd[449]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:17:33 server01 sshd[9948]: Accepted password for user1 from 10.0.0.205 port 50992 ssh2
+Feb 03 21:17:37 server01 systemd[741]: Disconnected from user1 10.0.0.171 port 14363
+Feb 03 21:17:42 server01 systemd[42]: Disconnected from user5 10.0.0.213 port 35273
+Feb 03 21:17:53 server01 sshd[2344]: Accepted password for user2 from 10.0.0.125 port 26406 ssh2
+Feb 03 21:17:54 server01 systemd[279]: systemd: Reached target Graphical Interface.
+Feb 03 21:17:56 server01 systemd[168]: dhclient[123]: DHCPACK of 192.168.1.165 from 192.168.1.1
+Feb 03 21:18:05 server01 systemd[627]: dhclient[123]: DHCPREQUEST for 192.168.1.190 on eth0 to 192.168.1.1 port 67
+Feb 03 21:18:07 server01 systemd[308]: systemd: Started Session 270 of user user2.
+Feb 03 21:18:11 server01 systemd[618]: named[987]: client @0x7f... 192.168.1.239#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:18:19 server01 sshd[9732]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:18:24 server01 systemd[811]: systemd: Reached target Graphical Interface.
+Feb 03 21:18:25 server01 systemd[743]: dhclient[123]: DHCPACK of 192.168.1.240 from 192.168.1.1
+Feb 03 21:18:26 server01 systemd[303]: Disconnected from user4 10.0.0.199 port 60565
+Feb 03 21:18:32 server01 systemd[646]: named[987]: client @0x7f... 192.168.1.58#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:18:35 server01 sshd[2521]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:18:37 server01 systemd[347]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:18:38 server01 systemd[872]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:18:41 server01 systemd[245]: named[987]: client @0x7f... 192.168.1.245#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:18:42 server01 sshd[7939]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:18:44 server01 sshd[9987]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:18:52 server01 systemd[917]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:18:55 server01 systemd[722]: named[987]: client @0x7f... 192.168.1.144#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:18:58 server01 systemd[712]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:19:06 server01 systemd[864]: named[987]: client @0x7f... 192.168.1.45#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:19:09 server01 sshd[5484]: Accepted publickey for admin from 192.168.1.63 port 27835 ssh2
+Feb 03 21:19:11 server01 systemd[725]: dhclient[123]: DHCPACK of 192.168.1.63 from 192.168.1.1
+Feb 03 21:19:16 server01 systemd[215]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:19:21 server01 sshd[20763]: Accepted password for root from 45.12.34.56 port 54322 ssh2
+Feb 03 21:19:26 server01 systemd[892]: systemd: Started Session 398 of user user3.
+Feb 03 21:19:28 server01 systemd[678]: dhclient[123]: DHCPACK of 192.168.1.56 from 192.168.1.1
+Feb 03 21:19:29 server01 systemd[935]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:19:33 server01 sshd[7873]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:19:38 server01 systemd[54]: named[987]: client @0x7f... 192.168.1.228#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:19:38 server01 systemd[905]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:19:38 server01 sshd[1712]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:20:00 server01 systemd[487]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:20:02 server01 sshd[1761]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:20:13 server01 systemd[138]: named[987]: client @0x7f... 192.168.1.114#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:20:14 server01 systemd[113]: systemd: Started Session 296 of user user4.
+Feb 03 21:20:20 server01 sshd[1036]: Accepted password for user1 from 10.0.0.97 port 15028 ssh2
+Feb 03 21:20:30 server01 systemd[552]: named[987]: client @0x7f... 192.168.1.109#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:20:33 server01 systemd[392]: Disconnected from user3 10.0.0.111 port 2812
+Feb 03 21:20:41 server01 sshd[3573]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:20:43 server01 sshd[8795]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:20:48 server01 systemd[278]: named[987]: client @0x7f... 192.168.1.76#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:20:49 server01 sshd[6856]: Accepted password for user3 from 10.0.0.36 port 12150 ssh2
+Feb 03 21:20:52 server01 systemd[440]: Disconnected from user1 10.0.0.114 port 27354
+Feb 03 21:20:55 server01 systemd[833]: dhclient[123]: DHCPREQUEST for 192.168.1.247 on eth0 to 192.168.1.1 port 67
+Feb 03 21:20:55 server01 systemd[247]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:21:06 server01 systemd[175]: named[987]: client @0x7f... 192.168.1.230#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:21:12 server01 systemd[134]: systemd: Started Session 860 of user user1.
+Feb 03 21:21:19 server01 systemd[382]: systemd: Started Session 508 of user user4.
+Feb 03 21:21:31 server01 systemd[625]: Disconnected from user4 10.0.0.32 port 10082
+Feb 03 21:21:32 server01 systemd[51]: systemd: Reached target Graphical Interface.
+Feb 03 21:21:35 server01 sshd[5599]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:21:41 server01 systemd[26]: dhclient[123]: DHCPREQUEST for 192.168.1.184 on eth0 to 192.168.1.1 port 67
+Feb 03 21:21:49 server01 sshd[2582]: Accepted publickey for admin from 192.168.1.170 port 20326 ssh2
+Feb 03 21:22:16 server01 systemd[770]: systemd: Started Session 572 of user user2.
+Feb 03 21:22:18 server01 systemd[565]: Disconnected from user5 10.0.0.1 port 8653
+Feb 03 21:22:21 server01 systemd[633]: named[987]: client @0x7f... 192.168.1.174#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:22:25 server01 sshd[5404]: Accepted password for user1 from 10.0.0.34 port 56742 ssh2
+Feb 03 21:22:30 server01 sshd[5195]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:22:33 server01 systemd[70]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:22:52 server01 systemd[999]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:22:55 server01 systemd[317]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:22:59 server01 systemd[379]: systemd: Reached target Graphical Interface.
+Feb 03 21:23:05 server01 systemd[397]: systemd: Reached target Graphical Interface.
+Feb 03 21:23:13 server01 systemd[92]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:23:15 server01 sshd[9088]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:23:18 server01 sshd[6650]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:23:23 server01 sshd[3432]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:23:29 server01 sshd[9348]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:23:32 server01 sshd[5892]: Accepted publickey for admin from 192.168.1.121 port 53988 ssh2
+Feb 03 21:23:34 server01 systemd[620]: Disconnected from user2 10.0.0.105 port 49268
+Feb 03 21:23:52 server01 sshd[8545]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:23:57 server01 systemd[63]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:23:59 server01 systemd[112]: named[987]: client @0x7f... 192.168.1.251#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:24:00 server01 systemd[734]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:24:03 server01 sshd[1695]: Accepted password for user4 from 10.0.0.232 port 53394 ssh2
+Feb 03 21:24:09 server01 sshd[4509]: Accepted password for user3 from 10.0.0.230 port 46255 ssh2
+Feb 03 21:24:10 server01 systemd[944]: dhclient[123]: DHCPACK of 192.168.1.132 from 192.168.1.1
+Feb 03 21:24:10 server01 systemd[957]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:24:18 server01 sshd[2743]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:24:21 server01 systemd[685]: dhclient[123]: DHCPACK of 192.168.1.127 from 192.168.1.1
+Feb 03 21:24:22 server01 sshd[4756]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:24:24 server01 systemd[509]: dhclient[123]: DHCPREQUEST for 192.168.1.173 on eth0 to 192.168.1.1 port 67
+Feb 03 21:24:25 server01 sshd[5167]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:24:31 server01 systemd[56]: systemd: Reached target Graphical Interface.
+Feb 03 21:24:35 server01 systemd[764]: systemd: Reached target Graphical Interface.
+Feb 03 21:24:36 server01 systemd[511]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:24:36 server01 systemd[59]: Disconnected from user4 10.0.0.196 port 44844
+Feb 03 21:24:38 server01 systemd[820]: systemd: Started Session 812 of user user4.
+Feb 03 21:24:41 server01 systemd[197]: Disconnected from user2 10.0.0.106 port 9386
+Feb 03 21:24:49 server01 systemd[67]: dhclient[123]: DHCPREQUEST for 192.168.1.232 on eth0 to 192.168.1.1 port 67
+Feb 03 21:24:54 server01 systemd[62]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:24:54 server01 sshd[1366]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:25:05 server01 systemd[551]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:25:12 server01 systemd[956]: named[987]: client @0x7f... 192.168.1.151#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:25:21 server01 systemd[845]: systemd: Reached target Graphical Interface.
+Feb 03 21:25:21 server01 sshd[1148]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:25:23 server01 sshd[3769]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:25:30 server01 systemd[623]: systemd: Started Session 216 of user user5.
+Feb 03 21:25:34 server01 systemd[518]: dhclient[123]: DHCPACK of 192.168.1.57 from 192.168.1.1
+Feb 03 21:25:38 server01 sshd[5908]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:25:46 server01 systemd[559]: dhclient[123]: DHCPREQUEST for 192.168.1.113 on eth0 to 192.168.1.1 port 67
+Feb 03 21:25:49 server01 systemd[776]: dhclient[123]: DHCPACK of 192.168.1.33 from 192.168.1.1
+Feb 03 21:25:51 server01 systemd[760]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:26:10 server01 sshd[3711]: Accepted password for user5 from 10.0.0.179 port 3194 ssh2
+Feb 03 21:26:12 server01 sshd[4229]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:26:29 server01 systemd[54]: dhclient[123]: DHCPREQUEST for 192.168.1.234 on eth0 to 192.168.1.1 port 67
+Feb 03 21:26:34 server01 systemd[239]: dhclient[123]: DHCPACK of 192.168.1.51 from 192.168.1.1
+Feb 03 21:26:43 server01 sshd[2229]: Accepted password for user3 from 10.0.0.239 port 65145 ssh2
+Feb 03 21:26:51 server01 sshd[2060]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:26:56 server01 systemd[885]: named[987]: client @0x7f... 192.168.1.245#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:27:02 server01 systemd[729]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:27:12 server01 systemd[175]: named[987]: client @0x7f... 192.168.1.42#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:27:24 server01 systemd[258]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:27:25 server01 sshd[5813]: Accepted password for user1 from 10.0.0.21 port 27145 ssh2
+Feb 03 21:27:34 server01 systemd[781]: systemd: Reached target Graphical Interface.
+Feb 03 21:27:38 server01 systemd[283]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:27:43 server01 systemd[635]: Disconnected from user2 10.0.0.42 port 12522
+Feb 03 21:27:43 server01 sshd[2233]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:27:46 server01 systemd[313]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:27:46 server01 systemd[343]: dhclient[123]: DHCPACK of 192.168.1.84 from 192.168.1.1
+Feb 03 21:27:50 server01 systemd[798]: dhclient[123]: DHCPREQUEST for 192.168.1.78 on eth0 to 192.168.1.1 port 67
+Feb 03 21:27:52 server01 systemd[191]: systemd: Reached target Graphical Interface.
+Feb 03 21:27:55 server01 systemd[362]: dhclient[123]: DHCPREQUEST for 192.168.1.238 on eth0 to 192.168.1.1 port 67
+Feb 03 21:27:59 server01 systemd[26]: dhclient[123]: DHCPREQUEST for 192.168.1.173 on eth0 to 192.168.1.1 port 67
+Feb 03 21:28:09 server01 systemd[494]: Disconnected from user2 10.0.0.50 port 50062
+Feb 03 21:28:12 server01 systemd[674]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:28:18 server01 systemd[910]: Disconnected from user1 10.0.0.82 port 44746
+Feb 03 21:28:19 server01 systemd[173]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:28:20 server01 systemd[788]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:28:32 server01 systemd[867]: systemd: Reached target Graphical Interface.
+Feb 03 21:28:35 server01 systemd[29]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:28:43 server01 systemd[870]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:28:46 server01 systemd[649]: named[987]: client @0x7f... 192.168.1.121#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:28:48 server01 sshd[6111]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:28:48 server01 systemd[11]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:28:50 server01 systemd[576]: systemd: Started Session 621 of user user3.
+Feb 03 21:28:52 server01 systemd[385]: systemd: Started Session 792 of user user2.
+Feb 03 21:28:56 server01 sshd[7566]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:29:01 server01 sshd[5493]: Accepted password for user4 from 10.0.0.120 port 8882 ssh2
+Feb 03 21:29:12 server01 sshd[7545]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:29:13 server01 sshd[3569]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:29:18 server01 sshd[8072]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:29:19 server01 systemd[896]: dhclient[123]: DHCPACK of 192.168.1.81 from 192.168.1.1
+Feb 03 21:29:27 server01 sshd[2526]: Accepted publickey for admin from 192.168.1.140 port 19112 ssh2
+Feb 03 21:29:38 server01 sshd[7976]: Accepted password for user5 from 10.0.0.123 port 25613 ssh2
+Feb 03 21:29:39 server01 systemd[239]: Disconnected from user5 10.0.0.228 port 19463
+Feb 03 21:29:45 server01 sshd[8302]: Accepted publickey for admin from 192.168.1.248 port 10693 ssh2
+Feb 03 21:29:47 server01 systemd[286]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:29:47 server01 systemd[538]: systemd: Reached target Graphical Interface.
+Feb 03 21:29:48 server01 systemd[541]: systemd: Reached target Graphical Interface.
+Feb 03 21:29:48 server01 systemd[770]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:30:08 server01 sshd[5034]: Accepted password for user5 from 10.0.0.225 port 9637 ssh2
+Feb 03 21:30:11 server01 systemd[924]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:30:11 server01 systemd[440]: systemd: Reached target Graphical Interface.
+Feb 03 21:30:13 server01 sshd[2678]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:30:33 server01 sshd[8737]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:30:35 server01 systemd[199]: systemd: Reached target Graphical Interface.
+Feb 03 21:30:36 server01 sshd[6426]: Accepted publickey for admin from 192.168.1.79 port 57481 ssh2
+Feb 03 21:30:37 server01 sshd[5893]: Accepted publickey for admin from 192.168.1.190 port 56034 ssh2
+Feb 03 21:30:42 server01 systemd[608]: Disconnected from user1 10.0.0.216 port 30544
+Feb 03 21:30:46 server01 systemd[754]: systemd: Started Session 781 of user user1.
+Feb 03 21:30:47 server01 systemd[95]: named[987]: client @0x7f... 192.168.1.192#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:30:49 server01 systemd[544]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:30:50 server01 systemd[878]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:30:53 server01 sshd[3179]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:30:56 server01 systemd[822]: named[987]: client @0x7f... 192.168.1.60#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:31:13 server01 systemd[193]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:31:13 server01 systemd[199]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:31:16 server01 systemd[585]: dhclient[123]: DHCPREQUEST for 192.168.1.196 on eth0 to 192.168.1.1 port 67
+Feb 03 21:31:21 server01 systemd[314]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:31:23 server01 systemd[873]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:31:27 server01 systemd[840]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:31:29 server01 systemd[149]: systemd: Reached target Graphical Interface.
+Feb 03 21:31:34 server01 systemd[937]: named[987]: client @0x7f... 192.168.1.245#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:31:45 server01 systemd[70]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:31:47 server01 systemd[440]: named[987]: client @0x7f... 192.168.1.145#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:31:49 server01 systemd[177]: named[987]: client @0x7f... 192.168.1.55#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:31:54 server01 systemd[3]: systemd: Reached target Graphical Interface.
+Feb 03 21:31:54 server01 systemd[459]: systemd: Started Session 560 of user user3.
+Feb 03 21:31:56 server01 sshd[1571]: Accepted publickey for admin from 192.168.1.2 port 25209 ssh2
+Feb 03 21:31:57 server01 systemd[728]: systemd: Reached target Graphical Interface.
+Feb 03 21:32:06 server01 systemd[427]: dhclient[123]: DHCPREQUEST for 192.168.1.112 on eth0 to 192.168.1.1 port 67
+Feb 03 21:32:10 server01 systemd[631]: Disconnected from user3 10.0.0.209 port 27507
+Feb 03 21:32:14 server01 systemd[275]: systemd: Reached target Graphical Interface.
+Feb 03 21:32:15 server01 systemd[341]: named[987]: client @0x7f... 192.168.1.82#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:32:18 server01 systemd[14]: named[987]: client @0x7f... 192.168.1.205#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:32:22 server01 systemd[909]: systemd: Started Session 792 of user user1.
+Feb 03 21:32:31 server01 sshd[8455]: Accepted password for user5 from 10.0.0.22 port 37279 ssh2
+Feb 03 21:32:35 server01 systemd[455]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:32:35 server01 sshd[6288]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:32:38 server01 sshd[4730]: Accepted password for user4 from 10.0.0.228 port 26223 ssh2
+Feb 03 21:32:48 server01 systemd[617]: Disconnected from user1 10.0.0.201 port 56325
+Feb 03 21:32:48 server01 systemd[913]: named[987]: client @0x7f... 192.168.1.192#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:32:49 server01 systemd[293]: systemd: Reached target Graphical Interface.
+Feb 03 21:32:52 server01 sshd[2919]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:32:56 server01 sshd[7889]: Accepted password for user3 from 10.0.0.122 port 40072 ssh2
+Feb 03 21:32:57 server01 systemd[71]: systemd: Reached target Graphical Interface.
+Feb 03 21:33:06 server01 systemd[441]: named[987]: client @0x7f... 192.168.1.10#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:33:09 server01 systemd[490]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:33:09 server01 systemd[434]: dhclient[123]: DHCPREQUEST for 192.168.1.189 on eth0 to 192.168.1.1 port 67
+Feb 03 21:33:16 server01 systemd[1]: dhclient[123]: DHCPACK of 192.168.1.142 from 192.168.1.1
+Feb 03 21:33:17 server01 systemd[14]: named[987]: client @0x7f... 192.168.1.118#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:33:20 server01 sshd[8434]: Accepted password for user2 from 10.0.0.25 port 56465 ssh2
+Feb 03 21:33:28 server01 systemd[707]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:33:43 server01 systemd[253]: Disconnected from user5 10.0.0.45 port 30828
+Feb 03 21:33:44 server01 systemd[988]: Disconnected from user2 10.0.0.242 port 54859
+Feb 03 21:33:45 server01 systemd[907]: dhclient[123]: DHCPACK of 192.168.1.86 from 192.168.1.1
+Feb 03 21:33:46 server01 systemd[998]: dhclient[123]: DHCPACK of 192.168.1.135 from 192.168.1.1
+Feb 03 21:33:51 server01 systemd[647]: named[987]: client @0x7f... 192.168.1.180#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:33:52 server01 sshd[6173]: Accepted publickey for admin from 192.168.1.204 port 45575 ssh2
+Feb 03 21:33:55 server01 systemd[921]: systemd: Reached target Graphical Interface.
+Feb 03 21:33:55 server01 systemd[117]: systemd: Reached target Graphical Interface.
+Feb 03 21:34:07 server01 systemd[352]: dhclient[123]: DHCPREQUEST for 192.168.1.14 on eth0 to 192.168.1.1 port 67
+Feb 03 21:34:07 server01 sshd[6129]: Accepted password for user1 from 10.0.0.226 port 4465 ssh2
+Feb 03 21:34:10 server01 systemd[255]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:34:14 server01 systemd[879]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:34:15 server01 systemd[363]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:34:15 server01 systemd[549]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:34:27 server01 systemd[344]: systemd: Reached target Graphical Interface.
+Feb 03 21:34:28 server01 systemd[958]: systemd: Reached target Graphical Interface.
+Feb 03 21:34:37 server01 sshd[6626]: Accepted password for user1 from 10.0.0.243 port 17781 ssh2
+Feb 03 21:34:46 server01 systemd[516]: Disconnected from user3 10.0.0.77 port 37118
+Feb 03 21:34:54 server01 systemd[959]: named[987]: client @0x7f... 192.168.1.121#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:34:55 server01 systemd[754]: Disconnected from user5 10.0.0.192 port 34565
+Feb 03 21:34:57 server01 systemd[165]: dhclient[123]: DHCPACK of 192.168.1.102 from 192.168.1.1
+Feb 03 21:35:07 server01 systemd[799]: named[987]: client @0x7f... 192.168.1.103#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:35:07 server01 systemd[592]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:35:19 server01 systemd[230]: systemd: Reached target Graphical Interface.
+Feb 03 21:35:20 server01 systemd[71]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:35:21 server01 systemd[470]: systemd: Reached target Graphical Interface.
+Feb 03 21:35:30 server01 systemd[517]: dhclient[123]: DHCPACK of 192.168.1.166 from 192.168.1.1
+Feb 03 21:35:42 server01 systemd[683]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:35:59 server01 sshd[7534]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:36:19 server01 systemd[477]: named[987]: client @0x7f... 192.168.1.157#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:36:40 server01 sshd[5970]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:36:42 server01 systemd[144]: systemd: Reached target Graphical Interface.
+Feb 03 21:36:53 server01 systemd[970]: dhclient[123]: DHCPREQUEST for 192.168.1.239 on eth0 to 192.168.1.1 port 67
+Feb 03 21:37:02 server01 systemd[148]: dhclient[123]: DHCPREQUEST for 192.168.1.94 on eth0 to 192.168.1.1 port 67
+Feb 03 21:37:10 server01 systemd[570]: dhclient[123]: DHCPREQUEST for 192.168.1.152 on eth0 to 192.168.1.1 port 67
+Feb 03 21:37:12 server01 systemd[875]: dhclient[123]: DHCPACK of 192.168.1.90 from 192.168.1.1
+Feb 03 21:37:34 server01 systemd[523]: systemd: Started Session 835 of user user4.
+Feb 03 21:37:45 server01 sshd[9841]: Accepted publickey for admin from 192.168.1.191 port 1048 ssh2
+Feb 03 21:37:48 server01 sshd[2609]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:38:07 server01 systemd[113]: dhclient[123]: DHCPACK of 192.168.1.56 from 192.168.1.1
+Feb 03 21:38:10 server01 systemd[493]: dhclient[123]: DHCPREQUEST for 192.168.1.44 on eth0 to 192.168.1.1 port 67
+Feb 03 21:38:10 server01 sshd[1708]: Accepted password for user1 from 10.0.0.216 port 65471 ssh2
+Feb 03 21:38:15 server01 systemd[787]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:38:18 server01 systemd[498]: dhclient[123]: DHCPREQUEST for 192.168.1.63 on eth0 to 192.168.1.1 port 67
+Feb 03 21:38:19 server01 systemd[660]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:38:23 server01 sshd[9978]: Accepted password for user2 from 10.0.0.99 port 2863 ssh2
+Feb 03 21:38:33 server01 systemd[77]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:38:40 server01 systemd[375]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:38:47 server01 sshd[8660]: Accepted publickey for admin from 192.168.1.10 port 15639 ssh2
+Feb 03 21:38:52 server01 systemd[856]: dhclient[123]: DHCPREQUEST for 192.168.1.79 on eth0 to 192.168.1.1 port 67
+Feb 03 21:38:55 server01 sshd[9650]: Accepted publickey for admin from 192.168.1.150 port 45368 ssh2
+Feb 03 21:38:56 server01 sshd[5002]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:39:05 server01 systemd[885]: Disconnected from user3 10.0.0.56 port 26479
+Feb 03 21:39:06 server01 systemd[639]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:39:07 server01 systemd[932]: systemd: Reached target Graphical Interface.
+Feb 03 21:39:11 server01 systemd[614]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:39:12 server01 systemd[889]: dhclient[123]: DHCPREQUEST for 192.168.1.233 on eth0 to 192.168.1.1 port 67
+Feb 03 21:39:17 server01 sshd[5134]: Accepted publickey for admin from 192.168.1.103 port 64194 ssh2
+Feb 03 21:39:19 server01 systemd[438]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:39:20 server01 systemd[806]: dhclient[123]: DHCPACK of 192.168.1.108 from 192.168.1.1
+Feb 03 21:39:21 server01 sshd[5576]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:39:38 server01 systemd[83]: named[987]: client @0x7f... 192.168.1.46#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:39:40 server01 systemd[817]: systemd: Reached target Graphical Interface.
+Feb 03 21:39:41 server01 sshd[9253]: Accepted publickey for admin from 192.168.1.43 port 35206 ssh2
+Feb 03 21:39:41 server01 systemd[318]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:39:45 server01 systemd[172]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:39:52 server01 sshd[1282]: Accepted password for user5 from 10.0.0.121 port 6646 ssh2
+Feb 03 21:39:54 server01 systemd[739]: dhclient[123]: DHCPACK of 192.168.1.139 from 192.168.1.1
+Feb 03 21:40:01 server01 systemd[571]: systemd: Reached target Graphical Interface.
+Feb 03 21:40:04 server01 systemd[800]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:40:06 server01 sshd[9166]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:40:07 server01 systemd[596]: named[987]: client @0x7f... 192.168.1.68#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:40:08 server01 sshd[6869]: Accepted publickey for admin from 192.168.1.143 port 35048 ssh2
+Feb 03 21:40:08 server01 systemd[947]: Disconnected from user5 10.0.0.199 port 7682
+Feb 03 21:40:10 server01 systemd[207]: dhclient[123]: DHCPACK of 192.168.1.185 from 192.168.1.1
+Feb 03 21:40:16 server01 sshd[4872]: Accepted publickey for admin from 192.168.1.39 port 10158 ssh2
+Feb 03 21:40:24 server01 sshd[3341]: Accepted publickey for admin from 192.168.1.28 port 52479 ssh2
+Feb 03 21:40:37 server01 systemd[684]: named[987]: client @0x7f... 192.168.1.110#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:40:38 server01 systemd[533]: Disconnected from user4 10.0.0.6 port 5988
+Feb 03 21:40:45 server01 systemd[33]: named[987]: client @0x7f... 192.168.1.25#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:40:46 server01 sshd[1994]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:40:48 server01 systemd[227]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:40:54 server01 sshd[3492]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:40:55 server01 systemd[192]: systemd: Reached target Graphical Interface.
+Feb 03 21:40:58 server01 systemd[802]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:40:59 server01 systemd[915]: dhclient[123]: DHCPACK of 192.168.1.159 from 192.168.1.1
+Feb 03 21:41:03 server01 sshd[5364]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:41:06 server01 systemd[274]: named[987]: client @0x7f... 192.168.1.212#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:41:10 server01 systemd[951]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:41:24 server01 sshd[5358]: Accepted password for user2 from 10.0.0.227 port 12667 ssh2
+Feb 03 21:41:25 server01 systemd[3]: systemd: Started Session 177 of user user3.
+Feb 03 21:41:38 server01 systemd[669]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:41:42 server01 sshd[8560]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:41:43 server01 sshd[4813]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:41:53 server01 systemd[817]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:41:56 server01 systemd[768]: named[987]: client @0x7f... 192.168.1.254#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:42:15 server01 systemd[40]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:42:22 server01 sshd[3848]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:42:24 server01 systemd[824]: named[987]: client @0x7f... 192.168.1.191#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:42:25 server01 systemd[72]: systemd: Reached target Graphical Interface.
+Feb 03 21:42:26 server01 systemd[712]: named[987]: client @0x7f... 192.168.1.111#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:42:32 server01 systemd[410]: named[987]: client @0x7f... 192.168.1.78#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:42:37 server01 systemd[320]: dhclient[123]: DHCPREQUEST for 192.168.1.236 on eth0 to 192.168.1.1 port 67
+Feb 03 21:42:44 server01 sshd[1490]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:42:48 server01 systemd[992]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:42:58 server01 sshd[4003]: Accepted password for user3 from 10.0.0.225 port 40017 ssh2
+Feb 03 21:43:11 server01 systemd[344]: dhclient[123]: DHCPREQUEST for 192.168.1.146 on eth0 to 192.168.1.1 port 67
+Feb 03 21:43:14 server01 systemd[768]: systemd: Reached target Graphical Interface.
+Feb 03 21:43:16 server01 systemd[452]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:43:17 server01 sshd[5550]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:43:26 server01 sshd[6316]: Accepted password for user1 from 10.0.0.199 port 4383 ssh2
+Feb 03 21:43:26 server01 systemd[690]: systemd: Reached target Graphical Interface.
+Feb 03 21:43:37 server01 systemd[101]: systemd: Reached target Graphical Interface.
+Feb 03 21:43:39 server01 systemd[809]: dhclient[123]: DHCPACK of 192.168.1.60 from 192.168.1.1
+Feb 03 21:43:40 server01 systemd[500]: dhclient[123]: DHCPREQUEST for 192.168.1.40 on eth0 to 192.168.1.1 port 67
+Feb 03 21:43:43 server01 systemd[244]: dhclient[123]: DHCPACK of 192.168.1.6 from 192.168.1.1
+Feb 03 21:43:53 server01 systemd[140]: named[987]: client @0x7f... 192.168.1.83#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:44:04 server01 systemd[640]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:44:07 server01 systemd[54]: Disconnected from user3 10.0.0.23 port 28559
+Feb 03 21:44:10 server01 sshd[7609]: Accepted publickey for admin from 192.168.1.248 port 63789 ssh2
+Feb 03 21:44:19 server01 sshd[2912]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:44:22 server01 systemd[222]: systemd: Reached target Graphical Interface.
+Feb 03 21:44:25 server01 systemd[573]: named[987]: client @0x7f... 192.168.1.48#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:44:26 server01 systemd[534]: dhclient[123]: DHCPACK of 192.168.1.89 from 192.168.1.1
+Feb 03 21:44:28 server01 sshd[8603]: Accepted password for user5 from 10.0.0.214 port 43135 ssh2
+Feb 03 21:44:51 server01 systemd[911]: named[987]: client @0x7f... 192.168.1.238#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:44:59 server01 systemd[186]: dhclient[123]: DHCPREQUEST for 192.168.1.241 on eth0 to 192.168.1.1 port 67
+Feb 03 21:45:04 server01 systemd[1]: systemd: Started Session 204 of user user3.
+Feb 03 21:45:04 server01 sshd[1501]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:45:05 server01 systemd[40]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:45:09 server01 systemd[152]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:45:10 server01 systemd[476]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:45:15 server01 sshd[4318]: Accepted publickey for admin from 192.168.1.204 port 30813 ssh2
+Feb 03 21:45:15 server01 systemd[805]: Disconnected from user2 10.0.0.102 port 59530
+Feb 03 21:45:18 server01 systemd[164]: systemd: Started Session 303 of user user3.
+Feb 03 21:45:27 server01 systemd[937]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:45:32 server01 sshd[2873]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:45:33 server01 systemd[81]: systemd: Started Session 691 of user user1.
+Feb 03 21:45:36 server01 systemd[124]: dhclient[123]: DHCPREQUEST for 192.168.1.43 on eth0 to 192.168.1.1 port 67
+Feb 03 21:45:37 server01 systemd[316]: dhclient[123]: DHCPACK of 192.168.1.94 from 192.168.1.1
+Feb 03 21:45:40 server01 systemd[247]: named[987]: client @0x7f... 192.168.1.67#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:45:44 server01 sshd[3452]: Accepted publickey for admin from 192.168.1.240 port 16412 ssh2
+Feb 03 21:45:47 server01 sshd[8182]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:45:53 server01 systemd[918]: dhclient[123]: DHCPREQUEST for 192.168.1.244 on eth0 to 192.168.1.1 port 67
+Feb 03 21:45:55 server01 systemd[493]: systemd: Reached target Graphical Interface.
+Feb 03 21:46:04 server01 systemd[504]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:46:24 server01 systemd[872]: Disconnected from user1 10.0.0.43 port 7321
+Feb 03 21:46:25 server01 systemd[124]: named[987]: client @0x7f... 192.168.1.83#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:46:29 server01 systemd[189]: named[987]: client @0x7f... 192.168.1.69#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:46:40 server01 sshd[4607]: Accepted publickey for admin from 192.168.1.246 port 15745 ssh2
+Feb 03 21:46:41 server01 systemd[337]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:46:52 server01 sshd[7676]: Accepted publickey for admin from 192.168.1.179 port 16653 ssh2
+Feb 03 21:46:58 server01 systemd[548]: dhclient[123]: DHCPREQUEST for 192.168.1.215 on eth0 to 192.168.1.1 port 67
+Feb 03 21:47:32 server01 systemd[872]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:47:39 server01 systemd[261]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:47:41 server01 sshd[6500]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:47:44 server01 sshd[7432]: pam_unix(sshd:session): session closed for user admin
+Feb 03 21:47:44 server01 systemd[343]: dhclient[123]: DHCPACK of 192.168.1.83 from 192.168.1.1
+Feb 03 21:47:53 server01 systemd[361]: dhclient[123]: DHCPACK of 192.168.1.236 from 192.168.1.1
+Feb 03 21:47:55 server01 systemd[542]: systemd: Reached target Graphical Interface.
+Feb 03 21:48:02 server01 systemd[868]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:48:06 server01 systemd[498]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:48:09 server01 systemd[152]: dhclient[123]: DHCPACK of 192.168.1.153 from 192.168.1.1
+Feb 03 21:48:11 server01 sshd[5550]: Accepted publickey for admin from 192.168.1.160 port 39328 ssh2
+Feb 03 21:48:15 server01 systemd[872]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:48:15 server01 systemd[995]: systemd: Reached target Graphical Interface.
+Feb 03 21:48:29 server01 systemd[998]: CRON[1234]: pam_unix(cron:session): session closed for user root
+Feb 03 21:48:39 server01 systemd[323]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:48:39 server01 sshd[3663]: Accepted publickey for admin from 192.168.1.1 port 40545 ssh2
+Feb 03 21:48:39 server01 sshd[9169]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 03 21:48:42 server01 systemd[243]: dhclient[123]: DHCPACK of 192.168.1.149 from 192.168.1.1
+Feb 03 21:48:44 server01 systemd[255]: CRON[1234]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 03 21:48:44 server01 systemd[728]: kernel: [123456.789012] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+Feb 03 21:48:46 server01 systemd[694]: systemd: Reached target Graphical Interface.
+Feb 03 21:48:49 server01 systemd[898]: dhclient[123]: DHCPACK of 192.168.1.77 from 192.168.1.1
+Feb 03 21:48:52 server01 systemd[899]: named[987]: client @0x7f... 192.168.1.245#54321 (google.com): query: google.com IN A + (192.168.1.1)
+Feb 03 21:48:56 server01 systemd[786]: systemd: Started Session 807 of user user1.
+Feb 03 21:49:11 server01 systemd[321]: systemd: Reached target Graphical Interface.
+Feb 03 21:49:19 server01 systemd[977]: CRON[1234]: pam_unix(cron:session): session closed for user root

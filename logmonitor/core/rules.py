@@ -230,6 +230,129 @@ class ActivitySpikeRule(DetectionRule):
         return None
 
 
+class UnusualLoginTimeRule(DetectionRule):
+    """Detects logins during unusual hours."""
+    
+    def __init__(self, config: Dict[str, Any]):
+        super().__init__('Unusual Login Time', config.get('severity', 'medium'), config)
+        # Format: "HH:MM-HH:MM" (24h)
+        self.unusual_hours = config.get('unusual_hours', ["23:00-05:00"])
+    
+    def check(self, event: Dict[str, Any], context: 'DetectionContext') -> Optional[Dict[str, Any]]:
+        if not self.enabled:
+            return None
+        
+        if event.get('event_type') not in ['ssh_accepted_login', 'ssh_failed_login']:
+            return None
+        
+        event_time = context._get_event_time(event)
+        current_hour = event_time.time()
+        
+        is_unusual = False
+        time_range = ""
+        
+        for window in self.unusual_hours:
+            try:
+                start_str, end_str = window.split('-')
+                start = datetime.strptime(start_str, "%H:%M").time()
+                end = datetime.strptime(end_str, "%H:%M").time()
+                
+                if start <= end:
+                    if start <= current_hour <= end:
+                        is_unusual = True
+                        time_range = window
+                        break
+                else:  # Crosses midnight (e.g. 23:00-05:00)
+                    if current_hour >= start or current_hour <= end:
+                        is_unusual = True
+                        time_range = window
+                        break
+            except ValueError:
+                continue
+        
+        if is_unusual:
+            # Avoid spamming alerts for the same user/IP in the same hour
+            key = f"unusual_time_{event.get('user')}_{event.get('source_ip')}_{event_time.hour}"
+            if context.should_alert(key, 3600, event_time):
+                return self._create_alert(
+                    event,
+                    f"Login attempt during unusual hours ({current_hour.strftime('%H:%M')})",
+                    {
+                        'time': current_hour.strftime('%H:%M'),
+                        'unusual_window': time_range,
+                        'user': event.get('user', 'unknown'),
+                        'source_ip': event.get('source_ip', 'unknown')
+                    }
+                )
+        
+        return None
+
+
+class SudoFailureRule(DetectionRule):
+    """Detects repeated sudo failures."""
+    
+    def __init__(self, config: Dict[str, Any]):
+        super().__init__('Sudo Failure', config.get('severity', 'high'), config)
+        self.threshold = config.get('threshold', 3)
+    
+    def check(self, event: Dict[str, Any], context: 'DetectionContext') -> Optional[Dict[str, Any]]:
+        if not self.enabled:
+            return None
+        
+        if event.get('event_type') != 'sudo_failed':
+            return None
+        
+        user = event.get('user', 'unknown') or event.get('message', '').split(' ')[0]
+        attempts = event.get('attempts', 1)
+        
+        if attempts >= self.threshold:
+            return self._create_alert(
+                event,
+                f"Excessive sudo failures by user {user}",
+                {
+                    'user': user,
+                    'failed_attempts': attempts,
+                    'threshold': self.threshold
+                }
+            )
+        
+        return None
+
+
+class UnknownUserRule(DetectionRule):
+    """Detects login attempts with unknown usernames."""
+    
+    def __init__(self, config: Dict[str, Any]):
+        super().__init__('Unknown User Login', config.get('severity', 'medium'), config)
+    
+    def check(self, event: Dict[str, Any], context: 'DetectionContext') -> Optional[Dict[str, Any]]:
+        if not self.enabled:
+            return None
+        
+        if event.get('event_type') != 'ssh_failed_login':
+            return None
+        
+        raw_msg = event.get('raw', '').lower()
+        if 'invalid user' in raw_msg:
+            user = event.get('user')
+            source_ip = event.get('source_ip')
+            
+            key = f"unknown_user_{user}_{source_ip}"
+            # Alert max once per hour per user/IP combination to avoid flooding from brute force
+            if context.should_alert(key, 3600, context._get_event_time(event)):
+                return self._create_alert(
+                    event,
+                    f"Invalid user login attempt: {user}",
+                    {
+                        'user': user,
+                        'source_ip': source_ip,
+                        'message': 'Attempt to log in with non-existent user'
+                    }
+                )
+        
+        return None
+
+
 class DetectionContext:
     """Shared context for detection rules."""
     

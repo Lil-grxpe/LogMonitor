@@ -140,7 +140,39 @@ def create_app(config=None):
     @app.route('/settings')
     @login_required
     def settings():
-        return render_template('settings.html', config=config.config)
+        message = request.args.get('message')
+        message_type = request.args.get('type', 'info')
+        return render_template('settings.html', config=config.config, message=message, message_type=message_type)
+
+    @app.route('/settings/password', methods=['POST'])
+    @login_required
+    def change_password():
+        current_password = request.form.get('current_password')
+        new_password = request.form.get('new_password')
+        confirm_password = request.form.get('confirm_password')
+        
+        creds_path = config.config_path.parent / 'credentials.yaml'
+        credentials = load_credentials()
+        username = session['user']
+        
+        user_data = credentials.get('users', {}).get(username)
+        
+        if not user_data or user_data.get('password') != current_password:
+            return redirect(url_for('settings', message='Mot de passe actuel incorrect', type='danger'))
+        
+        if new_password != confirm_password:
+            return redirect(url_for('settings', message='Les nouveaux mots de passe ne correspondent pas', type='danger'))
+            
+        if len(new_password) < 8:
+             return redirect(url_for('settings', message='Le mot de passe doit faire au moins 8 caractères', type='danger'))
+
+        # Update password
+        credentials['users'][username]['password'] = new_password
+        
+        with open(creds_path, 'w') as f:
+            yaml.dump(credentials, f)
+            
+        return redirect(url_for('settings', message='Mot de passe mis à jour avec succès', type='success'))
     
     return app
 

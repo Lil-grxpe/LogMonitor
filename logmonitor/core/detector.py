@@ -8,7 +8,10 @@ from .rules import (
     MultipleAccountsRule,
     SuspiciousRootLoginRule,
     SensitiveFileModificationRule,
-    ActivitySpikeRule
+    ActivitySpikeRule,
+    UnusualLoginTimeRule,
+    SudoFailureRule,
+    UnknownUserRule
 )
 
 
@@ -40,6 +43,21 @@ class DetectionEngine:
         
         if 'activity_spike' in detection_config:
             self.rules.append(ActivitySpikeRule(detection_config['activity_spike']))
+        
+        if 'unusual_time' in detection_config:
+            self.rules.append(UnusualLoginTimeRule(detection_config['unusual_time']))
+        else:
+            self.rules.append(UnusualLoginTimeRule({}))  # Enable by default with defaults
+            
+        if 'sudo_failure' in detection_config:
+            self.rules.append(SudoFailureRule(detection_config['sudo_failure']))
+        else:
+             self.rules.append(SudoFailureRule({}))
+             
+        if 'unknown_user' in detection_config:
+            self.rules.append(UnknownUserRule(detection_config['unknown_user']))
+        else:
+            self.rules.append(UnknownUserRule({}))
     
     def register_alert_callback(self, callback: Callable[[Dict[str, Any]], None]):
         self.alert_callbacks.append(callback)

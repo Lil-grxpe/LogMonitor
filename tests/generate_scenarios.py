@@ -128,6 +128,39 @@ def generate_scenario(filename, scenario_type):
                 'proc': f"sshd[{random.randint(1000,9999)}]",
                 'msg': msg
             })
+
+    elif scenario_type == "unusual_time":
+        # Generate logs at 3 AM
+        unusual_time = current_time.replace(hour=3, minute=0, second=0)
+        user = "admin"
+        logs.append({
+            'time': unusual_time,
+            'host': 'server01',
+            'proc': f"sshd[{random.randint(1000,9999)}]",
+            'msg': f"Accepted password for {user} from 192.168.1.50 port {random.randint(40000,50000)} ssh2"
+        })
+
+    elif scenario_type == "sudo_failure":
+        user = "bob"
+        # 5 consecutive sudo failures
+        for i in range(5):
+            logs.append({
+                'time': attack_time + timedelta(seconds=i*2),
+                'host': 'workstation',
+                'proc': "sudo",
+                'msg': f"{user} : 3 incorrect password attempts ; TTY=pts/0 ; PWD=/home/{user} ; USER=root ; COMMAND=/bin/bash"
+            })
+
+    elif scenario_type == "unknown_user":
+        attacker_ip = "10.0.0.66"
+        for i in range(5):
+            user = f"user{i}"
+            logs.append({
+                'time': attack_time + timedelta(seconds=i*5),
+                'host': 'server01',
+                'proc': f"sshd[{random.randint(20000, 29999)}]",
+                'msg': f"Failed password for invalid user {user} from {attacker_ip} port {random.randint(40000,50000)} ssh2"
+            })
             
     # Trier par temps
     logs.sort(key=lambda x: x['time'])
@@ -148,7 +181,11 @@ def main():
         ("03_suspicious_root_login.log", "suspicious_root"),
         ("04_sensitive_file_modification.log", "sensitive_file"),
         ("05_activity_spike.log", "activity_spike"),
-        ("06_normal_activity.log", "normal") # Just background noise
+        ("05_activity_spike.log", "activity_spike"),
+        ("06_unusual_time.log", "unusual_time"),
+        ("07_sudo_failure.log", "sudo_failure"),
+        ("08_unknown_user.log", "unknown_user"),
+        ("09_normal_activity.log", "normal") # Just background noise
     ]
     
     for filename, type in scenarios:

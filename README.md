@@ -1,147 +1,108 @@
-# LogMonitor 🛡️
+# LogMonitor
 
-**Outil de surveillance et d'analyse de logs pour systèmes Linux**
+Linux log monitoring and security analysis tool.
 
-![License](https://img.shields.io/badge/license-Academic-blue.svg)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![Status](https://img.shields.io/badge/status-Stable-green)
+## Features
 
-## 📋 Description
+- **Real-time & Batch Detection** - Analyze logs instantly (daemon) or retrospectively
+- **Security Rules** - Brute force SSH, multiple accounts attack, root logins, sensitive file access, activity spikes
+- **Web Dashboard** - Visualize alerts, statistics, and generate reports
+- **PDF/CSV Reports** - Automated incident reports
+- **SQLite Storage** - Local, privacy-focused database
 
-**LogMonitor** est une solution de sécurité légère et performante conçue pour surveiller, analyser et visualiser les journaux systèmes (logs) Linux. Elle permet de détecter automatiquement les tentatives d'intrusion (Bruteforce SSH, accès Root, etc.) sans la complexité d'un SIEM.
+## Quick Start
 
-Idéal pour les administrateurs systèmes et les équipes de sécurité souhaitant une visibilité rapide et claire sur l'état de leurs serveurs.
-
-## 🚀 Fonctionnalités Clés
-
-*   **🕵️ Détection en Temps Réel & Batch** : Analyse instantanée via daemon ou rétroactive sur fichiers.
-*   **🚨 Règles de Sécurité Avancées** :
-    *   Bruteforce SSH (avec seuil configurable)
-    *   Attaques sur comptes multiples
-    *   Connexions Root suspectes
-    *   Modification de fichiers critiques (`/etc/passwd`, `/etc/shadow`, etc.)
-    *   Pics d'activité anormaux
-*   **🌐 Dashboard Web Moderne** : Interface responsive, graphiques temps réel, alertes critiques.
-*   **📊 Rapports Automatisés** : Génération PDF/CSV des incidents.
-*   **💾 Base de Données Locale** : Persistance SQLite performante et respectueuse de la vie privée.
-
----
-
-## 📦 Installation Rapide
-
-**Note** : Testé sur Linux (Ubuntu/Debian/Kali). Nécessite Python 3.10+.
-
-1.  **Cloner le dépôt** :
-    ```bash
-    git clone https://github.com/votre-repo/logmonitor.git
-    cd logmonitor
-    ```
-
-2.  **Lancer le script d'installation** :
-    ```bash
-    ./install.sh
-    ```
-    *Ce script crée un environnement virtuel, installe les dépendances et configure l'outil.*
-
-3.  **Activer l'environnement** :
-    ```bash
-    source venv/bin/activate
-    ```
-
-C'est tout ! 🎉
-
----
-
-## 🛠️ Guide d'Utilisation
-
-### 1. 🖥️ Interface en Ligne de Commande (CLI)
-
-LogMonitor s'utilise principalement via la commande `logmonitor`.
-
-#### **Scanner un fichier de logs**
-Pour analyser un fichier spécifique (détection automatique du format Auth/Syslog) :
 ```bash
+# Clone and install
+git clone https://github.com/Lil-grxpe/LogMonitor.git
+cd LogMonitor
+pip install -r requirements.txt
+pip install -e .
+
+# Scan a log file
 logmonitor scan -f /var/log/auth.log
-# Ou pour tester avec nos fichiers de démo :
-logmonitor scan -f tests/test_logs/01_bruteforce_ssh.log
-```
 
-#### **Gérer la Base de Données**
-Voir les alertes détectées :
-```bash
+# View detected alerts
 logmonitor alerts list
-```
-Nettoyer la base de données (logs et alertes) :
-```bash
-logmonitor clean
-# Pour forcer sans confirmation :
-logmonitor clean --force
-```
 
-#### **Générer un Rapport**
-Créer un rapport PDF des dernières activités :
-```bash
-logmonitor report generate
-```
-
-### 2. 🌐 Dashboard Web
-
-Pour visualiser les alertes graphiquement :
-
-```bash
-# Lancer le serveur web
+# Launch web dashboard
 logmonitor web
-```
-*   Accédez à **http://localhost:5000**
-*   **Login par défaut** : `admin` / `logmonitor123` (Configurable dans config/credentials.yaml)
-
-**Nouveau : Mode Daemon**
-Pour lancer le web en tâche de fond :
-```bash
-logmonitor web --daemon
-# Pour l'arrêter :
-logmonitor web --stop
+# Access: http://localhost:5000
+# Default login: admin / admin
 ```
 
----
+## Usage
 
-## 🧪 Tests & Démonstration
+### CLI Commands
 
-Le projet est fourni avec un générateur de scénarios pour valider le fonctionnement.
-
-**Générer des logs de test :**
 ```bash
-python3 tests/generate_scenarios.py
-```
-Cela crée 6 fichiers dans `tests/test_logs/` simulant diverses attaques.
+# Scan log file
+logmonitor scan -f /path/to/logfile
 
-**Lancer une validation complète :**
-```bash
-# Nettoie la DB et scanne tous les fichiers de test
+# List alerts (filter by severity)
+logmonitor alerts list --severity critical
+
+# Generate reports
+logmonitor report generate --format pdf
+logmonitor report generate --format csv
+
+# Clear database
 logmonitor clean --force
-for f in tests/test_logs/*.log; do logmonitor scan -f $f; done
-logmonitor alerts list
 ```
 
+### Daemon Mode
+
+```bash
+# Start background monitoring
+logmonitor start
+
+# Check status
+logmonitor status
+
+# Stop daemon
+logmonitor stop
+```
+
+### Web Dashboard
+
+```bash
+# Foreground mode
+logmonitor web --port 5000
+
+# Background mode
+logmonitor web --daemon
+```
+
+## Configuration
+
+Edit `config/logmonitor.yaml`:
+
+```yaml
+logs:
+  auto_detect: true  # Auto-detect based on Linux distro
+  paths:
+    - /var/log/auth.log  # Debian/Ubuntu
+    # - /var/log/secure  # RHEL/CentOS
+  mode: streaming
+
+detection:
+  bruteforce_ssh:
+    enabled: true
+    threshold: 5
+    time_window: 300
+```
+
+## Supported Distributions
+
+| Distribution | Log Paths |
+|--------------|-----------|
+| Debian/Ubuntu | /var/log/auth.log, /var/log/syslog |
+| RHEL/CentOS/Fedora | /var/log/secure, /var/log/messages |
+| Kali/Arch | journald (use export script) |
+
+## Project Team
+
+Academic project - ESGIS 2026
+
 ---
-
-## ⚙️ Configuration
-
-Tout est configurable dans `config/logmonitor.yaml` :
-*   Chemins des logs à surveiller (`/var/log/...` ou `journalctl`)
-*   Seuils de détection (nombre d'essais, fenêtres de temps)
-*   Niveaux de sévérité
-*   Ports et IPs autorisées
-
-## 👥 Équipe Projet
-
-*Projet académique - École Supérieure de Gestion d'Informatique et de Sciences*
-
-*   **AGUESSI Melkior** (Collecte)
-*   **HOUNTONDJI Sophie** (Détection)
-*   **BATONON Darwin** (Persistance)
-*   **AIHOU Consylia** (CLI)
-*   **DADAVI Camel** (Web & Rapports)
-
----
-© 2026 LogMonitor Team.
+© 2026 LogMonitor Team

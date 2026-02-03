@@ -43,6 +43,10 @@ class AuthLogNormalizer(LogNormalizer):
             r'(\w+\s+\d+\s+\d+:\d+:\d+)\s+(\S+)\s+sudo(?:\[\d+\])?: '
             r'(\S+) : TTY=(\S+) ; PWD=(\S+) ; USER=(\S+) ; COMMAND=(.+)'
         ),
+        'sudo_failed': re.compile(
+            r'(\w+\s+\d+\s+\d+:\d+:\d+)\s+(\S+)\s+sudo(?:\[\d+\])?: '
+            r'(?:.+ : )?(\d+) incorrect password attempts'
+        ),
         'generic': re.compile(
             r'(\w+\s+\d+\s+\d+:\d+:\d+)\s+(\S+)\s+(\S+)(?:\[\d+\])?: (.+)'
         )
@@ -107,6 +111,19 @@ class AuthLogNormalizer(LogNormalizer):
                 'user': user,
                 'target_user': target_user,
                 'command': command,
+                'raw': raw_line
+            }
+        
+        elif pattern_name == 'sudo_failed':
+            timestamp, hostname, attempts = match.groups()
+            return {
+                'timestamp': self._extract_timestamp(timestamp),
+                'hostname': hostname,
+                'service': 'sudo',
+                'level': 'warning',
+                'event_type': 'sudo_failed',
+                'message': f'Sudo authentication failed ({attempts} attempts)',
+                'attempts': int(attempts),
                 'raw': raw_line
             }
         
