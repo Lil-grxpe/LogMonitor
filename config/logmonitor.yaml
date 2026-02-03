@@ -1,16 +1,17 @@
-# Configuration par défaut de LogMonitor
-# Conforme au cahier des charges
+# LogMonitor Configuration
 
-# Chemins des fichiers de logs à surveiller
 logs:
+  # Auto-detect log paths based on Linux distribution
+  auto_detect: true
+  
   paths:
-    # Note: Sur Kali Linux, utilisez journalctl pour exporter les logs
-    # Exemple: journalctl -u ssh > /tmp/auth.log
-    # - /var/log/auth.log  # N'existe pas sur Kali par défaut
-    # - /var/log/syslog    # N'existe pas sur Kali par défaut
-    # Utilisez le fichier de test pour la démo:
+    # Auto-detected paths (based on distro):
+    # - Debian/Ubuntu: /var/log/auth.log, /var/log/syslog
+    # - RHEL/CentOS/Fedora: /var/log/secure, /var/log/messages
+    # - Kali/Arch: uses journald (run scripts/export_systemd_logs.sh)
+    # Test file:
     - tests/authlog_test.log
-  # Mode de surveillance : batch (analyse complète) ou streaming (temps réel)
+  
   mode: streaming
 
 # Configuration du moteur de détection (F2)

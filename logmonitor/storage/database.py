@@ -1,15 +1,14 @@
-"""
-Module de gestion de base de données
-"""
+"""SQLite database module for logs and alerts storage."""
 
 import sqlite3
 import json
+import hashlib
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 
 class LogDatabase:
-    """Gestionnaire de base de données SQLite pour LogMonitor"""
+    """SQLite database interface for logs and alerts."""
     
     def __init__(self, db_path: str):
         self.db_path = Path(db_path)
@@ -19,12 +18,10 @@ class LogDatabase:
         self._create_tables()
     
     def _connect(self):
-        """Établit la connexion à la base de données"""
         self.conn = sqlite3.connect(str(self.db_path), check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
     
     def _create_tables(self):
-        """Crée les tables si elles n'existent pas"""
         cursor = self.conn.cursor()
         
         cursor.execute('''
@@ -52,7 +49,7 @@ class LogDatabase:
                 description TEXT,
                 acknowledged INTEGER DEFAULT 0,
                 event_data TEXT,
-                evidence_data TEXT,
+                evidence_hash TEXT,
                 created_at TEXT DEFAULT CURRENT_TIMESTAMP
             )
         ''')
@@ -61,8 +58,8 @@ class LogDatabase:
             CREATE TABLE IF NOT EXISTS evidence (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 alert_id INTEGER,
-                file_hash TEXT,
-                raw_logs TEXT,
+                file_path TEXT NOT NULL,
+                file_hash TEXT NOT NULL,
                 created_at TEXT DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (alert_id) REFERENCES alerts(id)
             )
@@ -76,7 +73,6 @@ class LogDatabase:
         self.conn.commit()
     
     def insert_log(self, log_event: Dict[str, Any]) -> int:
-        """Insère un événement de log"""
         cursor = self.conn.cursor()
         
         cursor.execute('''
@@ -99,12 +95,11 @@ class LogDatabase:
         return cursor.lastrowid
     
     def insert_alert(self, alert: Dict[str, Any]) -> int:
-        """Insère une alerte"""
         cursor = self.conn.cursor()
         
         cursor.execute('''
             INSERT INTO alerts (timestamp, rule_name, severity, description,
-                              event_data, evidence_data)
+                              event_data, evidence_hash)
             VALUES (?, ?, ?, ?, ?, ?)
         ''', (
             alert.get('timestamp'),
@@ -112,14 +107,61 @@ class LogDatabase:
             alert.get('severity'),
             alert.get('description'),
             json.dumps(alert.get('event', {}), default=str),
-            json.dumps(alert.get('evidence', {}), default=str)
+            alert.get('evidence_hash', '')
         ))
         
         self.conn.commit()
         return cursor.lastrowid
     
+    def store_evidence(self, alert_id: int, alert_data: Dict[str, Any]) -> str:
+        evidence_dir = self.db_path.parent / "evidence"
+        evidence_dir.mkdir(parents=True, exist_ok=True)
+        
+        timestamp_str = datetime.now().strftime("%Y%m%d%H%M%S%f")
+        filename = f"alert_{alert_id}_{timestamp_str}.json"
+        filepath = evidence_dir / filename
+        
+        alert_json_data = json.dumps(alert_data, indent=4, default=str)
+        file_hash = hashlib.sha256(alert_json_data.encode('utf-8')).hexdigest()
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(alert_json_data)
+            
+        cursor = self.conn.cursor()
+        cursor.execute('''
+            INSERT INTO evidence (alert_id, file_path, file_hash)
+            VALUES (?, ?, ?)
+        ''', (alert_id, str(filepath), file_hash))
+        
+        cursor.execute('''
+            UPDATE alerts
+            SET evidence_hash = ?
+            WHERE id = ?
+        ''', (file_hash, alert_id))
+        
+        self.conn.commit()
+        return file_hash
+
+    def verify_evidence(self, filepath: str) -> bool:
+        filepath_obj = Path(filepath)
+        if not filepath_obj.exists():
+            return False
+
+        with open(filepath_obj, 'r', encoding='utf-8') as f:
+            current_data = f.read()
+        
+        current_hash = hashlib.sha256(current_data.encode('utf-8')).hexdigest()
+        
+        cursor = self.conn.cursor()
+        cursor.execute('SELECT file_hash FROM evidence WHERE file_path = ?', (filepath,))
+        result = cursor.fetchone()
+        
+        if result:
+            original_hash = result['file_hash']
+            return current_hash == original_hash
+        return False
+    
     def get_recent_alerts(self, limit: int = 100, severity: Optional[str] = None) -> List[Dict]:
-        """Récupère les alertes récentes"""
         cursor = self.conn.cursor()
         
         if severity:
@@ -139,7 +181,6 @@ class LogDatabase:
         return [dict(row) for row in cursor.fetchall()]
     
     def get_alerts_by_date_range(self, start_date: str, end_date: str) -> List[Dict]:
-        """Récupère les alertes dans une plage de dates"""
         cursor = self.conn.cursor()
         
         cursor.execute('''
@@ -151,7 +192,6 @@ class LogDatabase:
         return [dict(row) for row in cursor.fetchall()]
     
     def get_statistics(self) -> Dict[str, Any]:
-        """Récupère des statistiques sur la base de données"""
         cursor = self.conn.cursor()
         
         cursor.execute('SELECT COUNT(*) as count FROM logs')
@@ -185,7 +225,6 @@ class LogDatabase:
         }
     
     def acknowledge_alert(self, alert_id: int):
-        """Marque une alerte comme acquittée"""
         cursor = self.conn.cursor()
         cursor.execute('''
             UPDATE alerts 
@@ -195,14 +234,12 @@ class LogDatabase:
         self.conn.commit()
 
     def clear_all(self):
-        """Supprime toutes les données (logs et alertes)"""
         cursor = self.conn.cursor()
         cursor.execute('DELETE FROM logs')
         cursor.execute('DELETE FROM alerts')
         self.conn.commit()
     
     def close(self):
-        """Ferme la connexion"""
         if self.conn:
             self.conn.close()
     

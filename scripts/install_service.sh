@@ -41,6 +41,12 @@ cp requirements.txt "$INSTALL_DIR/"
 cp setup.py "$INSTALL_DIR/"
 cp README.md "$INSTALL_DIR/"
 
+# Gérer credentials.yaml si manquant
+if [ ! -f "$INSTALL_DIR/config/credentials.yaml" ] && [ -f "$INSTALL_DIR/config/credentials.yaml.template" ]; then
+    echo "[*] Génération de credentials.yaml depuis le modèle..."
+    cp "$INSTALL_DIR/config/credentials.yaml.template" "$INSTALL_DIR/config/credentials.yaml"
+fi
+
 echo "[*] Configuration de l'environnement Python..."
 cd "$INSTALL_DIR"
 

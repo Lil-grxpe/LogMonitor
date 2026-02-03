@@ -1,6 +1,4 @@
-"""
-Module CLI pour LogMonitor
-"""
+"""CLI interface for LogMonitor."""
 
 import click
 import sys
@@ -11,74 +9,74 @@ from logmonitor.utils.config import get_config
 @click.group()
 @click.version_option(version='0.1.0', prog_name='LogMonitor')
 def cli():
-    """LogMonitor - Surveillance et analyse de logs Linux"""
+    """LogMonitor - Linux log monitoring and security analysis tool."""
     pass
 
 @cli.command()
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
+@click.option('--config', '-c', help='Path to config file')
 def start(config):
-    """Démarre le daemon LogMonitor en arrière-plan"""
+    """Start the LogMonitor daemon."""
     try:
         from logmonitor.utils.daemon import LogMonitorDaemon
         cfg = get_config(config)
         daemon = LogMonitorDaemon(cfg)
         
         if daemon.is_running():
-            click.echo("[!] Le daemon est déjà en cours d'exécution")
+            click.echo("[!] Daemon is already running")
             sys.exit(1)
         
-        click.echo("[*] Démarrage du daemon LogMonitor...")
+        click.echo("[*] Starting LogMonitor daemon...")
         daemon.start()
-        click.echo(f"[+] Daemon démarré (PID: {daemon.get_pid()})")
+        click.echo(f"[+] Daemon started (PID: {daemon.get_pid()})")
         
     except Exception as e:
-        click.echo(f"[-] Erreur: {e}", err=True)
+        click.echo(f"[-] Error: {e}", err=True)
         sys.exit(1)
 
 @cli.command()
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
+@click.option('--config', '-c', help='Path to config file')
 def stop(config):
-    """Arrête le daemon LogMonitor"""
+    """Stop the LogMonitor daemon."""
     try:
         from logmonitor.utils.daemon import LogMonitorDaemon
         cfg = get_config(config)
         daemon = LogMonitorDaemon(cfg)
         
         if not daemon.is_running():
-            click.echo("[!] Le daemon n'est pas en cours d'exécution")
+            click.echo("[!] Daemon is not running")
             sys.exit(1)
         
-        click.echo("[*] Arrêt du daemon...")
+        click.echo("[*] Stopping daemon...")
         daemon.stop()
-        click.echo("[+] Daemon arrêté")
+        click.echo("[+] Daemon stopped")
         
     except Exception as e:
-        click.echo(f"[-] Erreur: {e}", err=True)
+        click.echo(f"[-] Error: {e}", err=True)
         sys.exit(1)
 
 @cli.command()
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
+@click.option('--config', '-c', help='Path to config file')
 def status(config):
-    """Affiche le statut du daemon"""
+    """Show daemon status."""
     try:
         from logmonitor.utils.daemon import LogMonitorDaemon
         cfg = get_config(config)
         daemon = LogMonitorDaemon(cfg)
         
         if daemon.is_running():
-            click.echo(f"[+] Le daemon est en cours d'exécution (PID: {daemon.get_pid()})")
+            click.echo(f"[+] Daemon is running (PID: {daemon.get_pid()})")
         else:
-            click.echo("[-] Le daemon n'est pas en cours d'exécution")
+            click.echo("[-] Daemon is not running")
             
     except Exception as e:
-        click.echo(f"[-] Erreur: {e}", err=True)
+        click.echo(f"[-] Error: {e}", err=True)
         sys.exit(1)
 
 @cli.command()
-@click.option('--file', '-f', required=True, help='Fichier de log à scanner')
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
+@click.option('--file', '-f', required=True, help='Log file to analyze')
+@click.option('--config', '-c', help='Path to config file')
 def scan(file, config):
-    """Scanne un fichier de log et détecte les anomalies"""
+    """Analyze a log file (one-shot scan)."""
     try:
         from logmonitor.core.collector import create_collector
         from logmonitor.core.normalizer import create_normalizer
@@ -89,15 +87,12 @@ def scan(file, config):
         log_file = Path(file)
         
         if not log_file.exists():
-            click.echo(f"[-] Fichier non trouvé: {file}", err=True)
+            click.echo(f"[-] File not found: {file}", err=True)
             sys.exit(1)
         
-        click.echo(f"[*] Scan du fichier: {file}")
-        # Initialiser les composants
+        click.echo(f"[*] Scanning: {file}")
         collector = create_collector(str(log_file))
         
-        # Détermination du type de normaliseur
-        # On utilise AuthLogNormalizer pour les fichiers contenant 'auth', 'ssh', etc.
         filename = str(log_file).lower()
         auth_keywords = ['auth', 'ssh', 'login', 'account', 'root', 'modification']
         norm_type = 'auth' if any(k in filename for k in auth_keywords) else 'syslog'
@@ -106,7 +101,7 @@ def scan(file, config):
         detector = DetectionEngine(cfg)
         db = LogDatabase(cfg.get('storage.database', 'data/logmonitor.db'))
         
-        click.echo(f"[*] Mode de normalisation: {norm_type.upper()}")
+        click.echo(f"[*] Normalizer: {norm_type.upper()}")
         
         BATCH_SIZE = 1000
         batch_logs = []
@@ -115,7 +110,7 @@ def scan(file, config):
         
         iterator = collector.collect_batch()
         
-        with click.progressbar(iterator, label='Traitement des logs', show_pos=True) as bar:
+        with click.progressbar(iterator, label='Processing', show_pos=True) as bar:
             for raw in bar:
                 norm = normalizer.normalize(raw)
                 if norm:
@@ -140,25 +135,25 @@ def scan(file, config):
                     db.insert_alert(alert)
                     total_alerts += 1
         
-        click.echo(f"\n[+] Scan terminé: {total_logs} logs analysés")
-        click.echo(f"[+] {total_alerts} alertes détectées")
+        click.echo(f"\n[+] Scan complete: {total_logs} logs analyzed")
+        click.echo(f"[+] {total_alerts} alerts detected")
         db.close()
         
     except Exception as e:
-        click.echo(f"[-] Erreur: {e}", err=True)
+        click.echo(f"[-] Error: {e}", err=True)
         sys.exit(1)
 
 @cli.group()
 def alerts():
-    """Gestion des alertes"""
+    """Alert management."""
     pass
 
 @alerts.command('list')
-@click.option('--severity', '-s', help='Filtrer par sévérité')
-@click.option('--limit', '-l', default=50, help='Nombre d\'alertes à afficher')
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
+@click.option('--severity', '-s', help='Filter by severity')
+@click.option('--limit', '-l', default=50, help='Number of alerts to show')
+@click.option('--config', '-c', help='Path to config file')
 def alerts_list(severity, limit, config):
-    """Liste les alertes"""
+    """List recent alerts."""
     try:
         from logmonitor.storage.database import LogDatabase
         cfg = get_config(config)
@@ -167,10 +162,10 @@ def alerts_list(severity, limit, config):
         alerts = db.get_recent_alerts(limit=limit, severity=severity)
         
         if not alerts:
-            click.echo("[!] Aucune alerte trouvée")
+            click.echo("[!] No alerts found")
             sys.exit(0)
         
-        click.echo(f"\n[+] {len(alerts)} alertes trouvées:\n")
+        click.echo(f"\n[+] {len(alerts)} alerts found:\n")
         
         for alert in alerts:
             severity_color = {
@@ -182,25 +177,25 @@ def alerts_list(severity, limit, config):
             click.echo(f"  Timestamp: {alert['timestamp']}")
             click.echo(f"  Description: {alert['description']}")
             if alert.get('source_ip'):
-                click.echo(f"  IP source: {alert['source_ip']}")
+                click.echo(f"  Source IP: {alert['source_ip']}")
             click.echo()
         
         db.close()
     except Exception as e:
-        click.echo(f"[-] Erreur: {e}", err=True)
+        click.echo(f"[-] Error: {e}", err=True)
         sys.exit(1)
 
 @cli.group()
 def report():
-    """Génération de rapports"""
+    """Report generation."""
     pass
 
 @report.command('generate')
-@click.option('--format', '-f', default='pdf', type=click.Choice(['pdf', 'csv']), help='Format du rapport')
-@click.option('--output', '-o', help='Fichier de sortie')
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
+@click.option('--format', '-f', default='pdf', type=click.Choice(['pdf', 'csv']), help='Report format')
+@click.option('--output', '-o', help='Output file')
+@click.option('--config', '-c', help='Path to config file')
 def report_generate(format, output, config):
-    """Génère un rapport d'analyse"""
+    """Generate an analysis report."""
     try:
         from logmonitor.reporting.generator import ReportGenerator
         from datetime import datetime
@@ -208,34 +203,34 @@ def report_generate(format, output, config):
         cfg = get_config(config)
         generator = ReportGenerator(cfg)
         
-        click.echo(f"[*] Génération du rapport {format.upper()}...")
+        click.echo(f"[*] Generating {format.upper()} report...")
         
         if not output:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             output = f"reports/report_{timestamp}.{format}"
         
         report_path = generator.generate_report(output_file=output, report_format=format)
-        click.echo(f"[+] Rapport généré: {report_path}")
+        click.echo(f"[+] Report generated: {report_path}")
         
     except Exception as e:
-        click.echo(f"[-] Erreur: {e}", err=True)
+        click.echo(f"[-] Error: {e}", err=True)
         sys.exit(1)
 
 @cli.group()
 def config():
-    """Gestion de la configuration"""
+    """Configuration management."""
     pass
 
 @cli.command()
-@click.option('--force', is_flag=True, help="Ne demande pas confirmation")
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
+@click.option('--force', is_flag=True, help="Skip confirmation")
+@click.option('--config', '-c', help='Path to config file')
 @click.pass_context
 def clean(ctx, force, config):
-    """Vide la base de données (logs et alertes)"""
+    """Clear database (logs and alerts)."""
     cfg = get_config(config)
     
     if not force:
-        if not click.confirm("Attention: Cela va supprimer TOUS les logs et alertes. Continuer ?"):
+        if not click.confirm("This will delete ALL logs and alerts. Continue?"):
             return
     
     try:
@@ -244,29 +239,29 @@ def clean(ctx, force, config):
         db = LogDatabase(db_path)
         db.clear_all()
         db.close()
-        click.echo("[+] Base de données nettoyée avec succès")
+        click.echo("[+] Database cleared")
     except Exception as e:
-        click.echo(f"[-] Erreur: {e}", err=True)
+        click.echo(f"[-] Error: {e}", err=True)
 
 @cli.command()
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
+@click.option('--config', '-c', help='Path to config file')
 def config_validate(config):
-    """Valide le fichier de configuration"""
+    """Validate config file."""
     try:
         cfg = get_config(config)
-        click.echo(f"[+] Configuration valide: {cfg.config_path}")
-        click.echo(f"    - Base de données: {cfg.get('storage.database')}")
+        click.echo(f"[+] Config valid: {cfg.config_path}")
+        click.echo(f"    - Database: {cfg.get('storage.database')}")
     except Exception as e:
-        click.echo(f"[-] Erreur: {e}", err=True)
+        click.echo(f"[-] Error: {e}", err=True)
         sys.exit(1)
 
 @cli.command()
-@click.option('--port', '-p', default=5000, help='Port du serveur web')
-@click.option('--host', '-h', default='127.0.0.1', help='Hôte du serveur web')
-@click.option('--config', '-c', help='Chemin vers le fichier de configuration')
-@click.option('--daemon', '-d', is_flag=True, help='Lancer en arrière-plan')
+@click.option('--port', '-p', default=5000, help='Web server port')
+@click.option('--host', '-h', default='127.0.0.1', help='Web server host')
+@click.option('--config', '-c', help='Path to config file')
+@click.option('--daemon', '-d', is_flag=True, help='Run in background')
 def web(port, host, config, daemon):
-    """Lance le dashboard web"""
+    """Launch web dashboard."""
     if daemon:
         import subprocess
         
@@ -280,7 +275,7 @@ def web(port, host, config, daemon):
         if config:
             cmd.extend(["--config", config])
         
-        click.echo(f"Lancement du dashboard en arrière-plan sur http://{host}:{port}...")
+        click.echo(f"Starting dashboard at http://{host}:{port}...")
         
         try:
             with open(stdout_log, 'w') as out, open(stderr_log, 'w') as err:
@@ -288,25 +283,22 @@ def web(port, host, config, daemon):
                 with open(pid_file, 'w') as f:
                     f.write(str(process.pid))
             
-            click.echo(f"[+] Dashboard lancé (PID: {process.pid})")
+            click.echo(f"[+] Dashboard started (PID: {process.pid})")
             click.echo(f"[+] Logs: {stdout_log}")
             sys.exit(0)
         except Exception as e:
-            click.echo(f"[-] Erreur: {e}", err=True)
+            click.echo(f"[-] Error: {e}", err=True)
             sys.exit(1)
             
-    click.echo(f"Démarrage du dashboard web sur http://{host}:{port}...")
+    click.echo(f"Starting dashboard at http://{host}:{port}...")
     try:
         from logmonitor.web.app import create_app
         cfg = get_config(config)
         app = create_app(cfg)
         app.run(host=host, port=port, debug=False, use_reloader=False, threaded=True)
     except Exception as e:
-        click.echo(f"Erreur: {e}", err=True)
+        click.echo(f"Error: {e}", err=True)
         sys.exit(1)
-
-if __name__ == '__main__':
-    cli()
 
 if __name__ == '__main__':
     cli()

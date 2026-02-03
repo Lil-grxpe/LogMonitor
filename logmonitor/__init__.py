@@ -1,6 +1,4 @@
-"""
-LogMonitor - Outil de surveillance et d'analyse de logs pour systèmes Linux
-"""
+"""LogMonitor - Linux log monitoring and security analysis tool."""
 
 __version__ = "0.1.0"
-__author__ = "Équipe LogMonitor (AGUESSI, AIHOU, BATONON, DADAVI, HOUNTONDJI)"
+__author__ = "LogMonitor Team"

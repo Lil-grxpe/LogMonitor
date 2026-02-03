@@ -1,77 +1,45 @@
-"""
-Module de génération unifiée de rapports
-"""
-import os
-from typing import Dict, Any, Optional
+"""Report generation facade."""
+
 from pathlib import Path
-from logmonitor.storage.database import LogDatabase
-from logmonitor.reporting.pdf_generator import PDFReportGenerator
-from logmonitor.reporting.csv_exporter import CSVExporter
-import json
+from datetime import datetime
+from typing import Optional
+from .pdf_generator import PDFReportGenerator
+from .csv_exporter import CSVExporter
+
 
 class ReportGenerator:
-    """Générateur principal de rapports (Façade)"""
+    """Unified report generation interface."""
     
     def __init__(self, config):
-        """
-        Initialise le générateur
-        
-        Args:
-            config: Configuration de l'application
-        """
         self.config = config
-        self.db_path = config.get('storage.database', 'data/logmonitor.db')
+        self.output_dir = Path(config.get('reporting.output_dir', 'reports'))
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+    
+    def generate_report(self, output_file: Optional[str] = None, report_format: str = 'pdf') -> str:
+        from logmonitor.storage.database import LogDatabase
         
-    def generate_report(self, output_file: str, report_format: str = 'pdf') -> str:
-        """
-        Génère un rapport dans le format demandé
+        db_path = self.config.get('storage.database', 'data/logmonitor.db')
+        db = LogDatabase(db_path)
         
-        Args:
-            output_file: Chemin du fichier de sortie
-            report_format: Format du rapport ('pdf' ou 'csv')
-            
-        Returns:
-            Chemin vers le fichier généré
-        """
-        # Récupérer les données depuis la base de données
-        db = LogDatabase(self.db_path)
-        try:
-            alerts = db.get_recent_alerts(limit=1000) # Récupérer un nombre suffisant d'alertes
-            stats = db.get_statistics()
-        finally:
-            db.close()
-            
+        statistics = db.get_statistics()
+        alerts = db.get_recent_alerts(limit=500)
+        
+        db.close()
+        
+        if not output_file:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            output_file = str(self.output_dir / f"report_{timestamp}.{report_format}")
+        
         output_path = Path(output_file)
-        output_dir = output_path.parent
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        # S'assurer que le répertoire existe
-        if not output_dir.exists():
-            output_dir.mkdir(parents=True, exist_ok=True)
-            
-        if report_format.lower() == 'pdf':
-            generator = PDFReportGenerator(str(output_dir))
-            # Note: PDFReportGenerator.generate_report retourne le path, mais sa signature est différente
-            # Elle attend (alerts, statistics, period) et ne prend pas de nom de fichier de sortie direct
-            # On va devoir adapter ou renommer après
-            
-            # Hack: on génère le rapport puis on le renomme si nécessaire
-            # Mais PDFReportGenerator.generate_report utilise un nom par défaut
-            # On va essayer de voir si on peut forcer le nom ou juste renommer
-            generated_path = generator.generate_report(alerts, stats)
-            
-            if output_path.name != Path(generated_path).name:
-                # Renommer/Déplacer
-                if output_path.exists():
-                    os.unlink(output_path)
-                os.rename(generated_path, output_path)
-                return str(output_path)
-            return generated_path
-            
-        elif report_format.lower() == 'csv':
-            exporter = CSVExporter(str(output_dir))
-            # Pour CSV, on a 3 types d'export possibles. 
-            # Le CLI semble vouloir un seul rapport. On va exporter les alertes par défaut.
-            return exporter.export_alerts(alerts, filename=output_path.name)
-            
+        if report_format == 'pdf':
+            generator = PDFReportGenerator()
+            generator.generate(str(output_path), statistics, alerts)
+        elif report_format == 'csv':
+            exporter = CSVExporter()
+            exporter.export_alerts(str(output_path), alerts)
         else:
-            raise ValueError(f"Format de rapport non supporté: {report_format}")
+            raise ValueError(f"Unsupported format: {report_format}")
+        
+        return str(output_path)

@@ -1,149 +1,81 @@
-"""
-Module d'export CSV (F4)
-Responsable : Camel DADAVI
-
-Ce module exporte les données en format CSV
-"""
+"""CSV export functionality."""
 
 import csv
-from datetime import datetime
-from pathlib import Path
-from typing import List, Dict, Any
 import json
+from pathlib import Path
+from datetime import datetime
+from typing import List, Dict, Any
 
 
 class CSVExporter:
-    """Exporteur de données en format CSV"""
+    """CSV data exporter."""
     
-    def __init__(self, output_dir: str):
-        """
-        Initialise l'exporteur CSV
-        
-        Args:
-            output_dir: Répertoire de sortie
-        """
-        self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-    
-    def export_alerts(self, alerts: List[Dict[str, Any]], filename: str = None) -> str:
-        """
-        Exporte les alertes en CSV
-        
-        Args:
-            alerts: Liste des alertes
-            filename: Nom du fichier (optionnel)
-        
-        Returns:
-            Chemin vers le fichier CSV
-        """
-        if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"alerts_{timestamp}.csv"
-        
-        filepath = self.output_dir / filename
+    def export_alerts(self, output_file: str, alerts: List[Dict]):
+        output_path = Path(output_file)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         
         if not alerts:
-            # Créer un fichier vide avec headers
-            with open(filepath, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f)
-                writer.writerow(['timestamp', 'rule_name', 'severity', 'description'])
-            return str(filepath)
+            with open(output_path, 'w', newline='', encoding='utf-8') as f:
+                f.write("No alerts to export\n")
+            return
         
-        # Déterminer toutes les clés possibles
-        fieldnames = set()
+        all_fields = set()
         for alert in alerts:
-            fieldnames.update(alert.keys())
-        fieldnames = sorted(fieldnames)
+            all_fields.update(alert.keys())
         
-        # Écrire le CSV
-        with open(filepath, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
+        fieldnames = sorted(list(all_fields))
+        
+        with open(output_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
             writer.writeheader()
             
             for alert in alerts:
-                # Convertir les objets complexes en JSON strings
                 row = {}
                 for key, value in alert.items():
                     if isinstance(value, (dict, list)):
-                        row[key] = json.dumps(value, ensure_ascii=False)
+                        row[key] = json.dumps(value, default=str)
                     else:
                         row[key] = value
                 writer.writerow(row)
-        
-        return str(filepath)
     
-    def export_logs(self, logs: List[Dict[str, Any]], filename: str = None) -> str:
-        """
-        Exporte les logs en CSV
-        
-        Args:
-            logs: Liste des logs
-            filename: Nom du fichier (optionnel)
-        
-        Returns:
-            Chemin vers le fichier CSV
-        """
-        if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"logs_{timestamp}.csv"
-        
-        filepath = self.output_dir / filename
+    def export_logs(self, output_file: str, logs: List[Dict]):
+        output_path = Path(output_file)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         
         if not logs:
-            with open(filepath, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f)
-                writer.writerow(['timestamp', 'hostname', 'service', 'level', 'message'])
-            return str(filepath)
+            with open(output_path, 'w', newline='', encoding='utf-8') as f:
+                f.write("No logs to export\n")
+            return
         
-        fieldnames = set()
+        all_fields = set()
         for log in logs:
-            fieldnames.update(log.keys())
-        fieldnames = sorted(fieldnames)
+            all_fields.update(log.keys())
         
-        with open(filepath, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
+        fieldnames = sorted(list(all_fields))
+        
+        with open(output_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
             writer.writeheader()
             
             for log in logs:
                 row = {}
                 for key, value in log.items():
                     if isinstance(value, (dict, list)):
-                        row[key] = json.dumps(value, ensure_ascii=False)
+                        row[key] = json.dumps(value, default=str)
                     else:
                         row[key] = value
                 writer.writerow(row)
-        
-        return str(filepath)
     
-    def export_statistics(self, statistics: Dict[str, Any], filename: str = None) -> str:
-        """
-        Exporte les statistiques en CSV
+    def export_statistics(self, output_file: str, statistics: Dict[str, Any]):
+        output_path = Path(output_file)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        Args:
-            statistics: Dictionnaire de statistiques
-            filename: Nom du fichier (optionnel)
-        
-        Returns:
-            Chemin vers le fichier CSV
-        """
-        if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"statistics_{timestamp}.csv"
-        
-        filepath = self.output_dir / filename
-        
-        with open(filepath, 'w', newline='', encoding='utf-8') as f:
+        with open(output_path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerow(['Metric', 'Value'])
             
             for key, value in statistics.items():
-                if isinstance(value, dict):
-                    # Métriques imbriquées
-                    for sub_key, sub_value in value.items():
-                        writer.writerow([f"{key}.{sub_key}", sub_value])
-                elif isinstance(value, list):
-                    writer.writerow([key, json.dumps(value, ensure_ascii=False)])
+                if isinstance(value, (dict, list)):
+                    writer.writerow([key, json.dumps(value, default=str)])
                 else:
                     writer.writerow([key, value])
-        
-        return str(filepath)
