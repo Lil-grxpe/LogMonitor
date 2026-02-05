@@ -12,24 +12,37 @@ Linux log monitoring and security analysis tool.
 
 ## Quick Start
 
+### Installation Système (Recommandé - Sans venv)
+
+```bash
+# Clone and install globally with pipx
+git clone https://github.com/Lil-grxpe/LogMonitor.git
+cd LogMonitor
+./install_system.sh
+
+# Use directly without venv activation
+logmonitor scan -f /var/log/auth.log
+logmonitor alerts list
+logmonitor web --daemon
+```
+
+### Installation avec Environnement Virtuel
+
 ```bash
 # Clone and install
 git clone https://github.com/Lil-grxpe/LogMonitor.git
 cd LogMonitor
-pip install -r requirements.txt
-pip install -e .
+./install.sh
 
-# Scan a log file
+# Activate venv first
+source venv/bin/activate
+
+# Then use logmonitor
 logmonitor scan -f /var/log/auth.log
-
-# View detected alerts
-logmonitor alerts list
-
-# Launch web dashboard
-logmonitor web
-# Access: http://localhost:5000
-# Default login: admin / logmonitor123
 ```
+
+**Accès Dashboard**: http://localhost:5000  
+**Identifiants par défaut**: admin / admin
 
 ## Usage
 

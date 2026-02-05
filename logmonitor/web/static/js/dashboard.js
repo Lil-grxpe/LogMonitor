@@ -1,8 +1,6 @@
-// Initialiser les graphiques
 let alertsChart = null;
 let severityChart = null;
 
-// Fonction utilitaire pour les badges de sévérité
 function getSeverityBadge(severity) {
     const badges = {
         'emergency': 'bg-dark',
@@ -20,23 +18,20 @@ function getSeverityBadge(severity) {
     return `<span class="badge ${badges[severity] || 'bg-secondary'}">${severity.toUpperCase()}</span>`;
 }
 
-// Charger les statistiques KPIs
 function loadStats() {
     fetch('/api/stats')
         .then(response => response.json())
         .then(result => {
             if (result.success) {
-                document.getElementById('total-logs').textContent = result.data.total_logs;
-                document.getElementById('total-alerts').textContent = result.data.total_alerts;
-
+                document.getElementById('total-logs').textContent = result.data.total_logs.toLocaleString();
+                document.getElementById('total-alerts').textContent = result.data.total_alerts.toLocaleString();
                 const critical = result.data.alerts_by_severity?.critical || 0;
-                document.getElementById('critical-alerts').textContent = critical;
+                document.getElementById('critical-alerts').textContent = critical.toLocaleString();
             }
         })
-        .catch(error => console.error('Erreur lors du chargement des stats:', error));
+        .catch(error => console.error(error));
 }
 
-// Charger le graphique des alertes par heure
 function loadAlertsChart() {
     fetch('/api/alerts/by-hour')
         .then(response => response.json())
@@ -48,6 +43,10 @@ function loadAlertsChart() {
                     alertsChart.destroy();
                 }
 
+                const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+                gradient.addColorStop(0, 'rgba(59, 130, 246, 0.3)');
+                gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+
                 alertsChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -55,41 +54,79 @@ function loadAlertsChart() {
                         datasets: [{
                             label: 'Alertes',
                             data: result.data,
-                            borderColor: '#4e73df',
-                            backgroundColor: 'rgba(78, 115, 223, 0.05)',
-                            tension: 0.3,
-                            fill: true
+                            borderColor: '#3b82f6',
+                            backgroundColor: gradient,
+                            borderWidth: 3,
+                            tension: 0.4,
+                            fill: true,
+                            pointBackgroundColor: '#3b82f6',
+                            pointBorderColor: '#1e293b',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
                         }]
                     },
                     options: {
                         maintainAspectRatio: false,
                         responsive: true,
+                        resizeDelay: 200,
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        },
                         plugins: {
                             legend: {
                                 display: false
+                            },
+                            tooltip: {
+                                backgroundColor: '#1e293b',
+                                titleColor: '#f1f5f9',
+                                bodyColor: '#94a3b8',
+                                borderColor: '#334155',
+                                borderWidth: 1,
+                                padding: 12,
+                                cornerRadius: 8
                             }
                         },
                         scales: {
                             y: {
                                 beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(51, 65, 85, 0.5)',
+                                    drawBorder: false
+                                },
                                 ticks: {
-                                    stepSize: 1
+                                    color: '#94a3b8',
+                                    stepSize: 1,
+                                    font: {
+                                        size: 11
+                                    }
                                 }
                             },
                             x: {
                                 grid: {
                                     display: false
+                                },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: {
+                                        size: 11
+                                    }
                                 }
+                            }
+                        },
+                        onResize: function (chart, size) {
+                            if (chart.canvas.parentNode.clientHeight === 300) {
+                                return;
                             }
                         }
                     }
                 });
             }
         })
-        .catch(error => console.error('Erreur lors du chargement du graphique:', error));
+        .catch(error => console.error(error));
 }
 
-// Charger le graphique de répartition par sévérité
 function loadSeverityChart() {
     fetch('/api/alerts/by-severity')
         .then(response => response.json())
@@ -101,50 +138,40 @@ function loadSeverityChart() {
                     severityChart.destroy();
                 }
 
-                // Définition de toutes les sévérités dans l'ordre
                 const allSeverities = [
                     'emergency', 'alert', 'critical', 'error',
                     'warning', 'notice', 'info', 'debug'
                 ];
 
                 const colors = {
-                    'emergency': '#721c24', // Sang foncé
-                    'alert': '#dc3545',     // Rouge vif
-                    'critical': '#dc3545',  // Rouge vif
-                    'error': '#fd7e14',     // Orange foncé
-                    'high': '#fd7e14',      // Orange foncé (alias)
-                    'warning': '#ffc107',   // Jaune
-                    'medium': '#ffc107',    // Jaune (alias)
-                    'notice': '#0d6efd',    // Bleu
-                    'low': '#0dcaf0',       // Cyan (alias)
-                    'info': '#6c757d',      // Gris
-                    'debug': '#adb5bd'      // Gris clair
+                    'emergency': '#7f1d1d',
+                    'alert': '#dc2626',
+                    'critical': '#ef4444',
+                    'error': '#f97316',
+                    'high': '#f97316',
+                    'warning': '#eab308',
+                    'medium': '#eab308',
+                    'notice': '#3b82f6',
+                    'low': '#06b6d4',
+                    'info': '#64748b',
+                    'debug': '#94a3b8'
                 };
 
-                // Préparer les données en incluant 0 pour ceux qui manquent
-                // On fusionne les résultats de l'API avec notre liste complète
-                const dataMap = {};
-
-                // Mapper les aliases si nécessaire
                 const apiData = result.data.reduce((acc, val, idx) => {
                     const label = result.labels[idx];
                     acc[label] = val;
                     return acc;
                 }, {});
 
-                // Construire les tableaux finaux
                 const labels = [];
                 const data = [];
                 const bgColors = [];
 
                 allSeverities.forEach(severity => {
-                    // Gérer les alias (ex: high -> error)
                     let count = apiData[severity] || 0;
-
                     if (severity === 'error') count += apiData['high'] || 0;
                     if (severity === 'warning') count += apiData['medium'] || 0;
                     if (severity === 'notice') count += apiData['low'] || 0;
-
                     labels.push(severity.charAt(0).toUpperCase() + severity.slice(1));
                     data.push(count);
                     bgColors.push(colors[severity]);
@@ -157,52 +184,67 @@ function loadSeverityChart() {
                         datasets: [{
                             data: data,
                             backgroundColor: bgColors,
-                            borderWidth: 1
+                            borderColor: '#1e293b',
+                            borderWidth: 3,
+                            hoverBorderColor: '#f1f5f9',
+                            hoverBorderWidth: 2
                         }]
                     },
                     options: {
                         maintainAspectRatio: false,
                         responsive: true,
+                        resizeDelay: 200,
                         plugins: {
                             legend: {
-                                position: 'right', // Légende à droite pour mieux voir la liste
+                                position: 'right',
                                 labels: {
+                                    color: '#94a3b8',
                                     usePointStyle: true,
-                                    padding: 15,
-                                    boxWidth: 10
+                                    padding: 12,
+                                    boxWidth: 8,
+                                    font: {
+                                        size: 11
+                                    }
                                 }
                             },
-                            title: {
-                                display: true,
-                                text: 'Répartition par Sévérité'
+                            tooltip: {
+                                backgroundColor: '#1e293b',
+                                titleColor: '#f1f5f9',
+                                bodyColor: '#94a3b8',
+                                borderColor: '#334155',
+                                borderWidth: 1,
+                                padding: 12,
+                                cornerRadius: 8
                             }
                         },
-                        cutout: '60%'
+                        cutout: '65%',
+                        onResize: function (chart, size) {
+                            if (chart.canvas.parentNode.clientHeight === 300) {
+                                return;
+                            }
+                        }
                     }
                 });
             }
         })
-        .catch(error => console.error('Erreur lors du chargement du graphique sévérité:', error));
+        .catch(error => console.error(error));
 }
 
-// Charger les dernières alertes
 function loadLatestAlerts() {
-    fetch('/api/alerts/latest?limit=10')
+    fetch('/api/alerts?limit=10')
         .then(response => response.json())
-        .then(result => {
-            if (result.success) {
+        .then(alerts => {
+            if (Array.isArray(alerts)) {
                 const tbody = document.getElementById('alerts-table-body');
                 tbody.innerHTML = '';
 
-                if (result.data.length === 0) {
+                if (alerts.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="4" class="text-center">Aucune alerte</td></tr>';
                     return;
                 }
 
-                result.data.forEach(alert => {
+                alerts.forEach(alert => {
                     const row = document.createElement('tr');
-
-                    // Formater la date
                     const timestamp = new Date(alert.timestamp);
                     const timeStr = timestamp.toLocaleTimeString('fr-FR');
 
@@ -217,10 +259,9 @@ function loadLatestAlerts() {
                 });
             }
         })
-        .catch(error => console.error('Erreur lors du chargement des alertes:', error));
+        .catch(error => console.error(error));
 }
 
-// Charger les top IPs
 function loadTopIPs() {
     fetch('/api/top-ips')
         .then(response => response.json())
@@ -238,25 +279,23 @@ function loadTopIPs() {
                     const li = document.createElement('li');
                     li.className = 'list-group-item d-flex justify-content-between align-items-center';
                     li.innerHTML = `
-                        <small><code>${item.source_ip}</code></small>
+                        <code>${item.source_ip}</code>
                         <span class="badge bg-danger rounded-pill">${item.count}</span>
                     `;
                     list.appendChild(li);
                 });
             }
         })
-        .catch(error => console.error('Erreur lors du chargement des IPs:', error));
+        .catch(error => console.error(error));
 }
 
-// Fonction de génération de rapport
 function generateReport(format) {
     const btnId = `btn-report-${format}`;
     const btn = document.getElementById(btnId);
-    const originalText = btn.textContent;
+    const originalText = btn.innerHTML;
 
-    // Désactiver le bouton et montrer le chargement
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Génération...';
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Generation...';
 
     fetch('/api/reports/generate', {
         method: 'POST',
@@ -268,28 +307,21 @@ function generateReport(format) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Créer un lien temporaire pour le téléchargement
                 window.location.href = data.download_url;
-
-                // Afficher une notification de succès (optionnel)
-                alert(`Rapport ${format.toUpperCase()} généré avec succès !`);
             } else {
                 alert('Erreur: ' + (data.error || 'Erreur inconnue'));
             }
         })
         .catch(error => {
-            console.error('Erreur:', error);
+            console.error(error);
             alert('Erreur lors de la communication avec le serveur');
         })
         .finally(() => {
-            // Rétablir le bouton
             btn.disabled = false;
-            btn.textContent = originalText;
+            btn.innerHTML = originalText;
         });
 }
 
-
-// Rafraîchir toutes les données
 function refreshDashboard() {
     loadStats();
     loadAlertsChart();
@@ -298,10 +330,7 @@ function refreshDashboard() {
     loadTopIPs();
 }
 
-// Charger au démarrage
 document.addEventListener('DOMContentLoaded', function () {
     refreshDashboard();
-
-    // Rafraîchir toutes les 5 secondes
     setInterval(refreshDashboard, 5000);
 });
