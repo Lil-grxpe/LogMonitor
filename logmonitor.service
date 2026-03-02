@@ -3,23 +3,17 @@ Description=LogMonitor - Outil de surveillance de logs Linux
 After=network.target
 
 [Service]
-Type=simple
-User=logmonitor
-Group=logmonitor
-WorkingDirectory=/opt/logmonitor
-ExecStart=/opt/logmonitor/venv/bin/python -m logmonitor.cli.commands start --daemon
-ExecStop=/opt/logmonitor/venv/bin/python -m logmonitor.cli.commands stop
+Type=forking
+# Sera remplacé par install.sh avec le vrai USER et HOME
+User=%i
+WorkingDirectory=%h/Projet_tuteuré
+ExecStart=%h/.local/bin/logmonitor start
+ExecStop=%h/.local/bin/logmonitor stop
+PIDFile=/tmp/logmonitor/logmonitor.pid
 Restart=on-failure
 RestartSec=10
 
-# Sécurité
-NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=true
-ReadWritePaths=/var/log/logmonitor /opt/logmonitor/data /opt/logmonitor/reports
-
-# Logs
+# Logs vers journald
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=logmonitor

@@ -87,7 +87,7 @@ if pipx list 2>/dev/null | grep -q logmonitor; then
     pipx uninstall logmonitor 2>/dev/null || true
 fi
 
-pipx install -e "$INSTALL_DIR"
+pipx install "$INSTALL_DIR"
 echo -e "${GREEN}[+]${NC} LogMonitor installe"
 
 echo -e "${BLUE}[*]${NC} Creation des repertoires..."
@@ -168,15 +168,76 @@ else
 fi
 
 echo ""
+echo -e "${BLUE}[*]${NC} Configuration du demarrage automatique (systemd)..."
+
+SERVICE_FILE="/etc/systemd/system/logmonitor.service"
+
+# Génération du fichier service avec les vrais chemins
+sudo bash -c "cat > $SERVICE_FILE" << EOF
+[Unit]
+Description=LogMonitor - Outil de surveillance de logs Linux
+After=network.target
+
+[Service]
+Type=forking
+User=$USER
+WorkingDirectory=$INSTALL_DIR
+ExecStart=$HOME/.local/bin/logmonitor start
+ExecStop=$HOME/.local/bin/logmonitor stop
+PIDFile=/tmp/logmonitor/logmonitor.pid
+Restart=on-failure
+RestartSec=10
+Environment="PATH=$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=logmonitor
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+if [ $? -eq 0 ]; then
+    sudo systemctl daemon-reload
+    sudo systemctl enable logmonitor
+    echo -e "${GREEN}[+]${NC} Service systemd installe et active au demarrage"
+
+    echo -e "${BLUE}[*]${NC} Demarrage immediat de LogMonitor..."
+    sudo systemctl start logmonitor
+    sleep 2
+
+    if sudo systemctl is-active --quiet logmonitor; then
+        echo -e "${GREEN}[+]${NC} LogMonitor demarre avec succes"
+    else
+        echo -e "${YELLOW}[!]${NC} Le service n'a pas demarre. Verifiez les logs :"
+        echo "    sudo journalctl -u logmonitor -n 20"
+    fi
+else
+    echo -e "${YELLOW}[!]${NC} Impossible d'installer le service systemd (droits sudo requis)"
+    echo "    Demarrage manuel : logmonitor start"
+fi
+
+echo ""
 echo "============================================="
 echo "   Installation terminee"
 echo "============================================="
+echo ""
+echo -e "${YELLOW}[!]${NC} IMPORTANT : rechargez votre shell pour utiliser logmonitor :"
+echo "    source ~/.bashrc   (bash)"
+echo "    source ~/.zshrc    (zsh)"
+echo "    OU ouvrez un nouveau terminal"
 echo ""
 echo "Commandes disponibles:"
 echo "  logmonitor --version"
 echo "  logmonitor config-validate"
 echo "  logmonitor start"
 echo "  logmonitor web --daemon"
+echo ""
+echo "Gestion du service systemd :"
+echo "  sudo systemctl status logmonitor"
+echo "  sudo systemctl stop logmonitor"
+echo "  sudo systemctl restart logmonitor"
+echo "  sudo journalctl -u logmonitor -f   (voir les logs)"
 echo ""
 echo "Dashboard: http://127.0.0.1:5000"
 echo "Identifiants: admin / admin"

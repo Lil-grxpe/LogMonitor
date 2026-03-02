@@ -111,11 +111,8 @@ Ce répertoire contient 6 fichiers de logs de test pour valider les règles de d
 
 ### Test Manuel
 ```bash
-# Activer l'environnement
-source venv/bin/activate
-
 # Tester chaque fichier individuellement
-logmonitor scan tests/test_logs/01_bruteforce_ssh.log
+logmonitor scan -f tests/test_logs/01_bruteforce_ssh.log
 logmonitor scan tests/test_logs/02_multiple_accounts_attack.log
 logmonitor scan tests/test_logs/03_suspicious_root_login.log
 logmonitor scan tests/test_logs/04_sensitive_file_modification.log

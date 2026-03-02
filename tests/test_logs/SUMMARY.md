@@ -53,8 +53,7 @@ Tous les fichiers sont dans `tests/test_logs/` :
 ### Test Automatique (Recommandé)
 
 ```bash
-cd /home/lil_grxpe/Bureau/Projet_tuteuré
-source venv/bin/activate
+cd LogMonitor
 ./tests/test_logs/test_all_logs.sh
 ```
 

@@ -1,98 +1,95 @@
 # LogMonitor
 
-Linux log monitoring and security analysis tool.
+Outil de surveillance et d'analyse de sécurité pour les logs Linux.
 
-## Features
+## Fonctionnalités
 
-- **Real-time & Batch Detection** - Analyze logs instantly (daemon) or retrospectively
-- **Security Rules** - Brute force SSH, multiple accounts attack, root logins, sensitive file access, activity spikes
-- **Web Dashboard** - Visualize alerts, statistics, and generate reports
-- **PDF/CSV Reports** - Automated incident reports
-- **SQLite Storage** - Local, privacy-focused database
+- **Détection temps réel & batch** — Analyse les logs en continu (daemon) ou ponctuellement
+- **5 règles de sécurité** — Bruteforce SSH, comptes multiples, connexions root, fichiers sensibles, pics d'activité
+- **Dashboard web** — Visualisation des alertes, statistiques et IPs suspectes
+- **Rapports PDF/CSV** — Génération automatique de rapports d'incidents
+- **Stockage SQLite** — Base de données locale, respectueuse de la vie privée
+- **Démarrage automatique** — Service systemd activé à l'installation
 
-## Quick Start
-
-### Installation Système (Recommandé - Sans venv)
-
-```bash
-# Clone and install globally with pipx
-git clone https://github.com/Lil-grxpe/LogMonitor.git
-cd LogMonitor
-./install_system.sh
-
-# Use directly without venv activation
-logmonitor scan -f /var/log/auth.log
-logmonitor alerts list
-logmonitor web --daemon
-```
-
-### Installation avec Environnement Virtuel
+## Installation Rapide
 
 ```bash
-# Clone and install
+# 1. Cloner le dépôt
 git clone https://github.com/Lil-grxpe/LogMonitor.git
 cd LogMonitor
+
+# 2. Lancer l'installation
 ./install.sh
-
-# Activate venv first
-source venv/bin/activate
-
-# Then use logmonitor
-logmonitor scan -f /var/log/auth.log
 ```
 
-**Accès Dashboard**: http://localhost:5000  
-**Identifiants par défaut**: admin / admin
+Le script `install.sh` gère **tout automatiquement** :
+- ✅ Vérification de Python 3.10+
+- ✅ Installation de `pipx` (si absent)
+- ✅ Installation de LogMonitor comme commande globale
+- ✅ Configuration du fichier de logs selon la distribution
+- ✅ Activation du service systemd (démarrage automatique au boot)
+- ✅ Démarrage immédiat de LogMonitor
 
-## Usage
+> **Après l'installation, LogMonitor est actif.** Aucune commande supplémentaire n'est nécessaire.
 
-### CLI Commands
+**Dashboard** : http://127.0.0.1:5000  
+**Identifiants** : admin / admin
+
+## Commandes CLI
 
 ```bash
-# Scan log file
-logmonitor scan -f /path/to/logfile
+# Scan ponctuel d'un fichier de logs
+logmonitor scan -f /var/log/auth.log
 
-# List alerts (filter by severity)
+# Lister les alertes détectées
+logmonitor alerts list
 logmonitor alerts list --severity critical
 
-# Generate reports
+# Générer un rapport
 logmonitor report generate --format pdf
 logmonitor report generate --format csv
 
-# Clear database
+# Nettoyer la base de données
 logmonitor clean --force
 ```
 
-### Daemon Mode
+## Gestion du Service
+
+LogMonitor se lance automatiquement au démarrage de la machine. Pour le gérer :
 
 ```bash
-# Start background monitoring
-logmonitor start
-
-# Check status
-logmonitor status
-
-# Stop daemon
-logmonitor stop
+sudo systemctl status logmonitor       # Voir l'état
+sudo systemctl stop logmonitor         # Arrêter
+sudo systemctl start logmonitor        # Démarrer
+sudo systemctl restart logmonitor      # Redémarrer
+sudo journalctl -u logmonitor -f       # Voir les logs en direct
 ```
 
-### Web Dashboard
+Vous pouvez aussi utiliser les commandes CLI directement :
 
 ```bash
-# Foreground mode
+logmonitor start     # Démarrer manuellement
+logmonitor status    # Vérifier l'état
+logmonitor stop      # Arrêter
+```
+
+## Dashboard Web
+
+```bash
+# Lancement en premier plan
 logmonitor web --port 5000
 
-# Background mode
+# Lancement en arrière-plan
 logmonitor web --daemon
 ```
 
 ## Configuration
 
-Edit `config/logmonitor.yaml`:
+Éditez `config/logmonitor.yaml` :
 
 ```yaml
 logs:
-  auto_detect: true  # Auto-detect based on Linux distro
+  auto_detect: true  # Détection automatique selon la distro
   paths:
     - /var/log/auth.log  # Debian/Ubuntu
     # - /var/log/secure  # RHEL/CentOS
@@ -105,17 +102,24 @@ detection:
     time_window: 300
 ```
 
-## Supported Distributions
+## Distributions Supportées
 
-| Distribution | Log Paths |
-|--------------|-----------|
-| Debian/Ubuntu | /var/log/auth.log, /var/log/syslog |
-| RHEL/CentOS/Fedora | /var/log/secure, /var/log/messages |
-| Kali/Arch | journald (use export script) |
+| Distribution | Fichiers de logs |
+|---|---|
+| Debian / Ubuntu | /var/log/auth.log, /var/log/syslog |
+| RHEL / CentOS / Fedora | /var/log/secure, /var/log/messages |
+| Kali / Arch | journald (utiliser le script d'export) |
 
-## Project Team
+## Documentation Complète
 
-Academic project - ESGIS 2026
+- [Guide d'installation](docs/installation.md)
+- [Guide complet](docs/guide_complet/01_Introduction.md)
+- [Guide daemon](docs/daemon_guide.md)
+- [Guide Kali Linux](docs/kali_linux_guide.md)
+
+## Équipe
+
+Projet académique — ESGIS 2026
 
 ---
 © 2026 LogMonitor Team

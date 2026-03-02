@@ -25,14 +25,13 @@ tests/test_logs/
 
 ```bash
 # Se placer dans le répertoire du projet
-cd /home/lil_grxpe/Bureau/Projet_tuteuré
-
-# Activer l'environnement virtuel
-source venv/bin/activate
+cd LogMonitor
 
 # Vérifier l'installation
 logmonitor --version
 ```
+
+> Si `logmonitor: command not found`, rechargez votre shell : `source ~/.bashrc`
 
 ### 2. Test Automatique (Recommandé)
 
@@ -191,8 +190,10 @@ newgrp adm
 
 ### Problème : "logmonitor: command not found"
 ```bash
-# Réinstaller en mode développement
-pip install -e .
+# Recharger le shell
+source ~/.bashrc
+# Ou réinstaller via pipx
+pipx install .
 ```
 
 ### Problème : Aucune alerte générée

@@ -3,36 +3,27 @@
 ## Installation (2 minutes)
 
 ```bash
-# 1. Installer
+# 1. Cloner et installer
+git clone https://github.com/Lil-grxpe/LogMonitor.git
+cd LogMonitor
 ./install.sh
+```
 
-# 2. Activer l'environnement
-source venv/bin/activate
+C'est tout ! LogMonitor est installé, activé au démarrage, et déjà en cours d'exécution.
 
-# 3. Tester
+## Vérification
+
+```bash
+# Vérifier que le service tourne
+sudo systemctl status logmonitor
+
+# Vérifier la version
 logmonitor --version
 ```
 
+> Si `logmonitor: command not found`, rechargez votre shell : `source ~/.bashrc`
+
 ## Utilisation
-
-### Mode Daemon (Surveillance continue)
-
-```bash
-# Démarrer
-logmonitor start
-
-# Vérifier
-logmonitor status
-
-# Arrêter
-logmonitor stop
-```
-
-### Analyser un Fichier
-
-```bash
-logmonitor scan /var/log/auth.log
-```
 
 ### Voir les Alertes
 
@@ -41,37 +32,39 @@ logmonitor alerts list
 logmonitor alerts list --severity high
 ```
 
+### Analyser un Fichier Manuellement
+
+```bash
+logmonitor scan -f /var/log/auth.log
+```
+
 ### Générer un Rapport
 
 ```bash
-# PDF
-logmonitor report generate
-
-# CSV
-logmonitor report generate --format csv
+logmonitor report generate                # PDF (par défaut)
+logmonitor report generate --format csv   # CSV
 ```
 
 ### Dashboard Web
 
 ```bash
 logmonitor web
-# Ouvrir http://localhost:5000
+# Ouvrir http://127.0.0.1:5000
+# Identifiants : admin / admin
 ```
 
-## Commandes Utiles
+## Gestion du Service
 
 ```bash
-# Valider la configuration
-logmonitor config validate
-
-# Voir l'aide
-logmonitor --help
-logmonitor scan --help
+sudo systemctl status logmonitor     # État
+sudo systemctl stop logmonitor       # Arrêter
+sudo systemctl restart logmonitor    # Redémarrer
+sudo journalctl -u logmonitor -f     # Logs en direct
 ```
 
 ## Permissions
 
-Si vous avez une erreur "Permission denied" :
+Si vous avez une erreur « Permission denied » :
 
 ```bash
 sudo usermod -a -G adm $USER
