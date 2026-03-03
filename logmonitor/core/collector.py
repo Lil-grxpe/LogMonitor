@@ -173,10 +173,14 @@ class JournaldCollector(LogCollector):
                     bufsize=1  # line-buffered
                 )
 
-                for line in proc.stdout:
+                for line in iter(proc.stdout.readline, ''):
                     if self._stop_event.is_set():
                         proc.terminate()
                         break
+                    
+                    if not line:
+                        break
+                        
                     line = line.rstrip('\n').strip()
                     if line and not line.startswith('--'):
                         callback(line)

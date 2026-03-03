@@ -95,20 +95,28 @@ class ConfigManager:
                     self.config['logs']['paths'] = detected_paths + extra_paths
                 elif uses_journald(distro):
                     self.config['logs']['_uses_journald'] = True
-            else:
-                # auto_detect disabled: only keep configured paths that actually exist
+                # auto_detect disabled: only keep configured paths that actually exist or are virtual
                 configured_paths = self.config['logs']['paths']
                 existing_paths = []
                 for path in configured_paths:
-                    p = Path(path).expanduser().resolve()
-                    if p.exists():
-                        existing_paths.append(str(p))
+                    if path.startswith('journald://'):
+                        existing_paths.append(path)
+                    else:
+                        p = Path(path).expanduser().resolve()
+                        if p.exists():
+                            existing_paths.append(str(p))
                 if existing_paths:
                     self.config['logs']['paths'] = existing_paths
         
         if 'paths' in self.config.get('logs', {}):
             log_paths = self.config['logs']['paths']
-            self.config['logs']['paths'] = [str(Path(path).expanduser().resolve()) for path in log_paths]
+            resolved_paths = []
+            for path in log_paths:
+                if path.startswith('journald://'):
+                    resolved_paths.append(path)
+                else:
+                    resolved_paths.append(str(Path(path).expanduser().resolve()))
+            self.config['logs']['paths'] = resolved_paths
         
         if 'database' in self.config.get('storage', {}):
             db_path = self.config['storage']['database']
