@@ -1,4 +1,4 @@
-# 📊 Diagramme de Flux de Données (DFD) - LogMonitor
+# Diagramme de Flux de Données (DFD) - LogMonitor
 
 Ce diagramme illustre le parcours technique d'une information (un log brut) depuis sa création par le système d'exploitation jusqu'à son affichage sous forme d'alerte critique sur le tableau de bord web.
 
