@@ -17,6 +17,11 @@ DISTRO_LOG_PATHS = {
         'syslog': ['/var/log/syslog'],
         'description': 'Ubuntu'
     },
+    'lubuntu': {
+        'auth': ['/var/log/auth.log'],
+        'syslog': ['/var/log/syslog'],
+        'description': 'Lubuntu'
+    },
     'kali': {
         'auth': [],
         'syslog': [],
@@ -57,19 +62,46 @@ DISTRO_LOG_PATHS = {
 }
 
 
+def is_journald_available() -> bool:
+    """
+    Check if journald is actually running on this system.
+
+    Returns:
+        True if journald socket is present and reachable
+    """
+    # Check for the journald socket (definitive indicator)
+    if Path('/run/systemd/journal/socket').exists():
+        return True
+
+    # Fallback: try calling journalctl
+    try:
+        result = subprocess.run(
+            ['journalctl', '--lines=1', '--no-pager'],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+        return result.returncode == 0
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return False
+
+
 def detect_distro() -> str:
     """
     Detect the current Linux distribution.
-    
+
     Returns:
-        Distribution identifier (debian, ubuntu, rhel, etc.) or 'unknown'
+        Distribution identifier (debian, ubuntu, kali, lubuntu, rhel, etc.) or 'unknown'
     """
     os_release = Path('/etc/os-release')
-    
+
     if os_release.exists():
         content = os_release.read_text().lower()
-        
-        if 'kali' in content:
+
+        # Lubuntu must be checked BEFORE ubuntu (it also contains 'ubuntu')
+        if 'lubuntu' in content:
+            return 'lubuntu'
+        elif 'kali' in content:
             return 'kali'
         elif 'ubuntu' in content:
             return 'ubuntu'
@@ -87,33 +119,33 @@ def detect_distro() -> str:
             return 'opensuse'
         elif 'alpine' in content:
             return 'alpine'
-    
+
     if Path('/etc/debian_version').exists():
         return 'debian'
     elif Path('/etc/redhat-release').exists():
         return 'rhel'
     elif Path('/etc/arch-release').exists():
         return 'arch'
-    
+
     return 'unknown'
 
 
 def get_log_paths(distro: Optional[str] = None) -> Dict[str, any]:
     """
     Get log file paths for the specified or detected distribution.
-    
+
     Args:
         distro: Distribution name (auto-detected if None)
-    
+
     Returns:
         Dictionary with 'auth', 'syslog' paths and metadata
     """
     if distro is None:
         distro = detect_distro()
-    
+
     if distro in DISTRO_LOG_PATHS:
         return DISTRO_LOG_PATHS[distro].copy()
-    
+
     return {
         'auth': ['/var/log/auth.log', '/var/log/secure'],
         'syslog': ['/var/log/syslog', '/var/log/messages'],
@@ -124,80 +156,104 @@ def get_log_paths(distro: Optional[str] = None) -> Dict[str, any]:
 def find_existing_log_paths(distro: Optional[str] = None) -> List[str]:
     """
     Find log paths that actually exist on the current system.
-    
+    Falls back to journald virtual paths if no flat files are found.
+
     Args:
         distro: Distribution name (auto-detected if None)
-    
+
     Returns:
-        List of existing, readable log file paths
+        List of existing, readable log file paths (may include 'journald://auth')
     """
+    if distro is None:
+        distro = detect_distro()
+
     paths = get_log_paths(distro)
     existing = []
-    
+
     for log_type in ['auth', 'syslog']:
         for path in paths.get(log_type, []):
             p = Path(path)
             if p.exists() and os.access(p, os.R_OK):
                 existing.append(str(p))
-    
+
+    # If no flat log files found, check if journald is available
+    if not existing and is_journald_available():
+        existing = ['journald://auth', 'journald://system']
+
     return existing
 
 
 def uses_journald(distro: Optional[str] = None) -> bool:
     """
-    Check if the distribution primarily uses journald.
-    
+    Check if the system actually uses journald as its primary log system.
+    This checks both the distro config AND whether journald is really running.
+
     Args:
         distro: Distribution name (auto-detected if None)
-    
+
     Returns:
-        True if journald is the primary log system
+        True if journald is the primary (or only) log system
     """
     if distro is None:
         distro = detect_distro()
-    
+
+    # If distro is explicitly journald-only
     paths = DISTRO_LOG_PATHS.get(distro, {})
-    return paths.get('use_journald', False)
+    if paths.get('use_journald', False):
+        return is_journald_available()
+
+    # Even on debian/ubuntu-like distros, journald may be the sole source
+    # (e.g., Ubuntu 24.04 without rsyslog, Lubuntu minimal install)
+    auth_files = paths.get('auth', [])
+    syslog_files = paths.get('syslog', [])
+    all_files = auth_files + syslog_files
+
+    any_file_exists = any(Path(p).exists() for p in all_files)
+    if not any_file_exists:
+        return is_journald_available()
+
+    return False
 
 
 def export_journald_logs(output_path: str, since: str = "24 hours ago") -> bool:
     """
     Export journald logs to a file for analysis.
-    
+
     Args:
         output_path: Path to write exported logs
         since: Time period (journalctl format)
-    
+
     Returns:
         True if export succeeded
     """
     try:
         result = subprocess.run(
-            ['journalctl', '--since', since, '--no-pager'],
+            ['journalctl', '--since', since, '--no-pager', '-o', 'short-iso'],
             capture_output=True,
             text=True,
             timeout=60
         )
-        
+
         if result.returncode == 0:
             Path(output_path).write_text(result.stdout)
             return True
     except (subprocess.TimeoutExpired, FileNotFoundError):
         pass
-    
+
     return False
 
 
 def auto_detect_log_paths() -> Tuple[str, List[str]]:
     """
     Auto-detect distribution and return available log paths.
-    
+    Includes journald virtual paths if needed.
+
     Returns:
         Tuple of (distro_name, list_of_log_paths)
     """
     distro = detect_distro()
     paths = find_existing_log_paths(distro)
-    
+
     return distro, paths
 
 
@@ -207,3 +263,4 @@ if __name__ == '__main__':
     print(f"Log paths: {get_log_paths(distro)}")
     print(f"Existing paths: {find_existing_log_paths(distro)}")
     print(f"Uses journald: {uses_journald(distro)}")
+    print(f"Journald available: {is_journald_available()}")

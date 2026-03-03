@@ -44,11 +44,14 @@ logmonitor stop
 
 Le daemon LogMonitor fonctionne en arrière-plan et :
 
-1. **Surveille en continu** les fichiers de logs configurés dans `config/logmonitor.yaml`
-2. **Normalise** automatiquement chaque nouvelle ligne de log
-3. **Détecte** les anomalies avec les 5 règles de sécurité configurées
-4. **Stocke** les logs et alertes dans la base SQLite
-5. **Génère** des preuves sécurisées (hash SHA256) pour chaque alerte
+1. **Détecte automatiquement** la source de logs selon la distribution :
+   - `auth.log` / `syslog` sur Debian, Ubuntu, Lubuntu
+   - `journald://auth` + `journald://system` sur Kali, Arch et tout système sans fichiers plats
+2. **Surveille en continu** via watchdog (fichiers) ou `journalctl -f` (journald)
+3. **Normalise** automatiquement chaque nouvelle ligne de log
+4. **Détecte** les anomalies avec les règles de sécurité configurées
+5. **Stocke** les logs et alertes dans la base SQLite
+6. **Génère** des preuves sécurisées (hash SHA256) pour chaque alerte
 
 ## Architecture du Daemon
 
@@ -67,20 +70,25 @@ Le processus utilise la technique du double fork pour se détacher complètement
 - **Log file** : `/tmp/logmonitor/app.log` — Logs internes du daemon
 - **Database** : `data/logmonitor.db` — Base SQLite
 
-## Surveillance Multi-Fichiers
+## Sources de Logs Supportées
 
-Le daemon peut surveiller plusieurs fichiers de logs simultanément :
+Le daemon détecte automatiquement la bonne source. Configuration manuelle optionnelle dans `config/logmonitor.yaml` :
 
 ```yaml
 # config/logmonitor.yaml
 logs:
-  paths:
-    - /var/log/auth.log
-    - /var/log/syslog
-    - /var/log/custom.log
+  auto_detect: true  # Détection automatique (recommandé)
+  paths: []          # Laisser vide = auto-detect
+
+  # Ou forcer manuellement :
+  # paths:
+  #   - /var/log/auth.log         # Debian/Ubuntu/Lubuntu
+  #   - /var/log/syslog           # Debian/Ubuntu
+  #   - journald://auth           # Kali/Arch/systemd
+  #   - journald://system         # Tous messages système
 ```
 
-Chaque fichier est surveillé dans un thread séparé pour des performances optimales.
+Chaque source est surveillée dans un thread séparé pour des performances optimales.
 
 ## Commandes Utiles
 
@@ -131,12 +139,16 @@ rm -f /tmp/logmonitor/logmonitor.pid
 ### Le daemon se termine de manière inattendue
 
 ```bash
-# Vérifier les logs
+# Voir les logs
 tail -50 /tmp/logmonitor/app.log
 
+# Vérifier si une source de logs est détectée
+# (le daemon loguera "CRITICAL: No collectors" si aucune source trouvée)
+grep -i 'collector\|critical\|journald' /tmp/logmonitor/app.log
+
 # Vérifier les permissions sur les fichiers de logs
-ls -la /var/log/auth.log
-```
+ls -la /var/log/auth.log 2>/dev/null || echo 'Pas de auth.log'
+ls /run/systemd/journal/socket 2>/dev/null || echo 'Pas de journald'
 
 ### Problème de permissions
 
@@ -159,8 +171,8 @@ Ne **jamais** utiliser `kill -9` sauf en dernier recours, car cela empêche le n
 
 Le daemon est optimisé pour :
 - **Latence minimale** : Traitement en < 10 secondes
-- **Multi-threading** : Un thread par fichier de log
-- **Surveillance temps réel** : Utilise watchdog pour détecter les modifications
+- **Multi-threading** : Un thread par source de log
+- **Surveillance temps réel** : watchdog pour les fichiers, `journalctl -f` pour journald
 - **Gestion mémoire** : Nettoyage automatique du contexte de détection
 
 ## Sécurité

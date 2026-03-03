@@ -2,7 +2,7 @@
 
 ## Qu'est-ce que LogMonitor ?
 
-**LogMonitor** est un outil de surveillance et d'analyse de sécurité pour les systèmes Linux. Il est conçu pour détecter automatiquement les activités suspectes dans les logs système (comme `/var/log/auth.log`) et fournir une interface visuelle pour analyser ces événements.
+**LogMonitor** est un outil de surveillance et d'analyse de sécurité pour les systèmes Linux. Il détecte automatiquement le système de journalisation de votre distribution (fichiers `/var/log/auth.log`, `/var/log/syslog` ou **journald** via `journalctl`) et analyse les événements de sécurité en temps réel.
 
 Contrairement aux solutions complexes comme Splunk ou ELK, LogMonitor est **léger**, **local** (pas d'envoi de données vers le cloud) et s'installe en quelques minutes.
 

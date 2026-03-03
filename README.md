@@ -104,11 +104,15 @@ detection:
 
 ## Distributions Supportées
 
-| Distribution | Fichiers de logs |
-|---|---|
-| Debian / Ubuntu | /var/log/auth.log, /var/log/syslog |
-| RHEL / CentOS / Fedora | /var/log/secure, /var/log/messages |
-| Kali / Arch | journald (utiliser le script d'export) |
+| Distribution | Source de logs | Détection |
+|---|---|---|
+| Debian / Ubuntu / Lubuntu | `/var/log/auth.log`, `/var/log/syslog` | Automatique |
+| RHEL / CentOS / Fedora | `/var/log/secure`, `/var/log/messages` | Automatique |
+| Kali Linux | journald (streaming natif) | Automatique |
+| Arch Linux | journald (streaming natif) | Automatique |
+| Tout système systemd | journald://auth, journald://system | Automatique si pas de fichiers plats |
+
+> **Aucune configuration manuelle requise.** LogMonitor détecte automatiquement la source de logs et s'y connecte.
 
 ## Documentation Complète
 

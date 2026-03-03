@@ -364,16 +364,22 @@ class DetectionContext:
         self.last_cleanup = datetime.now()
 
     def _get_event_time(self, event: Dict[str, Any]) -> datetime:
+        """Parse event timestamp and return a timezone-naive datetime.
+
+        Journald produces ISO timestamps with timezone offsets (e.g. +0100).
+        All internal comparisons use naive datetimes (local time without tz),
+        so we strip tzinfo after converting to local time.
+        """
         ts = event.get('timestamp')
         if isinstance(ts, datetime):
-            return ts
+            # Already a datetime: strip timezone if present
+            return ts.replace(tzinfo=None) if ts.tzinfo is not None else ts
         try:
-            return datetime.fromisoformat(str(ts))
+            dt = datetime.fromisoformat(str(ts))
+            # Convert to naive: remove tzinfo (we keep local wall-clock time)
+            return dt.replace(tzinfo=None)
         except (ValueError, TypeError):
-            try:
-                return datetime.now()
-            except:
-                return datetime.now()
+            return datetime.now()
 
     def add_failed_login(self, source_ip: str, event: Dict[str, Any]):
         event_time = self._get_event_time(event)

@@ -71,25 +71,40 @@ class ConfigManager:
     def _expand_paths(self):
         """Expand relative paths and auto-detect log paths if needed."""
         from logmonitor.utils.linux_detect import find_existing_log_paths, detect_distro, uses_journald
-        
+
         if 'paths' in self.config.get('logs', {}):
-            configured_paths = self.config['logs']['paths']
-            existing_paths = []
-            
-            for path in configured_paths:
-                p = Path(path).expanduser().resolve()
-                if p.exists():
-                    existing_paths.append(str(p))
-            
-            if not existing_paths and self.config.get('logs', {}).get('auto_detect', True):
+            auto_detect = self.config.get('logs', {}).get('auto_detect', True)
+
+            if auto_detect:
+                # Always detect real system log paths first, regardless of configured paths
                 distro = detect_distro()
                 detected_paths = find_existing_log_paths(distro)
+                self.config['logs']['_detected_distro'] = distro
+
                 if detected_paths:
-                    self.config['logs']['paths'] = detected_paths
-                    self.config['logs']['_detected_distro'] = distro
+                    # Merge: system paths first, then any other existing configured paths
+                    # (excluding test/relative paths that are not system logs)
+                    configured_paths = self.config['logs']['paths']
+                    extra_paths = []
+                    for path in configured_paths:
+                        p = Path(path).expanduser().resolve()
+                        # Only keep configured paths that are absolute system paths
+                        if p.exists() and str(p).startswith('/var/log'):
+                            if str(p) not in detected_paths:
+                                extra_paths.append(str(p))
+                    self.config['logs']['paths'] = detected_paths + extra_paths
                 elif uses_journald(distro):
                     self.config['logs']['_uses_journald'] = True
-                    self.config['logs']['_detected_distro'] = distro
+            else:
+                # auto_detect disabled: only keep configured paths that actually exist
+                configured_paths = self.config['logs']['paths']
+                existing_paths = []
+                for path in configured_paths:
+                    p = Path(path).expanduser().resolve()
+                    if p.exists():
+                        existing_paths.append(str(p))
+                if existing_paths:
+                    self.config['logs']['paths'] = existing_paths
         
         if 'paths' in self.config.get('logs', {}):
             log_paths = self.config['logs']['paths']

@@ -1,17 +1,20 @@
 # LogMonitor Configuration
 
 logs:
-  # Auto-detect log paths based on Linux distribution
+  # Auto-detect log paths based on Linux distribution.
+  # When auto_detect: true, LogMonitor automatically finds the right log source:
+  #   - Debian/Ubuntu/Lubuntu : /var/log/auth.log, /var/log/syslog
+  #   - RHEL/CentOS/Fedora   : /var/log/secure, /var/log/messages
+  #   - Kali / Arch / systemd-only : journald://auth, journald://system (automatic)
+  #
+  # You can also specify paths manually below (leave empty to rely on auto-detect).
+  # Virtual journald paths:
+  #   journald://auth    → streams sshd, sudo, login events via journalctl
+  #   journald://system  → streams all system messages via journalctl
   auto_detect: true
-  
-  paths:
-    # Auto-detected paths (based on distro):
-    # - Debian/Ubuntu: /var/log/auth.log, /var/log/syslog
-    # - RHEL/CentOS/Fedora: /var/log/secure, /var/log/messages
-    # - Kali/Arch: uses journald (run scripts/export_systemd_logs.sh)
-    # Test file:
-    - tests/authlog_test.log
-  
+
+  paths: []
+
   mode: streaming
 
 # Configuration du moteur de détection (F2)

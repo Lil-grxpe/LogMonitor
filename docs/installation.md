@@ -120,11 +120,11 @@ sudo journalctl -u logmonitor -f       # Voir les logs en direct
 
 ## Prérequis
 
-- **Système** : Linux (Ubuntu 20.04+, Debian 10+, Fedora, Arch, Kali…)
+- **Système** : Linux (Ubuntu 20.04+, Lubuntu, Debian 10+, Fedora, Arch, Kali…)
 - **Python** : Version 3.10 ou supérieure
 - **RAM** : Minimum 2 GB
 - **CPU** : Minimum 1 vCPU
-- **Droits** : Accès en lecture aux fichiers de logs (`/var/log/`)
+- **Droits** : Lecture des logs système (`adm` pour fichiers, `systemd-journal` pour journald)
 
 ---
 
@@ -149,9 +149,16 @@ source ~/.bashrc
 
 ### « Permission denied » lors de la lecture des logs
 
+Sur les systèmes avec `/var/log/auth.log` (Debian/Ubuntu/Lubuntu) :
 ```bash
 sudo usermod -a -G adm $USER
 newgrp adm
+```
+
+Sur les systèmes journald (Kali, Arch, Ubuntu 24.04+) :
+```bash
+sudo usermod -a -G systemd-journal $USER
+newgrp systemd-journal
 ```
 
 ### « python3: command not found »

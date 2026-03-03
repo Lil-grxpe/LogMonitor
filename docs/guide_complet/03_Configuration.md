@@ -15,9 +15,12 @@ Par défaut, LogMonitor tente de détecter automatiquement votre distribution et
 
 ```yaml
 logs:
-  auto_detect: true  # Laisse LogMonitor choisir
-  paths:
-    - /var/log/auth.log  # Forcé manuellement si nécessaire
+  auto_detect: true  # Laisse LogMonitor choisir la meilleure source
+  paths: []          # Vide = auto-detect. 
+  # Pour forcer manuellement :
+  # paths:
+  #   - /var/log/auth.log
+  #   - journald://auth
   mode: streaming  # 'streaming' (temps réel) ou 'batch' (analyse statique)
 ```
 

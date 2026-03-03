@@ -8,7 +8,12 @@ LogMonitor s'utilise principalement via le terminal. La commande principale est 
 Pour analyser un fichier de logs existant (mode « one-shot ») :
 
 ```bash
+# Sur Debian/Ubuntu/Lubuntu
 logmonitor scan -f /var/log/auth.log
+
+# Sur Kali/Arch (journald) — exporter d'abord
+journalctl -u ssh --since "24 hours ago" --no-pager -o short-iso > /tmp/ssh.log
+logmonitor scan -f /tmp/ssh.log
 ```
 Cela affichera les menaces détectées directement dans le terminal et les enregistrera dans la base de données.
 

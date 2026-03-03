@@ -194,16 +194,49 @@ class LogMonitorDaemon:
         
         self.collectors = {}
         self.normalizers = {}
-        
+
         log_paths = self.config.get('logs.paths', [])
+
+        # Auto-inject journald sources if no paths configured / detected
+        if not log_paths or all(not p for p in log_paths):
+            from logmonitor.utils.linux_detect import is_journald_available
+            if is_journald_available():
+                self.logger.warning(
+                    "No log file paths found — journald detected. "
+                    "Auto-adding journald://auth and journald://system."
+                )
+                log_paths = ['journald://auth', 'journald://system']
+            else:
+                self.logger.error(
+                    "CRITICAL: No log sources found and journald is not available. "
+                    "LogMonitor will NOT monitor anything. "
+                    "Check your config (logs.paths) or install rsyslog/syslog-ng."
+                )
+
         for log_path in log_paths:
             try:
+                is_journald = log_path.startswith('journald://')
+
+                if is_journald:
+                    log_type = 'journald'
+                elif 'auth' in log_path:
+                    log_type = 'auth'
+                else:
+                    log_type = 'syslog'
+
                 collector = create_collector(log_path)
-                normalizer = create_normalizer('auth' if 'auth' in log_path else 'syslog')
+                normalizer = create_normalizer(log_type)
                 self.collectors[log_path] = collector
                 self.normalizers[log_path] = normalizer
+                self.logger.info(f"Collector initialized: {log_path} (type={log_type})")
             except Exception as e:
                 self.logger.error(f"Cannot create collector for {log_path}: {e}")
+
+        if not self.collectors:
+            self.logger.error(
+                "CRITICAL: No collectors could be initialized. "
+                "LogMonitor daemon will start but monitor NOTHING."
+            )
         
         pid_file = self.config.get('general.pid_file', '/tmp/logmonitor/logmonitor.pid')
         log_file = self.config.get('general.app_log', '/tmp/logmonitor/app.log')

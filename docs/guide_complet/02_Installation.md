@@ -26,7 +26,7 @@ Le script `install.sh` gère tout pour vous : détection de la distribution, ins
 
 3.  **Suivre les instructions** :
     *   Le script installera `pipx` si nécessaire.
-    *   Il vous demandera de confirmer le fichier de logs à surveiller (par défaut `/var/log/auth.log` ou `/var/log/secure`).
+    *   Il configurera la détection automatique de la source de logs (journald ou auth.log).
     *   Il installera et activera le **service systemd** pour un démarrage automatique au boot.
     *   LogMonitor sera **démarré immédiatement** à la fin de l'installation.
 

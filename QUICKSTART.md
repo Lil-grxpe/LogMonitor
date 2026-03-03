@@ -35,7 +35,12 @@ logmonitor alerts list --severity high
 ### Analyser un Fichier Manuellement
 
 ```bash
+# Sur Debian/Ubuntu/Lubuntu
 logmonitor scan -f /var/log/auth.log
+
+# Sur Kali/Arch (journald) — exporter d'abord
+journalctl -u ssh --since "24 hours ago" --no-pager -o short-iso > /tmp/ssh.log
+logmonitor scan -f /tmp/ssh.log
 ```
 
 ### Générer un Rapport
@@ -64,11 +69,16 @@ sudo journalctl -u logmonitor -f     # Logs en direct
 
 ## Permissions
 
-Si vous avez une erreur « Permission denied » :
-
+Sur les systèmes avec fichiers `/var/log` :
 ```bash
 sudo usermod -a -G adm $USER
 newgrp adm
+```
+
+Sur les systèmes journald (Kali, Arch) :
+```bash
+sudo usermod -a -G systemd-journal $USER
+newgrp systemd-journal
 ```
 
 ## Documentation Complète

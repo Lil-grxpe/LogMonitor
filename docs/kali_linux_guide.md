@@ -1,191 +1,134 @@
-# Guide LogMonitor pour Kali Linux
+# Guide LogMonitor pour Kali Linux (et systèmes journald)
 
-## 📋 Différences avec les systèmes Linux classiques
+## 🔍 Fonctionnement automatique
 
-Sur **Kali Linux** (basé sur Debian), les logs d'authentification ne sont pas dans `/var/log/auth.log` mais dans le **journal systemd**.
+Sur **Kali Linux**, **Arch** et tout système n'ayant pas de `/var/log/auth.log` (Ubuntu 24.04+, Lubuntu minimal, etc.), LogMonitor **détecte automatiquement** que journald est la source de logs et s'y connecte sans aucune configuration manuelle.
 
-## 🔍 Où trouver les logs sur Kali ?
-
-### Logs d'authentification SSH
-
-```bash
-# Voir les logs SSH en temps réel
-journalctl -u ssh -f
-
-# Exporter les logs SSH des dernières 24h
-journalctl -u ssh --since "24 hours ago" > /tmp/ssh.log
-
-# Exporter tous les logs SSH
-journalctl -u ssh --no-pager > /tmp/ssh_all.log
+```
+LogMonitor démarre → détecte la distro → cherche /var/log/auth.log
+→ introuvable → vérifie /run/systemd/journal/socket
+→ journald disponible → connecte journald://auth + journald://system
+→ streaming en temps réel via journalctl -f
 ```
 
-### Logs système disponibles
+> **Aucune action requise.** Lancer `logmonitor start` suffit.
 
-```bash
-# Logs dans /var/log/
-ls /var/log/
-
-# Logs utiles pour LogMonitor :
-# - /var/log/apache2/access.log    # Logs Apache
-# - /var/log/nginx/access.log      # Logs Nginx
-# - /var/log/mysql/error.log       # Logs MySQL
-```
+---
 
 ## 🚀 Installation sur Kali
 
 ```bash
-# 1. Cloner et installer
 git clone https://github.com/Lil-grxpe/LogMonitor.git
 cd LogMonitor
 ./install.sh
 ```
 
-Le script détectera Kali Linux et configurera automatiquement les chemins de logs.
+Le script détecte Kali et active le service systemd. LogMonitor démarre automatiquement au boot.
 
-> Après l'installation, LogMonitor est **actif et démarre automatiquement** au boot via systemd.
+---
 
-## 🧪 Utilisation sur Kali
+## 🧪 Utilisation
 
-### Option 1 : Analyser les logs systemd (Recommandé)
-
-```bash
-# 1. Exporter les logs SSH du journal systemd
-journalctl -u ssh --since "7 days ago" --no-pager > /tmp/ssh_logs.log
-
-# 2. Analyser avec LogMonitor
-logmonitor scan -f /tmp/ssh_logs.log
-
-# 3. Voir les alertes
-logmonitor alerts list
-```
-
-### Option 2 : Utiliser les fichiers de test
+### Démarrage / statut
 
 ```bash
-logmonitor scan -f tests/test_logs/01_bruteforce_ssh.log
-logmonitor scan -f tests/test_logs/02_multiple_accounts_attack.log
-logmonitor scan -f tests/test_logs/03_suspicious_root_login.log
+sudo systemctl status logmonitor
+logmonitor status
 ```
 
-### Option 3 : Mode daemon avec export automatique
-
-Créer un script pour exporter régulièrement les logs :
+### Scan ponctuel (logs récents via journald)
 
 ```bash
-#!/bin/bash
-# /usr/local/bin/export_ssh_logs.sh
-journalctl -u ssh --since "24 hours ago" --no-pager > /var/log/ssh_export.log
-logmonitor scan -f /var/log/ssh_export.log
-```
-
-Puis ajouter dans crontab :
-```bash
-crontab -e
-# Ajouter : 0 * * * * /usr/local/bin/export_ssh_logs.sh
-```
-
-## 📊 Configuration pour Kali Linux
-
-Modifier `config/logmonitor.yaml` :
-
-```yaml
-logs:
-  paths:
-    - /var/log/ssh_export.log
-    - /var/log/apache2/access.log
-```
-
-## 💡 Commandes utiles
-
-```bash
-# Échecs de connexion SSH
-journalctl -u ssh | grep "Failed password"
-
-# Connexions réussies
-journalctl -u ssh | grep "Accepted"
-
-# Dernière heure
-journalctl -u ssh --since "1 hour ago"
-```
-
-## 🔧 Script d'export automatique complet
-
-Créer `/usr/local/bin/logmonitor-export.sh` :
-
-```bash
-#!/bin/bash
-EXPORT_DIR="/var/log/logmonitor-exports"
-mkdir -p "$EXPORT_DIR"
-
-journalctl -u ssh --since "24 hours ago" --no-pager > "$EXPORT_DIR/ssh.log"
-journalctl -t sudo --since "24 hours ago" --no-pager > "$EXPORT_DIR/sudo.log"
-journalctl -u systemd-logind --since "24 hours ago" --no-pager > "$EXPORT_DIR/auth.log"
-
-echo "Logs exportés dans $EXPORT_DIR"
-```
-
-```bash
-chmod +x /usr/local/bin/logmonitor-export.sh
-```
-
-Configuration LogMonitor adaptée :
-```yaml
-logs:
-  paths:
-    - /var/log/logmonitor-exports/ssh.log
-    - /var/log/logmonitor-exports/sudo.log
-    - /var/log/logmonitor-exports/auth.log
-```
-
-## 📝 Notes importantes
-
-1. **Permissions** : Sur Kali, vous devez être root ou dans le groupe `systemd-journal` pour lire les logs :
-   ```bash
-   sudo usermod -a -G systemd-journal $USER
-   newgrp systemd-journal
-   ```
-
-2. **Persistance du journal** : Par défaut, le journal systemd est volatile. Pour le rendre persistant :
-   ```bash
-   sudo mkdir -p /var/log/journal
-   sudo systemctl restart systemd-journald
-   ```
-
-## 🐛 Dépannage
-
-### « Permission denied » sur journalctl
-
-```bash
-# Solution 1 : Utiliser sudo
-sudo journalctl -u ssh > /tmp/ssh.log
-sudo chown $USER /tmp/ssh.log
+# Exporter puis analyser
+journalctl -u ssh --since "24 hours ago" --no-pager -o short-iso > /tmp/ssh.log
 logmonitor scan -f /tmp/ssh.log
-
-# Solution 2 : Ajouter au groupe
-sudo usermod -a -G systemd-journal $USER
-newgrp systemd-journal
 ```
 
-### Aucun log SSH trouvé
+### Alertes en temps réel
 
 ```bash
-# Vérifier que SSH est actif
-sudo systemctl status ssh
+# Voir les alertes détectées
+logmonitor alerts list
+logmonitor alerts list --severity high
 
-# Démarrer SSH si nécessaire
-sudo systemctl start ssh
-```
-
-### « logmonitor: command not found »
-
-```bash
-source ~/.bashrc
-# ou
-source ~/.zshrc
+# Dashboard web
+logmonitor web --port 5000
 ```
 
 ---
 
-**Auteur** : Équipe LogMonitor  
-**Date** : 2026-01-02  
-**Version** : 1.1
+## 📊 Configuration journald explicite (optionnel)
+
+Si vous voulez forcer les sources journald dans `config/logmonitor.yaml` :
+
+```yaml
+logs:
+  auto_detect: false  # désactiver la détection automatique
+  paths:
+    - journald://auth    # sshd, sudo, login, su, useradd...
+    - journald://system  # tous les messages système
+  mode: streaming
+```
+
+---
+
+## 🔑 Permissions journald
+
+Pour lire journald sans sudo :
+
+```bash
+sudo usermod -a -G systemd-journal $USER
+newgrp systemd-journal
+```
+
+Pour rendre les logs persistants (redémarrages) :
+
+```bash
+sudo mkdir -p /var/log/journal
+sudo systemctl restart systemd-journald
+```
+
+---
+
+## 🐛 Dépannage
+
+### LogMonitor ne détecte rien
+
+```bash
+# Vérifier que journald tourne
+ls /run/systemd/journal/socket   # doit exister
+journalctl --lines=5 --no-pager  # doit afficher des lignes
+
+# Vérifier les logs LogMonitor
+tail -f /tmp/logmonitor/app.log
+```
+
+### « journalctl: command not found »
+
+```bash
+sudo apt install systemd
+```
+
+### SSH non loggué dans journald
+
+```bash
+sudo systemctl status ssh
+sudo systemctl start ssh
+```
+
+---
+
+## 💡 Test bruteforce SSH (depuis Kali vers VM cible)
+
+```bash
+# Attaque bruteforce depuis Kali
+hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://[IP_VM]
+
+# Sur la VM cible (LogMonitor actif) → vérifier alertes
+logmonitor alerts list --severity high
+```
+
+---
+
+**Version** : 2.0 — mars 2026  
+**Maintenu par** : Équipe LogMonitor
